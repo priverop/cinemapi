@@ -7,7 +7,7 @@ This project has two parts: Scrap & populating the database, and serving endpoin
 This is the info we need to gather:
 
 - Movie theater: name, location, spectator days (SD), and prices (regular fee / SD fee).
-- Movie: name, duration (minutes), genre, days, and hours (array of hours).
+- Movie: name, duration (minutes), genre, days and hours (array of datetimes).
 
 ## User query
 
