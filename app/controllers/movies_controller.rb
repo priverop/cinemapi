@@ -37,6 +37,7 @@ class MoviesController < ApplicationController
     end
 
     # Query
+    # ToDo -> Move to model?
     movies = Movie.joins(:theaters)
       .select("movies.name as movie", :genre, :duration, "theaters.name as theater", "showtimes.showtime",)
       .where("DATE(showtimes.showtime) = ?", datetime.to_date)
@@ -44,7 +45,10 @@ class MoviesController < ApplicationController
       .where("theater in (?)", theaters_param)
 
     # Add price
-    result = movies.map do |movie|
+    # ToDo -> Move to model?
+    # Blueprinter?
+    # N+1
+    result = movies.includes(:theaters).map do |movie|
       theater = Theater.find_by(name: movie.theater)
       showtime_date = movie.showtime
       {
