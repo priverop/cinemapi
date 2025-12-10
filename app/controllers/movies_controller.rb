@@ -38,26 +38,23 @@ class MoviesController < ApplicationController
 
     # Query
     # ToDo -> Move to model?
-    movies = Movie.joins(:theaters)
-      .select("movies.name as movie", :genre, :duration, "theaters.name as theater", "showtimes.showtime",)
+    showtimes = Showtime.includes(:movie, :theater)
       .where("DATE(showtimes.showtime) = ?", datetime.to_date)
       .where("showtimes.showtime >= ?", datetime)
-      .where("theater in (?)", theaters_param)
+      .where(theater: { name: theaters_param })
 
     # Add price
     # ToDo -> Move to model?
     # Blueprinter?
-    # N+1
-    result = movies.includes(:theaters).map do |movie|
-      theater = Theater.find_by(name: movie.theater)
-      showtime_date = movie.showtime
+    result = showtimes.map do |showtime|
+      time = showtime.showtime
       {
-        name: movie.movie,
-        genre: movie.genre,
-        duration: movie.duration,
-        theater: movie.theater,
-        price: theater.price_for_day(showtime_date),
-        showtime: movie.showtime
+        name: showtime.movie.name,
+        genre: showtime.movie.genre,
+        duration: showtime.movie.duration,
+        theater: showtime.theater.name,
+        price: showtime.theater.price_for_day(time),
+        showtime: time
       }
     end
 
