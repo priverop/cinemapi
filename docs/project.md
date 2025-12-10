@@ -12,17 +12,17 @@ This is the info we need to gather:
 
 ## User query
 
-The user will search for:
-
-- The movie theaters he has close by.
+The user will search for all the movies that fits the three parameters:
+- Chosen movie theaters.
 - The day he wants to go.
 - The hour when he is available.
 
 ## Future ideas
 
 - Max price he wants to pay.
-- User preferences. Store the query?
+- User preferences. Store parameters?
 - Ending hour (limiting time): hour + duration should not reach the specified ending hour.
+- Movie theaters by location?
 
 ## Questions for the future
 
