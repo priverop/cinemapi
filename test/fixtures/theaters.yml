@@ -1,9 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  location: MyString
+  id: 1
+  name: Theater1
+  location: Location1
+  price: 8.9
+  discounted_price: 4.5
+  discounted_days: '["monday", "wednesday"]'
 
 two:
-  name: MyString
-  location: MyString
+  id: 2
+  name: Theater2
+  location: Location2
+  price: 11.9
+  discounted_price: 6.5
+  discounted_days: '["monday"]'

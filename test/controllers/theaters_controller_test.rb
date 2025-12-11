@@ -12,7 +12,7 @@ class TheatersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create theater" do
     assert_difference("Theater.count") do
-      post theaters_url, params: { theater: { location: @theater.location, name: @theater.name } }, as: :json
+      post theaters_url, params: { theater: { location: @theater.location, name: @theater.name, price: @theater.price, discounted_price: @theater.discounted_price, discounted_days: @theater.discounted_days } }, as: :json
     end
 
     assert_response :created
@@ -24,7 +24,7 @@ class TheatersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update theater" do
-    patch theater_url(@theater), params: { theater: { location: @theater.location, name: @theater.name } }, as: :json
+    patch theater_url(@theater), params: { theater: { location: @theater.location, name: @theater.name, price: @theater.price, discounted_price: @theater.discounted_price, discounted_days: @theater.discounted_days } }, as: :json
     assert_response :success
   end
 
