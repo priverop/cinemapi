@@ -1,11 +1,11 @@
 class Theater < ApplicationRecord
-  has_many :showtimes
+  has_many :showtimes, dependent: :destroy
 
   has_many :movies, through: :showtimes
 
   serialize :discounted_days, coder: JSON
 
-  validates :name, :location, :price, :discounted_price, presence: true
+  validates :name, :location, :price, :discounted_price, :discounted_days, presence: true
 
   ## Return regular price or discounted price, depending on the date
   def price_for_day(date)

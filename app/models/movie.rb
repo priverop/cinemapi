@@ -1,5 +1,5 @@
 class Movie < ApplicationRecord
-  has_many :showtimes
+  has_many :showtimes, dependent: :destroy
 
   has_many :theaters, through: :showtimes
 
