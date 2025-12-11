@@ -46,6 +46,6 @@ class TheatersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def theater_params
-      params.expect(theater: [ :name, :location ])
+      params.expect(theater: [ :name, :location, :price, :discounted_price, discounted_days: [] ])
     end
 end
