@@ -6,6 +6,8 @@ API that scrapes movie listings from local cinema websites and serves them as a 
 
 Built with Rails 8 (API-only) + SQLite.
 
+> I'm tired of opening 20 tabs to find the perfect theater for a movie.
+
 ## Requirements
 
 This project runs with [Dev Containers](https://guides.rubyonrails.org/getting_started_with_devcontainer.html). Install [VS Code](https://code.visualstudio.com/), and the [Dev Containers Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
