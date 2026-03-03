@@ -1,18 +1,27 @@
 # Cinemapi
 
->![INFO] This is a PoC. Not usable yet.
+> WIP - Work in progress.
 
-I was tired of opening 10 tabs with all the cinemas websites I have close by (I'm lucky tho!!). 
+API that scrapes movie listings from local cinema websites and serves them as a JSON API.
 
-This project tries to scrap all the data from these websites, and make an API.
-
-The next step will be creating the front end of the project.
+Built with Rails 8 (API-only) + SQLite.
 
 ## Requirements
 
-- Docker.
+This project runs with [Dev Containers](https://guides.rubyonrails.org/getting_started_with_devcontainer.html). Install [VS Code](https://code.visualstudio.com/), and the [Dev Containers Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
 
-## Useful Docs
+## Setup
 
-- [ADR](/docs/adr.md).
-- Project description, ideas, and db organization: [here](/docs/project.md).
+After installing the Dev Containers extension in VSCode, run `Dev Containers: Build and Reopen in Container`.
+
+## Docs
+
+- [Project description and ideas](/docs/project.md)
+- [ADR](/docs/adr.md)
+
+## Roadmap
+
+- Finish basic API with dummy data.
+- Scrap all the data from the websites.
+- Processes and stores scrapped data into the database.
+- Front that consumes the API.
