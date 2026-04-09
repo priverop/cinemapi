@@ -1,4 +1,4 @@
-class MoviesController < ApplicationController
+class Api::MoviesController < ApplicationController
   before_action :set_movie, only: %i[ show update destroy ]
 
   # GET /movies

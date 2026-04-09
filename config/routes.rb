@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  get "movies/search", to: "movies#search"
-  resources :movies
-  resources :theaters
-
+  namespace :api do
+    get "movies/search", to: "movies#search"
+    resources :movies
+    resources :theaters
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

@@ -1,4 +1,4 @@
-class TheatersController < ApplicationController
+class Api::TheatersController < ApplicationController
   before_action :set_theater, only: %i[ show update destroy ]
 
   # GET /theaters
