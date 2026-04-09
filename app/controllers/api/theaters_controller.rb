@@ -39,12 +39,10 @@ class Api::TheatersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_theater
       @theater = Theater.find(params.expect(:id))
     end
 
-    # Only allow a list of trusted parameters through.
     def theater_params
       params.expect(theater: [ :name, :location, :price, :discounted_price, discounted_days: [] ])
     end
