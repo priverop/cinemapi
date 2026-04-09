@@ -1,6 +1,6 @@
 require "test_helper"
 
-class TheatersControllerTest < ActionDispatch::IntegrationTest
+class Api::TheatersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @theater = theaters(:one)
   end
