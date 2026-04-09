@@ -18,7 +18,7 @@ class Api::TheatersController < ApplicationController
     @theater = Theater.new(theater_params)
 
     if @theater.save
-      render json: @theater, status: :created, location: @theater
+      render json: @theater, status: :created, location: api_theater_url(@theater)
     else
       render json: @theater.errors, status: :unprocessable_content
     end

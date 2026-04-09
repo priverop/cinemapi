@@ -66,7 +66,7 @@ class Api::MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
 
     if @movie.save
-      render json: @movie, status: :created, location: @movie
+      render json: @movie, status: :created, location: api_movie_url(@movie)
     else
       render json: @movie.errors, status: :unprocessable_content
     end
