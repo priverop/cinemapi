@@ -11,4 +11,8 @@ class Theater < ApplicationRecord
   def price_for_day(date)
     date.strftime("%A").downcase.in?(discounted_days) ? discounted_price : price
   end
+
+  def discounted_days_string
+    discounted_days.filter_map(&:capitalize).join(", ")
+  end
 end

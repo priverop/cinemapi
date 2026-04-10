@@ -1,0 +1,26 @@
+button {
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 0.875rem; /* tailwind sm */
+  line-height: 1.25rem; /* tailwind sm */
+  cursor: pointer;
+  padding: 4px;
+}
+
+button.primary {
+  background: red;
+}
+
+button.primary:hover {
+  background-color: white;
+  color: red;
+}
+
+button.secondary {
+  color: red;
+}
+
+button.secondary:hover {
+  background: red;
+  color: black;
+}
