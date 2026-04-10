@@ -4,7 +4,9 @@
 
 API that scrapes movie listings from local cinema websites and serves them as a JSON API.
 
-Built with Rails 8 (API-only) + SQLite.
++ Backoffice with Turbo+Stimulous.
+
+Built with Rails 8 + SQLite.
 
 > I'm tired of opening 20 tabs to find the perfect theater for a movie.
 
