@@ -1,11 +1,13 @@
 class Theater < ApplicationRecord
+  before_create :store_discounted_days
+
   has_many :showtimes, dependent: :destroy
 
   has_many :movies, through: :showtimes
 
   serialize :discounted_days, coder: JSON
 
-  validates :name, :location, :price, :discounted_price, :discounted_days, presence: true
+  validates :name, :location, :price, presence: true
 
   ## Return regular price or discounted price, depending on the date
   def price_for_day(date)
@@ -14,5 +16,11 @@ class Theater < ApplicationRecord
 
   def discounted_days_string
     discounted_days.filter_map(&:capitalize).join(", ")
+  end
+
+  private
+
+  def store_discounted_days
+    self.discounted_days = discounted_days.split(", ")
   end
 end
