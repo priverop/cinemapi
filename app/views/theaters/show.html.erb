@@ -1,0 +1,9 @@
+<% content_for :title, "Cinemapi | Backoffice | Theater" %>
+
+<div class="border p-5 rounded">
+  <h2 class="font-bold"><%= @theater.name %></h2>
+  <p class="italic text-sm"><%= @theater.location %></p>
+  <p class="text-sm"><span class="font-semibold">Discounted days:</span> <%= @theater.discounted_days_string %>.</p>
+</div>
+
+<%= link_to "Back", theaters_path, class: "button secondary p-1 mt-5" %>

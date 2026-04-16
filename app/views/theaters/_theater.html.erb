@@ -1,11 +1,12 @@
 <div class="border p-5 mt-3 rounded flex justify-between">
-      <div>
-        <p class="font-bold block"><%= theater.name %></p>
-        <p class="italic text-sm"><%= theater.location %></p>
-        <p class="text-sm"><span class="font-semibold">Discounted days:</span> <%= theater.discounted_days_string %>.</p>
-      </div>
-      <div>
-        <button class="secondary">Edit</button>
-        <button class="primary">Remove</button>
-      </div>
-    </div>
+  <div>
+    <p class="font-bold block"><%= theater.name %></p>
+    <p class="italic text-sm"><%= theater.location %></p>
+    <p class="text-sm"><span class="font-semibold">Discounted days:</span> <%= theater.discounted_days_string %>.</p>
+  </div>
+  <div>
+    <%= link_to "View", theater_path(theater.id) %>
+    <button class="secondary">Edit</button>
+    <button class="primary">Remove</button>
+  </div>
+</div>
