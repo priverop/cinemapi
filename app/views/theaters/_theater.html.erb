@@ -1,12 +1,15 @@
-<div class="border p-5 mt-3 rounded flex justify-between">
+<div
+  data-controller="clickable-card"
+  data-clickable-card-url-value="<%= theater_path(theater) %>"
+  data-action="click->clickable-card#navigate"
+  class="border cursor-pointer p-5 mt-3 rounded flex justify-between hover:bg-gray-100">
   <div>
     <p class="font-bold block"><%= theater.name %></p>
     <p class="italic text-sm"><%= theater.location %></p>
     <p class="text-sm"><span class="font-semibold">Discounted days:</span> <%= theater.discounted_days_string %>.</p>
   </div>
   <div>
-    <%= link_to "View", theater, class: "button primary" %>
     <%= link_to "Edit", edit_theater_path(theater.id), class: "button primary" %>
-    <%= button_to "Remove", theater, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+    <%= button_to "Remove", theater, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "button secondary mt-3" %>
   </div>
 </div>
