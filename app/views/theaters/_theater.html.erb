@@ -5,8 +5,8 @@
     <p class="text-sm"><span class="font-semibold">Discounted days:</span> <%= theater.discounted_days_string %>.</p>
   </div>
   <div>
-    <%= link_to "View", theater_path(theater.id) %>
-    <button class="secondary">Edit</button>
-    <button class="primary">Remove</button>
+    <%= link_to "View", theater, class: "button primary" %>
+    <%= link_to "Edit", edit_theater_path(theater.id), class: "button primary" %>
+    <%= button_to "Remove", theater, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
   </div>
 </div>
