@@ -1,0 +1,42 @@
+<% content_for :title, "Cinemapi | Backoffice | New Theater" %>
+
+<h2 class="font-bold block">New Theater:</h2>
+
+<div>
+  <%= form_with model: @theater do |form| %>
+    <div>
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+    <div>
+      <%= form.label :location %>
+      <%= form.text_field :location %>
+    </div>
+    <div>
+      <%= form.label :price %>
+      <%= form.text_field :price %>
+    </div>
+    TODO - Estos dos pueden estar empty, cambiar el modelo
+    <div>
+      <%= form.label :discounted_price %>
+      <%= form.text_field :discounted_price %>
+    </div>
+    <div>
+      <%= form.label :discounted_days %>
+      <%= form.text_field :discounted_days %>
+    </div>
+
+    <% if @theater.errors.any? %>
+      <div> Error creating a new Theater:
+        <% @theater.errors.each do |error| %>
+          <p><%= error.full_message %></p>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%= form.submit %>
+
+  <% end %>
+</div>
+
+<%= link_to "Back", theaters_path, class: "button secondary p-1 mt-5" %>
