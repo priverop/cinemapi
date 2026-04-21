@@ -6,7 +6,8 @@
                                side_info: :price,
                                side_unit: "€",
                                count: @theater_count,
-                               latest: @recent_theaters
+                               latest: @recent_theaters,
+                               path: theaters_path
                               } %>
 
   <%= render "card", locals: { title: "Movies",
@@ -14,6 +15,7 @@
                                side_info: :duration,
                                side_unit: "mins",
                                count: @movie_count,
-                               latest: @recent_movies
+                               latest: @recent_movies,
+                               path: movies_path
                               } %>
 </div>

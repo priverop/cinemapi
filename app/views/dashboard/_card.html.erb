@@ -4,7 +4,7 @@
       <h5 class="text-slate-800 text-lg font-semibold">
         <%= "Latest #{locals[:title]}" %>
       </h5>
-       <%= link_to "View all (#{locals[:count]})", theaters_path, class: "text-slate-600" %>
+       <%= link_to "View all (#{locals[:count]})", locals[:path], class: "text-slate-600" %>
     </div>
 
     <div class="divide-y divide-slate-200">
