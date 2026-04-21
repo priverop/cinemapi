@@ -7,7 +7,19 @@
 
   <h1 class="font-bold text-4xl">Showing movie</h1>
 
-  <%= render @movie %>
+  <h2><%= @movie.name %></h2>
+  <p class="text-sm"><%= @movie.duration %> mins.</p>
+  <p class="italic text-sm"><%= @movie.genre.capitalize %></p>
+  <h3>Showtimes</h3>
+
+  <% @theater_showtimes.each do |theater, showtimes| %>
+    <p><span><%= theater.name %></span>: 
+      <% showtimes.each do |s| %>
+        <%= s.showtime.to_fs(:db) %>
+        - 
+      <% end %>
+    </p>
+  <% end %>
 
   <%= link_to "Edit this movie", edit_movie_path(@movie), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
   <%= link_to "Back to movies", movies_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
