@@ -18,6 +18,11 @@ class Theater < ApplicationRecord
     discounted_days.filter_map(&:capitalize).join(", ")
   end
 
+  # Get the latests n theaters
+  def self.latest(n)
+    order(created_at: :desc).limit(n)
+  end
+
   private
 
   def store_discounted_days

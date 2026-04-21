@@ -17,13 +17,6 @@ The user will search for all the movies that fits the three parameters:
 - The day he wants to go.
 - The hour when he is available.
 
-## Future ideas
-
-- Max price he wants to pay.
-- User preferences. Store parameters?
-- Ending hour (limiting time): hour + duration should not reach the specified ending hour.
-- Movie theaters by location?
-
 ## Questions for the future
 
 - Movie.genre is a string. Should we make a specific table? To make searches more efficient.

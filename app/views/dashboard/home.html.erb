@@ -1,0 +1,19 @@
+<h2 class="text-xl">Dashboard</h2>
+
+<div class="flex">
+  <%= render "card", locals: { title: "Theaters",
+                               sub_info: :location,
+                               side_info: :price,
+                               side_unit: "€",
+                               count: @theater_count,
+                               latest: @recent_theaters
+                              } %>
+
+  <%= render "card", locals: { title: "Movies",
+                               sub_info: :genre,
+                               side_info: :duration,
+                               side_unit: "mins",
+                               count: @movie_count,
+                               latest: @recent_movies
+                              } %>
+</div>
