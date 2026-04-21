@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class MoviesController < ApplicationController
-  before_action :set_movie, only: %i[ show edit update destroy ]
+  before_action :set_movie, only: %i[ edit update destroy ]
 
   # GET /movies or /movies.json
   def index
@@ -10,6 +10,8 @@ class MoviesController < ApplicationController
 
   # GET /movies/1 or /movies/1.json
   def show
+    @movie = Movie.includes(showtimes: :theater).find(params.expect(:id))
+    @theater_showtimes = @movie.showtimes.group_by(&:theater)
   end
 
   # GET /movies/new
