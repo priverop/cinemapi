@@ -25,7 +25,8 @@ class Theater < ApplicationRecord
 
   private
 
+  # TODO: change this for a checkbox and proper design
   def store_discounted_days
-    self.discounted_days = discounted_days.split(", ")
+    self.discounted_days = discounted_days.split(", ") if self.discounted_days.nil?
   end
 end
