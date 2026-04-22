@@ -1,0 +1,34 @@
+<%= form_with model: @theater, class: "form" do |form| %>
+    <div>
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+    <div>
+      <%= form.label :location %>
+      <%= form.text_field :location %>
+    </div>
+    <div>
+      <%= form.label :price %>
+      <%= form.text_field :price %>
+    </div>
+    TODO - Estos dos pueden estar empty, cambiar el modelo
+    <div>
+      <%= form.label :discounted_price %>
+      <%= form.text_field :discounted_price %>
+    </div>
+    <div>
+      <%= form.label :discounted_days %>
+      <%= form.text_field :discounted_days %>
+    </div>
+
+    <% if @theater.errors.any? %>
+      <div> Errors:
+        <% @theater.errors.each do |error| %>
+          <p><%= error.full_message %></p>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%= form.submit %>
+
+  <% end %>

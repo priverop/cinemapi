@@ -1,0 +1,30 @@
+<div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96 mr-5">
+  <div class="p-4">
+    <div class="mb-4 flex items-center justify-between">
+      <h5 class="text-slate-800 text-lg font-semibold">
+        <%= "Latest #{locals[:title]}" %>
+      </h5>
+       <%= link_to "View all (#{locals[:count]})", locals[:path], class: "text-slate-600" %>
+    </div>
+
+    <div class="divide-y divide-slate-200">
+       <% locals[:latest].each do |e| %>
+        <div class="flex items-center justify-between pb-3 pt-3 last:pb-0">
+          <div class="flex items-center gap-x-3">
+            <div>
+              <h6 class="text-slate-800 font-semibold">
+                <%= e.name %>
+              </h6>
+              <p class="text-slate-600 text-sm">
+                <%= e.send(locals[:sub_info]) %>
+              </p>
+            </div>
+          </div>
+          <h6 class="text-slate-600 font-medium">
+            <%= "#{e.send(locals[:side_info])} #{locals[:side_unit]}" %>
+          </h6>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<% content_for :title, "Cinemapi | Backoffice | Theater" %>
+
+<div class="border p-5 rounded flex justify-between">
+  <div>
+    <h2 class="font-bold"><%= @theater.name %></h2>
+    <p class="italic text-sm"><%= @theater.location %></p>
+    <p class="text-sm"><span class="font-semibold">Discounted days:</span> <%= @theater.discounted_days_string %>.</p>
+  </div>
+
+  <div>
+    <%= link_to "Edit", edit_theater_path(@theater.id), class: "button primary" %>
+    <%= button_to "Remove", @theater, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+  </div>
+</div>
+
+<%= link_to "Back", theaters_path, class: "button secondary p-1 mt-5" %>

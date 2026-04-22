@@ -1,0 +1,11 @@
+<% content_for :title, "Cinemapi | Backoffice | Theaters" %>
+
+<div class="w-full">
+  <div class="flex">
+    <h2 class="font-bold mr-3">Theaters</h2>
+    <%= link_to "New", new_theater_path, class: "button primary" %>
+  </div>
+  <div>
+    <%= render @theaters %>
+  </div>
+</div>

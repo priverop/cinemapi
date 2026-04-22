@@ -1,51 +1,53 @@
-class TheatersController < ApplicationController
-  before_action :set_theater, only: %i[ show update destroy ]
+# frozen_string_literal: true
 
-  # GET /theaters
+class TheatersController < ApplicationController
+  before_action :set_theater, only: %i[ show edit update destroy ]
+
   def index
     @theaters = Theater.all
-
-    render json: @theaters
   end
 
-  # GET /theaters/1
-  def show
-    render json: @theater
+  def new
+    @theater = Theater.new
   end
 
-  # POST /theaters
   def create
     @theater = Theater.new(theater_params)
 
     if @theater.save
-      render json: @theater, status: :created, location: @theater
+      redirect_to @theater, notice: "Theater was successfully created."
     else
-      render json: @theater.errors, status: :unprocessable_content
+      render :new, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /theaters/1
+  def show
+  end
+
+  def edit
+  end
+
   def update
     if @theater.update(theater_params)
-      render json: @theater
+      redirect_to @theater, notice: "Theater was successfully updated."
     else
-      render json: @theater.errors, status: :unprocessable_content
+      render :edit, status: :unprocessable_entity
     end
   end
 
-  # DELETE /theaters/1
   def destroy
     @theater.destroy!
+
+    redirect_to theaters_path, notice: "Theater was successfully removed.", status: :see_other
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_theater
-      @theater = Theater.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def theater_params
-      params.expect(theater: [ :name, :location, :price, :discounted_price, discounted_days: [] ])
-    end
+  def theater_params
+    params.require(:theater).permit(:name, :location, :price, :discounted_price, :discounted_days)
+  end
+
+  def set_theater
+    @theater = Theater.find(params[:id])
+  end
 end

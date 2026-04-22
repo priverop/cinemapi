@@ -1,0 +1,9 @@
+<% content_for :title, "Cinemapi | Backoffice | New Theater" %>
+
+<h2 class="font-bold block">New Theater:</h2>
+
+<div>
+  <%= render 'form', theater: @theater %>
+</div>
+
+<%= link_to "Back", theaters_path, class: "button secondary p-1 mt-5" %>
