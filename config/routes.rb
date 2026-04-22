@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resource :session
+  resources :passwords, param: :token
   namespace :api do
     get "movies/search", to: "movies#search"
     resources :movies
