@@ -4,6 +4,6 @@ FactoryBot.define do
     sequence(:location) { |n| "Location #{n}" }
     price { 8.90 }
     discounted_price { 4.50 }
-    discounted_days { ["monday", "wednesday"] }
+    discounted_days { [ "monday", "wednesday" ] }
   end
 end
