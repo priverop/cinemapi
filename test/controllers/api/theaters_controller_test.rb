@@ -3,6 +3,8 @@ require "test_helper"
 class Api::TheatersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @theater = theaters(:one)
+    @user = users(:one)
+    sign_in_as(@user)
   end
 
   test "should get index" do

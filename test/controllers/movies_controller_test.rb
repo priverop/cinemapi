@@ -5,6 +5,8 @@ require "test_helper"
 class MoviesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @movie = movies(:one)
+    @user = users(:one)
+    sign_in_as(@user)
   end
 
   test "should get index" do
