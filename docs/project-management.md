@@ -4,12 +4,9 @@ The project is in a very early state, so I don't want to waste any time creating
 
 ## MVP
 
-- Backoffice: manage theater, movies, dashboard, and auth.
-- Scraper: it can scrap a single website.
-
-### User view
-
-Should I implement a basic user view with Turbo, or use the API and use a React front?
+- Scraper: it can scrap a single website for now.
+- Backoffice: manage theater, movies, dashboard, and auth. Quick showtimes edit, change prices, names, etc.
+- User view: with Rails for a quick MVP. Filtering and getting results.
 
 ## Ideas
 
@@ -19,3 +16,9 @@ Should I implement a basic user view with Turbo, or use the API and use a React 
 - Movie theaters by location?
 - VOSE movies.
 - Discounted days stored as int? check buttons for creation/editing.
+- Movies should have sinopsis, country, director, cast, and poster.
+- Movies - SHOW - Group by date
+- Enable/Disable showtimes.
+- Enable/Disable movies? and theaters.
+- Theaters link to scrap.
+- Proper API filtering.

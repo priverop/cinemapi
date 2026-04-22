@@ -1,6 +1,6 @@
 # Project Description
 
-This project has two parts: Scrap & populating the database, and serving endpoints to get the data.
+Cine aggregator with scraping pipeline, background jobs, and filterable API.
 
 ## Database
 
@@ -12,7 +12,7 @@ This is the info we need to gather:
 
 ## User query
 
-The user will search for all the movies that fits the three parameters:
+The user will search for all the movies that fits these parameters:
 - Chosen movie theaters.
 - The day he wants to go.
 - The hour when he is available.
