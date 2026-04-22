@@ -34,6 +34,8 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
+  config.action_mailer.preview_paths = [ Rails.root.join("spec/mailers/previews") ]
+
   # Make template changes take effect immediately.
   config.action_mailer.perform_caching = false
 
