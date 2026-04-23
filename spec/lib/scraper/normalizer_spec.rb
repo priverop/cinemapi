@@ -26,14 +26,14 @@ RSpec.describe Scraper::Normalizer do
       it "returns the clean movies" do
         expect(described_class.normalize(input)).to match([{
           poster: nil,
-          title: "Prime Crime: A True Story",
+          title: "PRIME CRIME: A TRUE STORY",
           directors: [ "Víctor García León" ],
           language: :vo,
           duration: 101,
         },
         {
           poster: "https://subdomain.domain.com/imagenes/hash.jpg",
-          title: "El Cristal Sucio",
+          title: "EL CRISTAL OSCURO [WILDER CINEMA]",
           directors: [ "Lluís Galter", "Eduardo Casanova", "Màrius Sánchez" ],
           language: :vose,
           duration: 123

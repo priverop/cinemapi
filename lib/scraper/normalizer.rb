@@ -42,15 +42,15 @@ module Scraper
         return nil if poster.nil? || poster.strip.empty? 
 
         poster_url = URI.parse(poster)
-        return nil unless poster_url.is_a?(URI:HTTP) && poster_url.host.present?
+        return nil unless poster_url.is_a?(URI::HTTP) && !poster_url.host.empty?
 
-        poster_url
+        poster
       end
 
       def normalize_title(title)
         return nil if title.nil? || title.strip.empty? 
 
-        title.strip # TODO: Falta hacer lo de la capitalizacion
+        title.strip # TODO: Falta hacer lo de la capitalizacion y borrar los [WILDER CINEMA]?
       end
 
       def normalize_directors(directors)
@@ -66,7 +66,7 @@ module Scraper
 
         language_symbol = LANGUAGE_MAP.find { |regex, symbol| normalized.match?(regex) }&.last
 
-        raise UnknownLanguageError, "Unkown language '#{language}'." unless language_symbol.present?
+        raise UnknownLanguageError, "Unkown language '#{language}'." if language_symbol.nil?
         
         language_symbol
       end
