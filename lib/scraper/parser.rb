@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "nokogiri" # TODO: ADD
+require "nokogiri"
 
 module Scraper
   # Parses the HTML into Ruby objects.
@@ -8,10 +8,10 @@ module Scraper
     CSS_SELECTORS = {
       movie_container: ".my-account-content.d-lg-block",
       movie_poster: "a[data-toggle='lightbox']",
-      movie_title: ".col-4 > a",
-      movie_director: "small:first-of-type > b",
-      movie_duration: "small:nth-of-type(3)",
-      movie_language: "small:nth-of-type(2)",
+      movie_title: "a[href^='/pelicula/']",
+      movie_director: "small > b",
+      movie_duration: "small:contains('Duración')",
+      movie_language: "small:contains('Versión')",
       movie_showtimes: ".my-movie-content.lg-block"
     }
 
