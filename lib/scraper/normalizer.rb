@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "uri"
+require "time"
 
 module Scraper
   class Normalizer
@@ -75,6 +76,12 @@ module Scraper
         return nil if duration.nil? || duration.strip.empty? 
 
         duration[DURATION_REGEX]&.to_i
+      end
+
+      def normalize_showtimes(showtimes)
+        return nil if showtimes.nil? || showtimes.empty? #|| showtimes.all? { |s| s.empty? }
+
+        showtimes.map { |s| Time.strptime(s.strip, "%H:%M") }
       end
     end
   end

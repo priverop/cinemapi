@@ -12,7 +12,7 @@ module Scraper
       movie_directors: "small > b",
       movie_duration: "small:contains('Duración')",
       movie_language: "small:contains('Versión')",
-      movie_showtimes: ".my-movie-content.lg-block"
+      movie_showtimes: ".pase-cartelera a[href^='http']" # there are modals in this page, so we need to check for http
     }
 
     def initialize(html)
@@ -27,7 +27,8 @@ module Scraper
           title: movie_title(movie),
           directors: movie_directors(movie),
           language: movie_language(movie),
-          duration: movie_duration(movie)
+          duration: movie_duration(movie),
+          showtimes: movie_showtimes(movie)
         }
       end
       parsed_movies
@@ -64,8 +65,8 @@ module Scraper
     end
 
     def movie_showtimes(movie)
-      movie.css(CSS_SELECTORS[:movie_showtimes]).map do |showtime|
-        showtime  # TODO
+      movie.css(CSS_SELECTORS[:movie_showtimes])&.map do |showtime|
+        showtime&.text
       end
     end
   end

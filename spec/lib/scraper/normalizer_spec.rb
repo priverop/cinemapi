@@ -12,14 +12,16 @@ RSpec.describe Scraper::Normalizer do
           title: "PRIME CRIME: A TRUE STORY",
           directors: " de Víctor García León ",
           language: "Versión Original Castellano",
-          duration: " Duración 101 minutos "
+          duration: " Duración 101 minutos ",
+          showtimes: ["\n               15:50\n            "]
         },
         {
           poster: "https://subdomain.domain.com/imagenes/hash.jpg",
           title: "EL CRISTAL OSCURO [WILDER CINEMA]",
           directors: " de Lluís Galter, Eduardo Casanova, Màrius Sánchez ",
           language: "Versión Original subtitulada a Castellano",
-          duration: " Duración 123 minutos "
+          duration: " Duración 123 minutos ",
+          showtimes: ["\n" + "               16:00\n" + "            ", "\n" + "               18:00\n" + "            ", "\n" + "               22:45\n" + "            "]
         }]
       end
 
@@ -30,13 +32,15 @@ RSpec.describe Scraper::Normalizer do
           directors: [ "Víctor García León" ],
           language: :vo,
           duration: 101,
+          showtimes: [ Time.new(2026, 4, 23, 15, 50) ]
         },
         {
           poster: "https://subdomain.domain.com/imagenes/hash.jpg",
           title: "EL CRISTAL OSCURO [WILDER CINEMA]",
           directors: [ "Lluís Galter", "Eduardo Casanova", "Màrius Sánchez" ],
           language: :vose,
-          duration: 123
+          duration: 123,
+          showtimes: [ Time.new(2026, 4, 23, 16, 00), Time.new(2026, 4, 23, 18, 00), Time.new(2026, 4, 23, 22, 45) ]
         }])
       end
     end

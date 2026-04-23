@@ -20,3 +20,9 @@ The user will search for all the movies that fits these parameters:
 ## Questions for the future
 
 - Movie.genre is a string. Should we make a specific table? To make searches more efficient.
+
+## Data models
+
+### Showtimes
+
+- Date and time are exactly what the website is showing. We don't deal with timezones. If a user is checking other timezone's theaters...
