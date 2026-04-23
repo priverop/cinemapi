@@ -9,7 +9,7 @@ module Scraper
       movie_container: ".my-account-content.d-lg-block",
       movie_poster: "a[data-toggle='lightbox']",
       movie_title: "a[href^='/pelicula/']",
-      movie_director: "small > b",
+      movie_directors: "small > b",
       movie_duration: "small:contains('Duración')",
       movie_language: "small:contains('Versión')",
       movie_showtimes: ".my-movie-content.lg-block"
@@ -25,7 +25,7 @@ module Scraper
         parsed_movies << {
           poster: movie_poster(movie),
           title: movie_title(movie),
-          director: movie_director(movie),
+          directors: movie_directors(movie),
           language: movie_language(movie),
           duration: movie_duration(movie)
         }
@@ -51,8 +51,8 @@ module Scraper
       movie.at_css(CSS_SELECTORS[:movie_title])&.text
     end
 
-    def movie_director(movie)
-      movie.at_css(CSS_SELECTORS[:movie_director])&.text
+    def movie_directors(movie)
+      movie.at_css(CSS_SELECTORS[:movie_directors])&.text
     end
 
     def movie_language(movie)

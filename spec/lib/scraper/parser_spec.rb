@@ -19,7 +19,7 @@ RSpec.describe Scraper::Parser do
         parser = described_class.new(html)
         expect(parser.parse.first).to match({
           title: "ALTAS CAPACIDADES",
-          director: " de Víctor García León ",
+          directors: " de Víctor García León ",
           duration: " Duración 101 minutos ",
           language: "Versión Original Castellano",
           poster: "https://media.pillalas.com/imagenes/726afb526abffa83d22d791f6bb1a5c2569f3d5a548c994a3c4d94a4c257992f931f1da5.jpg"
