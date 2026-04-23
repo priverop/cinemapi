@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require_relative '../lib/scraper/client'
+require_relative '../lib/scraper/parser'
+require_relative '../lib/scraper'
+
+website = Scraper::Client.read("https://www.cinesrenoir.com/cine/cines-princesa/cartelera/")
+parser = Scraper::Parser.new(website)
+pp parser.parse
