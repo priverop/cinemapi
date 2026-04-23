@@ -1,4 +1,4 @@
-module SessionTestHelper
+module SessionHelpers
   def sign_in_as(user)
     Current.session = user.sessions.create!
 
@@ -12,8 +12,4 @@ module SessionTestHelper
     Current.session&.destroy!
     cookies.delete("session_id")
   end
-end
-
-ActiveSupport.on_load(:action_dispatch_integration_test) do
-  include SessionTestHelper
 end
