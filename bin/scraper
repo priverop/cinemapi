@@ -1,10 +1,13 @@
 #!/usr/bin/env ruby
 
-require 'bundler/setup'
-require_relative '../lib/scraper/client'
-require_relative '../lib/scraper/parser'
-require_relative '../lib/scraper'
+require_relative '../config/environment'
 
 website = Scraper::Client.read("https://www.cinesrenoir.com/cine/cines-princesa/cartelera/")
 parser = Scraper::Parser.new(website)
-pp parser.parse
+parsed = parser.parse
+normalized = Scraper::Normalizer.normalize(parsed)
+theater = Theater.find(16)
+importer = Scraper::Importer.new(theater:)
+importer.import(normalized)
+
+puts "Success!"
