@@ -393,6 +393,9 @@ GEM
     unicode-emoji (4.2.0)
     uri (1.1.1)
     useragent (0.16.11)
+    validate_url (1.0.15)
+      activemodel (>= 3.0.0)
+      public_suffix
     web-console (4.3.0)
       actionview (>= 8.0.0)
       bindex (>= 0.4.0)
@@ -445,6 +448,7 @@ DEPENDENCIES
   thruster
   turbo-rails
   tzinfo-data
+  validate_url (~> 1.0)
   web-console
 
 BUNDLED WITH
