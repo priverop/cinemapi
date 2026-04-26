@@ -36,31 +36,25 @@ RSpec.describe Scraper::Importer do
       it "creates movies with the right title" do
         importer.import(input)
 
-        expect(Movie.where(name: input.first[:title])).to exist
-        expect(Movie.where(name: input.last[:title])).to exist
+        expect(Movie.where(title: input.first[:title])).to exist
+        expect(Movie.where(title: input.last[:title])).to exist
       end
 
       it "creates movies with the right attributes" do
         importer.import(input)
 
-        expect(Movie.find_by(name: input.first[:title])).to have_attributes(
-          duration: 101,
-          genre: "scraper"
-        )
-        expect(Movie.find_by(name: input.last[:title])).to have_attributes(
-          duration: 123,
-          genre: "scraper"
-        )
+        expect(Movie.find_by(title: input.first[:title])).to have_attributes(duration: 101)
+        expect(Movie.find_by(title: input.last[:title])).to have_attributes(duration: 123)
       end
 
       it "creates the showtimes for the movies" do
         importer.import(input)
 
-        movie = Movie.find_by(name: input.first[:title])
+        movie = Movie.find_by(title: input.first[:title])
 
         expect(movie.showtimes.pluck(:showtime)).to match_array(input.first[:showtimes])
 
-        movie = Movie.find_by(name: input.last[:title])
+        movie = Movie.find_by(title: input.last[:title])
         expect(movie.showtimes.pluck(:showtime)).to match_array(input.last[:showtimes])
       end
     end

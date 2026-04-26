@@ -2,18 +2,19 @@
 
 require_relative '../../../lib/scraper/normalizer'
 require_relative '../../../lib/scraper'
+require 'spec_helper'
 
 RSpec.describe Scraper::Normalizer do
   describe ".normalize" do
     context "when passing an array of non clean movies" do
       let(:input) do
-        [{
+        [ {
           poster: "media/Peliculas/Cartel/pelicula.jpg",
           title: "PRIME CRIME: A TRUE STORY",
           directors: " de Víctor García León ",
           language: "Versión Original Castellano",
           duration: " Duración 101 minutos ",
-          showtimes: ["\n               15:50\n            "]
+          showtimes: [ "\n               15:50\n            " ]
         },
         {
           poster: "https://subdomain.domain.com/imagenes/hash.jpg",
@@ -21,18 +22,18 @@ RSpec.describe Scraper::Normalizer do
           directors: " de Lluís Galter, Eduardo Casanova, Màrius Sánchez ",
           language: "Versión Original subtitulada a Castellano",
           duration: " Duración 123 minutos ",
-          showtimes: ["\n" + "               16:00\n" + "            ", "\n" + "               18:00\n" + "            ", "\n" + "               22:45\n" + "            "]
-        }]
+          showtimes: [ "\n" + "               16:00\n" + "            ", "\n" + "               18:00\n" + "            ", "\n" + "               22:45\n" + "            " ]
+        } ]
       end
 
       it "returns the clean movies" do
-        expect(described_class.normalize(input)).to match([{
+        expect(described_class.normalize(input)).to match([ {
           poster: nil,
           title: "PRIME CRIME: A TRUE STORY",
           directors: [ "Víctor García León" ],
           language: :vo,
           duration: 101,
-          showtimes: [ Time.new(2026, 4, 23, 15, 50) ]
+          showtimes: [ Time.new(Date.today.year, Date.today.month, Date.today.day, 15, 50) ]
         },
         {
           poster: "https://subdomain.domain.com/imagenes/hash.jpg",
@@ -40,8 +41,8 @@ RSpec.describe Scraper::Normalizer do
           directors: [ "Lluís Galter", "Eduardo Casanova", "Màrius Sánchez" ],
           language: :vose,
           duration: 123,
-          showtimes: [ Time.new(2026, 4, 23, 16, 00), Time.new(2026, 4, 23, 18, 00), Time.new(2026, 4, 23, 22, 45) ]
-        }])
+          showtimes: [ Time.new(Date.today.year, Date.today.month, Date.today.day, 16, 00), Time.new(Date.today.year, Date.today.month, Date.today.day, 18, 00), Time.new(Date.today.year, Date.today.month, Date.today.day, 22, 45) ]
+        } ])
       end
     end
 

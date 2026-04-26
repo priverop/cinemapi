@@ -2,7 +2,6 @@ class Theater < ApplicationRecord
   before_create :store_discounted_days
 
   has_many :showtimes, dependent: :destroy
-
   has_many :movies, through: :showtimes
 
   serialize :discounted_days, coder: JSON

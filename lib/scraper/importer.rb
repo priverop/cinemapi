@@ -19,13 +19,16 @@ module Scraper
 
     def import_movie(movie)
       ActiveRecord::Base.transaction do
-        new_movie = Movie.find_or_create_by!(name: movie[:title]) do |m|
+        new_movie = Movie.find_or_create_by!(title: movie[:title]) do |m|
           m.duration = movie[:duration]
-          m.genre = "scraper"
+          m.directors = movie[:directors]
+          m.poster = movie[:poster]
         end
 
         movie[:showtimes].each do |st|
-          Showtime.find_or_create_by!(theater:, movie: new_movie, showtime: st)
+          Showtime.find_or_create_by!(theater:, movie: new_movie, showtime: st) do |st|
+            st.language = movie[:language]
+          end
         end
       end
     end

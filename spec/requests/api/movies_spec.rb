@@ -15,7 +15,7 @@ RSpec.describe "Api::Movies", type: :request do
 
   describe "POST /api/movies" do
     it "creates a movie" do
-      attrs = { duration: movie.duration, genre: movie.genre, name: movie.name }
+      attrs = attributes_for(:movie)
       expect {
         post api_movies_url, params: { movie: attrs }, as: :json
       }.to change(Movie, :count).by(1)
@@ -34,7 +34,7 @@ RSpec.describe "Api::Movies", type: :request do
   describe "PATCH /api/movies/:id" do
     it "returns success" do
       patch api_movie_url(movie),
-        params: { movie: { duration: movie.duration, genre: movie.genre, name: movie.name } },
+        params: { movie: { duration: movie.duration, genre: movie.genre, title: "Testing the movie" } },
         as: :json
       expect(response).to have_http_status(:success)
     end

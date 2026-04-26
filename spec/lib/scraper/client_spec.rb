@@ -2,6 +2,7 @@
 
 require_relative '../../../lib/scraper/client'
 require_relative '../../../lib/scraper'
+require 'spec_helper'
 
 RSpec.describe Scraper::Client do
   describe ".read" do

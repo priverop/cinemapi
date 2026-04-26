@@ -2,6 +2,7 @@
 
 require_relative '../../../lib/scraper/parser'
 require_relative '../../../lib/scraper'
+require 'spec_helper'
 
 RSpec.describe Scraper::Parser do
   let(:fixtures_path) { File.join(File.expand_path('../../', __dir__), 'fixtures') }
@@ -23,7 +24,7 @@ RSpec.describe Scraper::Parser do
           duration: " Duración 101 minutos ",
           language: "Versión Original Castellano",
           poster: "https://media.pillalas.com/imagenes/726afb526abffa83d22d791f6bb1a5c2569f3d5a548c994a3c4d94a4c257992f931f1da5.jpg",
-          showtimes: ["\n               15:50\n            "]
+          showtimes: [ "\n               15:50\n            " ]
         })
       end
     end

@@ -40,7 +40,7 @@ module Scraper
       end
 
       def normalize_poster(poster)
-        return nil if poster.nil? || poster.strip.empty? 
+        return nil if poster.nil? || poster.strip.empty?
 
         poster_url = URI.parse(poster)
         return nil unless poster_url.is_a?(URI::HTTP) && !poster_url.host.empty?
@@ -49,37 +49,37 @@ module Scraper
       end
 
       def normalize_title(title)
-        return nil if title.nil? || title.strip.empty? 
+        return nil if title.nil? || title.strip.empty?
 
         title.strip # TODO: Falta hacer lo de la capitalizacion y borrar los [WILDER CINEMA]?
       end
 
       def normalize_directors(directors)
-        return nil if directors.nil? || directors.strip.empty? 
+        return nil if directors.nil? || directors.strip.empty?
 
         directors.gsub("de", "").strip.split(", ")
       end
 
       def normalize_language(language)
-        return nil if language.nil? || language.strip.empty? 
+        return nil if language.nil? || language.strip.empty?
 
         normalized = language.downcase.strip
 
         language_symbol = LANGUAGE_MAP.find { |regex, symbol| normalized.match?(regex) }&.last
 
         raise UnknownLanguageError, "Unkown language '#{language}'." if language_symbol.nil?
-        
+
         language_symbol
       end
 
       def normalize_duration(duration)
-        return nil if duration.nil? || duration.strip.empty? 
+        return nil if duration.nil? || duration.strip.empty?
 
         duration[DURATION_REGEX]&.to_i
       end
 
       def normalize_showtimes(showtimes)
-        return nil if showtimes.nil? || showtimes.empty? #|| showtimes.all? { |s| s.empty? }
+        return nil if showtimes.nil? || showtimes.empty? # || showtimes.all? { |s| s.empty? }
 
         showtimes.map { |s| Time.strptime(s.strip, "%H:%M") }
       end
