@@ -1,5 +1,6 @@
 class Theater < ApplicationRecord
   enum :scraper_key, manual: 0, renoir: 1, cinesa: 2
+  scope :enabled, -> { where(is_enabled: true) }
 
   has_many :showtimes, dependent: :destroy
   has_many :movies, through: :showtimes
