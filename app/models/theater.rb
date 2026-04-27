@@ -1,5 +1,5 @@
 class Theater < ApplicationRecord
-  before_create :store_discounted_days
+  enum :scraper_key, manual: 0, renoir: 1, cinesa: 2
 
   has_many :showtimes, dependent: :destroy
   has_many :movies, through: :showtimes
@@ -7,6 +7,7 @@ class Theater < ApplicationRecord
   serialize :discounted_days, coder: JSON
 
   validates :name, :location, :price, presence: true
+  validates :website, url: { allow_blank: true }
 
   ## Return regular price or discounted price, depending on the date
   def price_for_day(date)
@@ -14,7 +15,7 @@ class Theater < ApplicationRecord
   end
 
   def discounted_days_string
-    discounted_days.filter_map(&:capitalize).join(", ")
+    discounted_days.to_a.map(&:capitalize).join(", ")
   end
 
   # Get the latests n theaters
@@ -24,12 +25,5 @@ class Theater < ApplicationRecord
 
   def display_name
     name
-  end
-
-  private
-
-  # TODO: change this for a checkbox and proper design
-  def store_discounted_days
-    self.discounted_days = discounted_days.split(", ") if self.discounted_days.nil?
   end
 end
