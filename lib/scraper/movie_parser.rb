@@ -3,8 +3,10 @@
 require "nokogiri"
 
 module Scraper
-  # Parses the HTML into Ruby objects.
-  class Parser
+  # Parses the movies of a single page.
+  class MovieParser
+    attr_reader :document
+
     CSS_SELECTORS = {
       movie_container: ".my-account-content.d-lg-block",
       movie_poster: "a[data-toggle='lightbox']",
@@ -31,13 +33,14 @@ module Scraper
           showtimes: movie_showtimes(movie)
         }
       end
+      Scraper.logger.info("Parsed #{parsed_movies.size} movies from page")
       parsed_movies
     end
 
     private
 
     def movies
-      scraped_movies = @document.css(CSS_SELECTORS[:movie_container])
+      scraped_movies = document.css(CSS_SELECTORS[:movie_container])
 
       raise Scraper::MoviesNotFoundError, "Movies not found." if scraped_movies.empty?
 
