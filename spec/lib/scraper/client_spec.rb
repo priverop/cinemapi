@@ -18,7 +18,7 @@ RSpec.describe Scraper::Client do
         url = 'https://www.google.com'
         expect do
           described_class.read(url)
-        end.to raise_error Scraper::InvalidUrlError, "Invalid url 'https://www.google.com'."
+        end.to raise_error Scraper::InvalidUrlError, "Invalid URI 'https://www.google.com'."
       end
     end
 
@@ -27,7 +27,7 @@ RSpec.describe Scraper::Client do
         url = 123
         expect do
           described_class.read(url)
-        end.to raise_error Scraper::InvalidUrlError, "Invalid url '123'."
+        end.to raise_error Scraper::InvalidUrlError, "Invalid URI '123'."
       end
     end
 
@@ -36,7 +36,7 @@ RSpec.describe Scraper::Client do
         url = nil
         expect do
           described_class.read(url)
-        end.to raise_error Scraper::InvalidUrlError, "Invalid url ''."
+        end.to raise_error Scraper::InvalidUrlError, "Invalid URI ''."
       end
     end
   end

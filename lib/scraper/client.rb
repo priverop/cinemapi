@@ -16,7 +16,7 @@ module Scraper
       private
 
       def validate_url!(url)
-        raise Scraper::InvalidUrlError, "Invalid url '#{url}'." unless url.is_a?(URI::HTTP) && !url.host.to_s.empty?
+        raise Scraper::InvalidUrlError, "Invalid URI '#{url}'." unless url.is_a?(URI::HTTP) && !url.host.to_s.empty?
       end
     end
   end
