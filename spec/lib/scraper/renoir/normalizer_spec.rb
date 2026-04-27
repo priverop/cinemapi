@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
-require_relative '../../../lib/scraper/normalizer'
-require_relative '../../../lib/scraper'
+require_relative '../../../../lib/scraper/renoir/normalizer'
+require_relative '../../../../lib/scraper'
+
 require 'spec_helper'
 
-RSpec.describe Scraper::Normalizer do
+RSpec.describe Scraper::Renoir::Normalizer do
   describe "#normalize" do
     let(:today) { Date.today.strftime("%Y-%m-%d") }
     let(:normalizer) { described_class.new(today) }

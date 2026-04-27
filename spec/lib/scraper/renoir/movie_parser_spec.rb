@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require_relative '../../../lib/scraper/movie_parser'
-require_relative '../../../lib/scraper'
+require_relative '../../../../lib/scraper/renoir/movie_parser'
+require_relative '../../../../lib/scraper'
 require 'spec_helper'
 
-RSpec.describe Scraper::MovieParser do
-  let(:fixtures_path) { File.join(File.expand_path('../../', __dir__), 'fixtures') }
+RSpec.describe Scraper::Renoir::MovieParser do
+  let(:fixtures_path) { File.join(File.expand_path('../../../', __dir__), 'fixtures/renoir') }
 
   describe ".parse" do
     context "valid HTML" do
