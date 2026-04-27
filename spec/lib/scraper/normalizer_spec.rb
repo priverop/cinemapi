@@ -5,7 +5,10 @@ require_relative '../../../lib/scraper'
 require 'spec_helper'
 
 RSpec.describe Scraper::Normalizer do
-  describe ".normalize" do
+  describe "#normalize" do
+    let(:today) { Date.today.strftime("%Y-%m-%d") }
+    let(:normalizer) { described_class.new(today) }
+
     context "when passing an array of non clean movies" do
       let(:input) do
         [ {
@@ -27,7 +30,7 @@ RSpec.describe Scraper::Normalizer do
       end
 
       it "returns the clean movies" do
-        expect(described_class.normalize(input)).to match([ {
+        expect(normalizer.normalize(input)).to match([ {
           poster: nil,
           title: "PRIME CRIME: A TRUE STORY",
           directors: [ "Víctor García León" ],
@@ -49,7 +52,7 @@ RSpec.describe Scraper::Normalizer do
     context "when passing an empty array" do
       it 'raises ArgumentError' do
         expect do
-          described_class.normalize([])
+          normalizer.normalize([])
         end.to raise_error ArgumentError, "Input array is empty."
       end
     end
@@ -57,7 +60,7 @@ RSpec.describe Scraper::Normalizer do
     context "when not passing an array" do
       it 'raises ArgumentError' do
         expect do
-          described_class.normalize("hello")
+          normalizer.normalize("hello")
         end.to raise_error ArgumentError, "Input should be an array."
       end
     end

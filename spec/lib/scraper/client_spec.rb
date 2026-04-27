@@ -8,21 +8,21 @@ RSpec.describe Scraper::Client do
   describe ".read" do
     context "valid cinema URL" do
       it "returns plain HTML" do
-        url = "https://www.google.com"
+        url = URI("https://www.google.com")
         expect(described_class.read(url)).to include("Google")
       end
     end
 
-    context "empty url parameter" do
+    context "string url parameter" do
       it 'raises InvalidUrlError' do
-        url = ''
+        url = 'https://www.google.com'
         expect do
           described_class.read(url)
-        end.to raise_error Scraper::InvalidUrlError, "Invalid url ''."
+        end.to raise_error Scraper::InvalidUrlError, "Invalid url 'https://www.google.com'."
       end
     end
 
-    context "not string url parameter" do
+    context "integer url parameter" do
       it 'raises InvalidUrlError' do
         url = 123
         expect do

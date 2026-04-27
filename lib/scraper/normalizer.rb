@@ -5,12 +5,18 @@ require "time"
 
 module Scraper
   class Normalizer
+    attr_reader :date
+
     LANGUAGE_MAP = {
       /subtitulada/ => :vose,
       /versi[oó]n original/ => :vo
     }
 
     DURATION_REGEX = /\d+/
+
+    def initialize(date)
+      @date = date
+    end
 
     #
     # Cleans every value of the movies. Removes trailspaces, unknown characters, etc.
@@ -23,6 +29,7 @@ module Scraper
       raise ArgumentError, "Input should be an array." unless input.is_a?(Array)
       raise ArgumentError, "Input array is empty." if input.empty?
 
+      Scraper.logger.info("Normalizing #{input.size} movies for #{date}")
       input.map do |movie|
         normalize_movie(movie)
       end
@@ -42,7 +49,10 @@ module Scraper
       return nil if poster.nil? || poster.strip.empty?
 
       poster_url = URI.parse(poster)
-      return nil unless poster_url.is_a?(URI::HTTP) && !poster_url.host.empty?
+      unless poster_url.is_a?(URI::HTTP) && !poster_url.host.empty?
+        Scraper.logger.warn("Could not normalize poster: #{poster.inspect}")
+        return nil
+      end
 
       poster
     end
@@ -60,13 +70,15 @@ module Scraper
     end
 
     def normalize_language(language)
-      return nil if language.nil? || language.strip.empty?
+      if language.nil? || language.strip.empty?
+        Scraper.logger.warn("Could not normalize language: #{language.inspect}")
+        return nil
+      end
 
       normalized = language.downcase.strip
+      language_symbol = LANGUAGE_MAP.find { |regex, _| normalized.match?(regex) }&.last
 
-      language_symbol = LANGUAGE_MAP.find { |regex, symbol| normalized.match?(regex) }&.last
-
-      raise UnknownLanguageError, "Unkown language '#{language}'." if language_symbol.nil?
+      raise Scraper::UnknownLanguageError, "Unkown language '#{language}'." if language_symbol.nil?
 
       language_symbol
     end
@@ -80,7 +92,7 @@ module Scraper
     def normalize_showtimes(showtimes)
       return nil if showtimes.nil? || showtimes.empty? # || showtimes.all? { |s| s.empty? }
 
-      showtimes.map { |s| Time.strptime(s.strip, "%H:%M") }
+      showtimes.map { |s| Time.strptime("#{date} #{s.strip}", "%Y-%m-%d %H:%M") }
     end
   end
 end

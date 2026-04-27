@@ -19,17 +19,34 @@ module Scraper
 
     def import_movie(movie)
       ActiveRecord::Base.transaction do
-        new_movie = Movie.find_or_create_by!(title: movie[:title]) do |m|
-          m.duration = movie[:duration]
-          m.directors = movie[:directors]
-          m.poster = movie[:poster]
+        record = Movie.find_or_initialize_by(title: movie[:title])
+        if record.new_record?
+          record.assign_attributes(
+            duration: movie[:duration],
+            directors: movie[:directors],
+            poster: movie[:poster]
+          )
+          record.save!
+          Scraper.logger.info("Movie created: #{record.title} (id=#{record.id})")
+        else
+          Scraper.logger.info("Movie exists: #{record.title} (id=#{record.id})")
         end
 
-        movie[:showtimes].each do |st|
-          Showtime.find_or_create_by!(theater:, movie: new_movie, showtime: st) do |st|
-            st.language = movie[:language]
-          end
-        end
+        movie[:showtimes].each { |st| import_showtime(record, st, movie[:language]) }
+      end
+    rescue ActiveRecord::RecordInvalid => e
+      Scraper.logger.error("Import failed for '#{movie[:title]}': #{e.message}")
+      raise
+    end
+
+    def import_showtime(movie_record, showtime, language)
+      st = Showtime.find_or_initialize_by(theater: theater, movie: movie_record, showtime: showtime)
+      if st.new_record?
+        st.language = language
+        st.save!
+        Scraper.logger.info("Showtime created: #{movie_record.title} @ #{showtime}")
+      else
+        Scraper.logger.debug("Showtime exists: #{movie_record.title} @ #{showtime}")
       end
     end
   end
