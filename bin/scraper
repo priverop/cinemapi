@@ -1,13 +1,35 @@
 #!/usr/bin/env ruby
 
 require_relative '../config/environment'
+require "uri"
 
-website = Scraper::Client.read("https://www.cinesrenoir.com/cine/cines-princesa/cartelera/")
-parser = Scraper::Parser.new(website)
-parsed = parser.parse
-normalized = Scraper::Normalizer.normalize(parsed)
-theater = Theater.find(16)
-importer = Scraper::Importer.new(theater:)
-importer.import(normalized)
+base_url = URI("https://www.cinesrenoir.com/cine/cines-princesa/cartelera/")
+theater = Theater.find_by(name: "Cine Princesa")
+days_ok = 0
+days_failed = 0
 
-puts "Success!"
+Scraper.logger.tagged("Scraper") do
+  Scraper.logger.info("Starting scrape for #{base_url}")
+
+  main_html = Scraper::Client.read(base_url)
+  calendar_urls = Scraper::CalendarParser.new(main_html).urls
+
+  calendar_urls.each do |url|
+    date = url.split("fecha=").last
+    Scraper.logger.tagged("Day", date) do
+      begin
+        new_url = base_url.merge(url)
+        html = Scraper::Client.read(new_url)
+        parsed = Scraper::MovieParser.new(html).parse
+        normalized = Scraper::Normalizer.new(date).normalize(parsed)
+        Scraper::Importer.new(theater:).import(normalized)
+        days_ok += 1
+      rescue => e
+        days_failed += 1
+        Scraper.logger.error("Day #{date} failed: #{e.class}: #{e.message}")
+      end
+    end
+  end
+
+  Scraper.logger.info("Done. days_ok=#{days_ok} days_failed=#{days_failed}")
+end
