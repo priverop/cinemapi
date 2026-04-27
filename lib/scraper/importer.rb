@@ -10,9 +10,8 @@ module Scraper
     end
 
     def import(movies)
-      movies.each do |movie|
-        import_movie(movie)
-      end
+      Scraper.logger.info("Importing #{movies.count} movies.")
+      movies.each { |movie| import_movie(movie) }
     end
 
     private
@@ -27,15 +26,15 @@ module Scraper
             poster: movie[:poster]
           )
           record.save!
-          Scraper.logger.info("Movie created: #{record.title} (id=#{record.id})")
+          Scraper.logger.info("Movie created: #{record.title} (id=#{record.id}).")
         else
-          Scraper.logger.info("Movie exists: #{record.title} (id=#{record.id})")
+          Scraper.logger.info("Movie exists: #{record.title} (id=#{record.id}).")
         end
 
         movie[:showtimes].each { |st| import_showtime(record, st, movie[:language]) }
       end
     rescue ActiveRecord::RecordInvalid => e
-      Scraper.logger.error("Import failed for '#{movie[:title]}': #{e.message}")
+      Scraper.logger.error("Import failed for '#{movie[:title]}': #{e.message}.")
       raise
     end
 
@@ -44,9 +43,9 @@ module Scraper
       if st.new_record?
         st.language = language
         st.save!
-        Scraper.logger.info("Showtime created: #{movie_record.title} @ #{showtime}")
+        Scraper.logger.info("Showtime created: #{movie_record.title} @ #{showtime}.")
       else
-        Scraper.logger.debug("Showtime exists: #{movie_record.title} @ #{showtime}")
+        Scraper.logger.debug("Showtime exists: #{movie_record.title} @ #{showtime}.")
       end
     end
   end

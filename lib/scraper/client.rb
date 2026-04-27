@@ -9,7 +9,7 @@ module Scraper
     class << self
       def read(url)
         validate_url!(url)
-        Scraper.logger.info("GET #{url}")
+        Scraper.logger.info("GET #{url}.")
         Net::HTTP.get(url)
       end
 

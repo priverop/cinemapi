@@ -29,10 +29,8 @@ module Scraper
       raise ArgumentError, "Input should be an array." unless input.is_a?(Array)
       raise ArgumentError, "Input array is empty." if input.empty?
 
-      Scraper.logger.info("Normalizing #{input.size} movies for #{date}")
-      input.map do |movie|
-        normalize_movie(movie)
-      end
+      Scraper.logger.info("Normalizing #{input.size} movies for #{date}.")
+      input.map { |movie| normalize_movie(movie) }
     end
 
     private
@@ -50,7 +48,7 @@ module Scraper
 
       poster_url = URI.parse(poster)
       unless poster_url.is_a?(URI::HTTP) && !poster_url.host.empty?
-        Scraper.logger.warn("Could not normalize poster: #{poster.inspect}")
+        Scraper.logger.warn("Could not normalize poster: #{poster.inspect}.")
         return nil
       end
 
@@ -71,7 +69,7 @@ module Scraper
 
     def normalize_language(language)
       if language.nil? || language.strip.empty?
-        Scraper.logger.warn("Could not normalize language: #{language.inspect}")
+        Scraper.logger.warn("Could not normalize language: #{language.inspect}.")
         return nil
       end
 

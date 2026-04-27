@@ -33,7 +33,7 @@ module Scraper
           showtimes: movie_showtimes(movie)
         }
       end
-      Scraper.logger.info("Parsed #{parsed_movies.size} movies from page")
+      Scraper.logger.info("Parsed #{parsed_movies.size} movies from page.")
       parsed_movies
     end
 

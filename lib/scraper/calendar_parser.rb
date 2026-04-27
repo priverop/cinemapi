@@ -22,7 +22,7 @@ module Scraper
       raise Scraper::CalendarNotFoundError, "Calendar not found." if dropdown.nil?
 
       urls = dropdown.css(CSS_SELECTORS[:day_option]).map { |day| day["value"] }
-      Scraper.logger.info("Found #{urls.count} day URLs")
+      Scraper.logger.info("Found #{urls.count} day URLs.")
       urls
     end
   end
