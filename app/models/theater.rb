@@ -22,6 +22,10 @@ class Theater < ApplicationRecord
     order(created_at: :desc).limit(n)
   end
 
+  def display_name
+    name
+  end
+
   private
 
   # TODO: change this for a checkbox and proper design

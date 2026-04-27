@@ -14,4 +14,8 @@ class Movie < ApplicationRecord
   def self.latest(n)
     order(created_at: :desc).limit(n)
   end
+
+  def display_name
+    title
+  end
 end
