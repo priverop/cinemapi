@@ -1,0 +1,11 @@
+{
+  "editor.formatOnSave": true,
+  "[ruby]": {
+    "editor.defaultFormatter": "rubocop.vscode-rubocop",
+    "editor.formatOnSave": true
+  },
+  "rubocop.commandPath": "${workspaceFolder}/bin/rubocop",
+  "rubocop.mode": "enableViaGemfile",
+  "rubocop.autocorrect": true,
+  "rubocop.safeAutocorrect": true
+}
