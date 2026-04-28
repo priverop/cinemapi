@@ -13,20 +13,20 @@ RSpec.describe Scraper::Cinesa::MovieParser do
 
       it "returns the right amount of movies" do
         parser = described_class.new(input)
-        pp parser.parse
         expect(parser.parse.count).to eq(8)
       end
 
       it "returns a valid parsed movie" do
-        skip
         parser = described_class.new(input)
-        expect(parser.parse.first).to match({
-          title: "ALTAS CAPACIDADES",
-          directors: " de Víctor García León ",
-          duration: " Duración 101 minutos ",
-          language: "Versión Original Castellano",
-          poster: "https://media.pillalas.com/imagenes/726afb526abffa83d22d791f6bb1a5c2569f3d5a548c994a3c4d94a4c257992f931f1da5.jpg",
-          showtimes: [ "\n               15:50\n            " ]
+        expect(parser.parse.last).to match({
+          description: "El profesor de ciencias Ryland Grace (Ryan Gosling) se despierta en una nave espacial a años luz de casa sin recordar quién es ni cómo ha llegado hasta allí. A medida que recupera la memoria, empieza a descubrir su misión: resolver el enigma de la misteriosa sustancia que provoca la extinción del sol. Deberá recurrir a sus conocimientos científicos y a sus ideas poco ortodoxas para salvar todo lo que hay en la Tierra de la extinción... pero una amistad inesperada significa que quizá no tenga que hacerlo solo.",
+          directors: [{"givenName" => "Phil", "familyName" => "Lord", "middleName" => nil}, {"givenName" => "Christopher", "familyName" => "Miller", "middleName" => nil}],
+          duration: 156,
+          genre: ["Acción", "Aventura", "Ciencia ficción"],
+          poster_id: "f741e25d-2e02-44e5-bc0f-5460117e540a",
+          showtimes: [{date: "2026-04-27T17:45:00+02:00", language: ["Vose"]}, {date: "2026-04-27T21:20:00+02:00", language: []}],
+          title: "Proyecto Salvación",
+          trailer: "https://www.youtube.com/watch?v=in-lUuKi0eE"
         })
       end
     end

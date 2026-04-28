@@ -18,7 +18,7 @@ module Scraper
         movies.each do |movie|
           parsed_movies << {
             description: movie_description(movie),
-            director: movie_director(movie),
+            directors: movie_director(movie),
             duration: movie_duration(movie),
             genre: movie_genre(movie),
             poster_id: movie_poster(movie),

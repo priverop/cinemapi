@@ -894,111 +894,6 @@
         "distributorName": "UNIVERSAL PICTURES INT. SPAIN"
       },
       {
-        "id": "HO00003091",
-        "title": {
-          "text": "Proyecto Salvación",
-          "translations": []
-        },
-        "synopsis": {
-          "text": "El profesor de ciencias Ryland Grace (Ryan Gosling) se despierta en una nave espacial a años luz de casa sin recordar quién es ni cómo ha llegado hasta allí. A medida que recupera la memoria, empieza a descubrir su misión: resolver el enigma de la misteriosa sustancia que provoca la extinción del sol. Deberá recurrir a sus conocimientos científicos y a sus ideas poco ortodoxas para salvar todo lo que hay en la Tierra de la extinción... pero una amistad inesperada significa que quizá no tenga que hacerlo solo.",
-          "translations": []
-        },
-        "shortSynopsis": {
-          "text": "El profesor de ciencias Ryland Grace (Ryan Gosling) se despierta en una nave espacial a años luz de casa sin recordar quién es ni cómo ha llegado hasta allí.",
-          "translations": []
-        },
-        "censorRatingId": "0000000002",
-        "censorRatingNote": null,
-        "releaseDate": "2026-03-27",
-        "runtimeInMinutes": 156,
-        "trailerUrl": "https://www.youtube.com/watch?v=in-lUuKi0eE",
-        "displayPriority": 6,
-        "castAndCrew": [
-          {
-            "castAndCrewMemberId": "0000000086",
-            "roles": [
-              "Producer"
-            ]
-          },
-          {
-            "castAndCrewMemberId": "0000001459",
-            "roles": [
-              "Actor",
-              "Producer"
-            ]
-          },
-          {
-            "castAndCrewMemberId": "0000001615",
-            "roles": [
-              "Actor"
-            ]
-          },
-          {
-            "castAndCrewMemberId": "0000001633",
-            "roles": [
-              "Director",
-              "Producer"
-            ]
-          },
-          {
-            "castAndCrewMemberId": "0000001634",
-            "roles": [
-              "Director",
-              "Producer"
-            ]
-          },
-          {
-            "castAndCrewMemberId": "0000001636",
-            "roles": [
-              "Producer"
-            ]
-          },
-          {
-            "castAndCrewMemberId": "0000003769",
-            "roles": [
-              "Producer"
-            ]
-          },
-          {
-            "castAndCrewMemberId": "0000008317",
-            "roles": [
-              "Actor"
-            ]
-          },
-          {
-            "castAndCrewMemberId": "0000008318",
-            "roles": [
-              "Actor"
-            ]
-          },
-          {
-            "castAndCrewMemberId": "0000008319",
-            "roles": [
-              "Producer"
-            ]
-          },
-          {
-            "castAndCrewMemberId": "HO00003050",
-            "roles": [
-              "Actor"
-            ]
-          }
-        ],
-        "genreIds": [
-          "0000000001",
-          "0000000009",
-          "0000000032"
-        ],
-        "externalIds": {
-          "moviexchangeReleaseId": "f741e25d-2e02-44e5-bc0f-5460117e540a",
-          "corporateId": null
-        },
-        "hopk": "HO00003091",
-        "hoCode": "A000005637",
-        "eventId": null,
-        "distributorName": "SONY PICTURES ENTERTAINMENT IB"
-      },
-      {
         "id": "HO00003171",
         "title": {
           "text": "Boulevard",
@@ -1359,6 +1254,111 @@
         "hoCode": "A000005852",
         "eventId": null,
         "distributorName": "CASTELAO PICTURES, S.L."
+      },
+      {
+        "id": "HO00003091",
+        "title": {
+          "text": "Proyecto Salvación",
+          "translations": []
+        },
+        "synopsis": {
+          "text": "El profesor de ciencias Ryland Grace (Ryan Gosling) se despierta en una nave espacial a años luz de casa sin recordar quién es ni cómo ha llegado hasta allí. A medida que recupera la memoria, empieza a descubrir su misión: resolver el enigma de la misteriosa sustancia que provoca la extinción del sol. Deberá recurrir a sus conocimientos científicos y a sus ideas poco ortodoxas para salvar todo lo que hay en la Tierra de la extinción... pero una amistad inesperada significa que quizá no tenga que hacerlo solo.",
+          "translations": []
+        },
+        "shortSynopsis": {
+          "text": "El profesor de ciencias Ryland Grace (Ryan Gosling) se despierta en una nave espacial a años luz de casa sin recordar quién es ni cómo ha llegado hasta allí.",
+          "translations": []
+        },
+        "censorRatingId": "0000000002",
+        "censorRatingNote": null,
+        "releaseDate": "2026-03-27",
+        "runtimeInMinutes": 156,
+        "trailerUrl": "https://www.youtube.com/watch?v=in-lUuKi0eE",
+        "displayPriority": 6,
+        "castAndCrew": [
+          {
+            "castAndCrewMemberId": "0000000086",
+            "roles": [
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000001459",
+            "roles": [
+              "Actor",
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000001615",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000001633",
+            "roles": [
+              "Director",
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000001634",
+            "roles": [
+              "Director",
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000001636",
+            "roles": [
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000003769",
+            "roles": [
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000008317",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000008318",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000008319",
+            "roles": [
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "HO00003050",
+            "roles": [
+              "Actor"
+            ]
+          }
+        ],
+        "genreIds": [
+          "0000000001",
+          "0000000009",
+          "0000000032"
+        ],
+        "externalIds": {
+          "moviexchangeReleaseId": "f741e25d-2e02-44e5-bc0f-5460117e540a",
+          "corporateId": null
+        },
+        "hopk": "HO00003091",
+        "hoCode": "A000005637",
+        "eventId": null,
+        "distributorName": "SONY PICTURES ENTERTAINMENT IB"
       }
     ],
     "castAndCrew": [
