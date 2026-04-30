@@ -7,7 +7,7 @@ module Scraper
     class AuthClient
       TIMEOUT = 30
       VISTA_HOST = "https://vwc.cinesa.es"
-      HEADERS = headers = {
+      HEADERS = {
         "User-Agent" => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
       }
 
@@ -39,36 +39,25 @@ module Scraper
 
         def capture_headers(page, theater_url)
           token = nil
-          request_urls = {}
 
           page.command("Network.enable")
 
           page.on("Network.requestWillBeSent") do |params|
             url = params.dig("request", "url").to_s
-            request_urls[params["requestId"]] = url
             next unless url.start_with?(VISTA_HOST)
 
-            debug "vista request: #{url}"
+            Scraper.logger.debug("[auth_client] vista request: #{url}")
 
             auth = find_auth_header(params.dig("request", "headers"))
             token ||= auth if auth&.start_with?("Bearer ")
           end
 
-          # page.on("Network.requestWillBeSentExtraInfo") do |params|
-          #   url = request_urls[params["requestId"]].to_s
-          #   next unless url.start_with?(VISTA_HOST)
-
-          #   auth = find_auth_header(params["headers"])
-          #   token ||= auth if auth&.start_with?("Bearer ")
-          # end
-
           begin
             page.go_to(theater_url)
           rescue Ferrum::TimeoutError
-            # Cloudflare challenge may still be resolving; continue polling
           end
 
-          debug "Navigation complete. URL: #{page.url}"
+          Scraper.logger.debug("[auth_client] Navigation complete. URL: #{page.url}")
 
           deadline = Time.now + TIMEOUT
           sleep 0.2 until token || Time.now >= deadline
@@ -84,13 +73,6 @@ module Scraper
           end
 
           value
-        end
-
-        def debug(message)
-          return unless ENV["AUTH_DEBUG"]
-
-          $stdout.puts("[auth_client] #{message}")
-          $stdout.flush
         end
       end
     end
