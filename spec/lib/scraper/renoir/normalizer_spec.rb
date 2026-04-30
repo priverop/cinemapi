@@ -37,7 +37,7 @@ RSpec.describe Scraper::Renoir::Normalizer do
           directors: [ "Víctor García León" ],
           language: :vo,
           duration: 101,
-          showtimes: [ Time.new(Date.today.year, Date.today.month, Date.today.day, 15, 50) ]
+          showtimes: [ { date: Time.new(Date.today.year, Date.today.month, Date.today.day, 15, 50) } ]
         },
         {
           poster: "https://subdomain.domain.com/imagenes/hash.jpg",
@@ -45,7 +45,7 @@ RSpec.describe Scraper::Renoir::Normalizer do
           directors: [ "Lluís Galter", "Eduardo Casanova", "Màrius Sánchez" ],
           language: :vose,
           duration: 123,
-          showtimes: [ Time.new(Date.today.year, Date.today.month, Date.today.day, 16, 00), Time.new(Date.today.year, Date.today.month, Date.today.day, 18, 00), Time.new(Date.today.year, Date.today.month, Date.today.day, 22, 45) ]
+          showtimes: [ { date: Time.new(Date.today.year, Date.today.month, Date.today.day, 16, 00) }, { date: Time.new(Date.today.year, Date.today.month, Date.today.day, 18, 00) }, { date: Time.new(Date.today.year, Date.today.month, Date.today.day, 22, 45) } ]
         } ])
       end
     end

@@ -20,11 +20,11 @@ RSpec.describe Scraper::Cinesa::MovieParser do
         parser = described_class.new(input)
         expect(parser.parse.last).to match({
           description: "El profesor de ciencias Ryland Grace (Ryan Gosling) se despierta en una nave espacial a años luz de casa sin recordar quién es ni cómo ha llegado hasta allí. A medida que recupera la memoria, empieza a descubrir su misión: resolver el enigma de la misteriosa sustancia que provoca la extinción del sol. Deberá recurrir a sus conocimientos científicos y a sus ideas poco ortodoxas para salvar todo lo que hay en la Tierra de la extinción... pero una amistad inesperada significa que quizá no tenga que hacerlo solo.",
-          directors: [{"givenName" => "Phil", "familyName" => "Lord", "middleName" => nil}, {"givenName" => "Christopher", "familyName" => "Miller", "middleName" => nil}],
+          directors: [ { "givenName" => "Phil", "familyName" => "Lord", "middleName" => nil }, { "givenName" => "Christopher", "familyName" => "Miller", "middleName" => nil } ],
           duration: 156,
-          genre: ["Acción", "Aventura", "Ciencia ficción"],
+          genres: [ "Acción", "Aventura", "Ciencia ficción" ],
           poster_id: "f741e25d-2e02-44e5-bc0f-5460117e540a",
-          showtimes: [{date: "2026-04-27T17:45:00+02:00", language: ["Vose"]}, {date: "2026-04-27T21:20:00+02:00", language: []}],
+          showtimes: [ { date: "2026-04-27T17:45:00+02:00", language: [ "Vose" ] }, { date: "2026-04-27T21:20:00+02:00", language: [] } ],
           title: "Proyecto Salvación",
           trailer: "https://www.youtube.com/watch?v=in-lUuKi0eE"
         })

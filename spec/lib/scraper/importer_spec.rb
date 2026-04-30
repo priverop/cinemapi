@@ -13,7 +13,7 @@ RSpec.describe Scraper::Importer do
         directors: [ "Víctor García León" ],
         language: :vo,
         duration: 101,
-        showtimes: [ Time.new(2026, 4, 23, 15, 50) ]
+        showtimes: [ { date: Time.new(2026, 4, 23, 15, 50) } ]
       },
       {
         poster: "https://subdomain.domain.com/imagenes/hash.jpg",
@@ -21,7 +21,7 @@ RSpec.describe Scraper::Importer do
         directors: [ "Lluís Galter", "Eduardo Casanova", "Màrius Sánchez" ],
         language: :vose,
         duration: 123,
-        showtimes: [ Time.new(2026, 4, 23, 16, 00), Time.new(2026, 4, 23, 18, 00), Time.new(2026, 4, 23, 22, 45) ]
+        showtimes: [ { date: Time.new(2026, 4, 23, 16, 00) }, { date: Time.new(2026, 4, 23, 18, 00) }, { date: Time.new(2026, 4, 23, 22, 45) } ]
       } ]
     end
 
@@ -30,7 +30,7 @@ RSpec.describe Scraper::Importer do
 
     context "when given theater exists and has no movies" do
       it "creates the exact number of new movies" do
-        expect{ importer.import(input) }.to change { Movie.count }.from(0).to(2)
+        expect { importer.import(input) }.to change { Movie.count }.from(0).to(2)
       end
 
       it "creates movies with the right title" do
@@ -52,10 +52,10 @@ RSpec.describe Scraper::Importer do
 
         movie = Movie.find_by(title: input.first[:title])
 
-        expect(movie.showtimes.pluck(:showtime)).to match_array(input.first[:showtimes])
+        expect(movie.showtimes.pluck(:showtime)).to match_array(input.first[:showtimes].map { |s| s[:date] })
 
         movie = Movie.find_by(title: input.last[:title])
-        expect(movie.showtimes.pluck(:showtime)).to match_array(input.last[:showtimes])
+        expect(movie.showtimes.pluck(:showtime)).to match_array(input.last[:showtimes].map { |s| s[:date] })
       end
     end
 
@@ -78,7 +78,7 @@ RSpec.describe Scraper::Importer do
           directors: [ "Víctor García León" ],
           language: :vo,
           duration: 101,
-          showtimes: [ Time.new(2026, 4, 20, 15, 50) ]
+          showtimes: [ { date: Time.new(2026, 4, 20, 15, 50) } ]
         },
         {
           poster: "https://subdomain.domain.com/imagenes/hash.jpg",
@@ -86,7 +86,7 @@ RSpec.describe Scraper::Importer do
           directors: [ "Lluís Galter", "Eduardo Casanova", "Màrius Sánchez" ],
           language: :vose,
           duration: 123,
-          showtimes: [ Time.new(2026, 4, 20, 16, 00), Time.new(2026, 4, 20, 18, 00), Time.new(2026, 4, 20, 22, 45) ]
+          showtimes: [ { date: Time.new(2026, 4, 20, 16, 00) }, { date: Time.new(2026, 4, 20, 18, 00) }, { date: Time.new(2026, 4, 20, 22, 45) } ]
         } ]
       end
       before do
