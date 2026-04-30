@@ -4,7 +4,8 @@ require_relative '../config/environment'
 Scraper.logger = ActiveSupport::TaggedLogging.new(Logger.new($stdout))
 
 SOURCES = {
-  "renoir" => Scraper::Renoir::Orchestrator
+  "renoir" => Scraper::Renoir::Orchestrator,
+  "cinesa" => Scraper::Cinesa::Orchestrator
 }
 
 theaters = Theater.enabled.where.not(scraper_key: 0).where.not(website: nil)

@@ -91,7 +91,7 @@ module Scraper
       def normalize_showtimes(showtimes)
         return nil if showtimes.nil? || showtimes.empty? # || showtimes.all? { |s| s.empty? }
 
-        showtimes.map { |s| Time.strptime("#{date} #{s.strip}", "%Y-%m-%d %H:%M") }
+        showtimes.map { |s| { date: Time.strptime("#{date} #{s.strip}", "%Y-%m-%d %H:%M") } }
       end
     end
   end

@@ -4,7 +4,6 @@ require "json"
 
 module Scraper
   module Cinesa
-    #https://film-cdn.moviexchange.com/api/cdn/release/<moviexchangeReleaseId>/media/Poster?width=400
     # Parses the movies of a single page.
     class MovieParser
       attr_reader :json
@@ -14,26 +13,25 @@ module Scraper
       end
 
       def parse
-        parsed_movies = []
-        movies.each do |movie|
-          parsed_movies << {
+        movies = movies_to_parse
+        Scraper.logger.info("Parsing #{movies.size} movies from page.")
+        movies.map do |movie|
+          {
             description: movie_description(movie),
             directors: movie_director(movie),
             duration: movie_duration(movie),
-            genre: movie_genre(movie),
+            genres: movie_genre(movie),
             poster_id: movie_poster(movie),
             showtimes: movie_showtimes(movie),
             title: movie_title(movie),
             trailer: movie_trailer(movie)
           }
         end
-        Scraper.logger.info("Parsed #{parsed_movies.size} movies from page.")
-        parsed_movies
       end
 
       private
 
-      def movies
+      def movies_to_parse
         scraped_movies = json["relatedData"]["films"]
 
         raise Scraper::MoviesNotFoundError, "Movies not found." if scraped_movies.nil? || scraped_movies.empty?

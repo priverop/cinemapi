@@ -15,4 +15,5 @@ module Scraper
   class MoviesNotFoundError < StandardError; end
   class CalendarNotFoundError < StandardError; end
   class UnknownLanguageError < StandardError; end
+  class AuthRequiredError < StandardError; end
 end
