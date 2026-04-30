@@ -22,11 +22,12 @@ module Scraper
 
         def with_browser
           browser = Ferrum::Browser.new(
-            headless: "new",
+            headless: false,
             window_size: [ 1280, 800 ],
             browser_options: { "disable-blink-features" => "AutomationControlled" },
             timeout: TIMEOUT + 15
           )
+
           yield browser.page
         ensure
           browser&.quit
@@ -44,6 +45,7 @@ module Scraper
             next unless url.start_with?(VISTA_HOST)
 
             debug "vista request: #{url}"
+
             auth = find_auth_header(params.dig("request", "headers"))
             token ||= auth if auth&.start_with?("Bearer ")
           end
@@ -61,6 +63,7 @@ module Scraper
           rescue Ferrum::TimeoutError
             # Cloudflare challenge may still be resolving; continue polling
           end
+
           debug "Navigation complete. URL: #{page.url}"
 
           deadline = Time.now + TIMEOUT
@@ -72,7 +75,10 @@ module Scraper
         def find_auth_header(headers)
           return nil unless headers.is_a?(Hash)
 
-          _, value = headers.find { |k, _| k.to_s.casecmp("authorization").zero? }
+          _, value = headers.find do |key, _value|
+            key.to_s.casecmp("authorization").zero?
+          end
+
           value
         end
 
