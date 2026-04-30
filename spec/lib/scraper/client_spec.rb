@@ -8,8 +8,10 @@ RSpec.describe Scraper::Client do
   describe ".read" do
     context "valid cinema URL" do
       it "returns plain HTML" do
-        url = URI("https://www.google.com")
-        expect(described_class.read(url)).to include("Google")
+        VCR.use_cassette("scraper/client/google") do
+          url = URI("https://www.google.com")
+          expect(described_class.read(url)).to include("Google")
+        end
       end
     end
 
