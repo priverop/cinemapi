@@ -7,6 +7,9 @@ module Scraper
     class AuthClient
       TIMEOUT = 30
       VISTA_HOST = "https://vwc.cinesa.es"
+      HEADERS = headers = {
+        "User-Agent" => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+      }
 
       class << self
         def fetch_headers(theater_url)
@@ -22,11 +25,12 @@ module Scraper
 
         def with_browser
           browser = Ferrum::Browser.new(
-            headless: false,
+            headless: "new",
             window_size: [ 1280, 800 ],
             browser_options: { "disable-blink-features" => "AutomationControlled" },
             timeout: TIMEOUT + 15
           )
+          browser.headers.set(HEADERS)
 
           yield browser.page
         ensure
@@ -50,13 +54,13 @@ module Scraper
             token ||= auth if auth&.start_with?("Bearer ")
           end
 
-          page.on("Network.requestWillBeSentExtraInfo") do |params|
-            url = request_urls[params["requestId"]].to_s
-            next unless url.start_with?(VISTA_HOST)
+          # page.on("Network.requestWillBeSentExtraInfo") do |params|
+          #   url = request_urls[params["requestId"]].to_s
+          #   next unless url.start_with?(VISTA_HOST)
 
-            auth = find_auth_header(params["headers"])
-            token ||= auth if auth&.start_with?("Bearer ")
-          end
+          #   auth = find_auth_header(params["headers"])
+          #   token ||= auth if auth&.start_with?("Bearer ")
+          # end
 
           begin
             page.go_to(theater_url)
