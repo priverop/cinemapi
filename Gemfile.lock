@@ -102,6 +102,9 @@ GEM
       xpath (~> 3.2)
     concurrent-ruby (1.3.6)
     connection_pool (3.0.2)
+    crack (1.0.1)
+      bigdecimal
+      rexml
     crass (1.0.6)
     date (3.5.1)
     debug (1.11.1)
@@ -122,6 +125,12 @@ GEM
       railties (>= 6.1.0)
     faker (3.8.0)
       i18n (>= 1.8.11, < 2)
+    ferrum (0.17.2)
+      addressable (~> 2.5)
+      base64 (~> 0.2)
+      concurrent-ruby (~> 1.1)
+      webrick (~> 1.7)
+      websocket-driver (~> 0.7)
     ffi (1.17.4-aarch64-linux-gnu)
     ffi (1.17.4-aarch64-linux-musl)
     ffi (1.17.4-arm-linux-gnu)
@@ -133,6 +142,7 @@ GEM
       raabro (~> 1.4)
     globalid (1.3.0)
       activesupport (>= 6.1)
+    hashdiff (1.2.1)
     i18n (1.14.8)
       concurrent-ruby (~> 1.0)
     image_processing (1.14.0)
@@ -396,10 +406,16 @@ GEM
     validate_url (1.0.15)
       activemodel (>= 3.0.0)
       public_suffix
+    vcr (6.4.0)
     web-console (4.3.0)
       actionview (>= 8.0.0)
       bindex (>= 0.4.0)
       railties (>= 8.0.0)
+    webmock (3.26.2)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
+    webrick (1.9.2)
     websocket (1.2.11)
     websocket-driver (0.8.0)
       base64
@@ -428,6 +444,7 @@ DEPENDENCIES
   debug
   factory_bot_rails
   faker
+  ferrum (~> 0.17.2)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
@@ -449,7 +466,9 @@ DEPENDENCIES
   turbo-rails
   tzinfo-data
   validate_url (~> 1.0)
+  vcr (~> 6.4)
   web-console
+  webmock
 
 BUNDLED WITH
    2.7.2
