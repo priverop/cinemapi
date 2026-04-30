@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_27_125425) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_30_141034) do
   create_table "movies", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "data_source", default: 0, null: false
@@ -53,7 +53,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_27_125425) do
     t.string "location"
     t.string "name"
     t.decimal "price"
-    t.integer "scraper_external_id"
+    t.string "scraper_external_id"
     t.integer "scraper_key"
     t.datetime "updated_at", null: false
     t.string "website"
