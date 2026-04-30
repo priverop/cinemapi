@@ -21,8 +21,10 @@ module Scraper
         record = Movie.find_or_initialize_by(title: movie[:title])
         if record.new_record?
           record.assign_attributes(
+            description: movie[:description],
             duration: movie[:duration],
             directors: movie[:directors],
+            genre: movie[:genres]&.first, # TODO: support multiple genres in Movie model.
             poster: movie[:poster]
           )
           record.save!
@@ -39,9 +41,9 @@ module Scraper
     end
 
     def import_showtime(movie_record, showtime, language)
-      st = Showtime.find_or_initialize_by(theater: theater, movie: movie_record, showtime: showtime)
+      st = Showtime.find_or_initialize_by(theater: theater, movie: movie_record, showtime: showtime[:date])
       if st.new_record?
-        st.language = language
+        st.language = language.present? ? language : showtime[:language]
         st.save!
         Scraper.logger.info("Showtime created: #{movie_record.title} @ #{showtime}.")
       else
