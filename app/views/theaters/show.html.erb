@@ -2,8 +2,19 @@
 
 <div class="border p-5 rounded flex justify-between">
   <div>
-    <h2 class="font-bold"><%= @theater.name %></h2>
+    <h2 class="font-bold"><%= @theater.name %> 
+      <% if !@theater.is_enabled %> 
+        <span class="font-regular border text-red-600 p-1">Disabled</span>
+      <% end %>
+    </h2>
     <p class="italic text-sm"><%= @theater.location %></p>
+    <p class="text-sm"><%= link_to nil, @theater.website %></p>
+    <p class="text-sm"><span class="font-semibold">Scraper type:</span> <%= @theater.scraper_key %></p>
+    <% 
+      if @theater.scraper_external_id.present?
+    %>
+    <p class="text-sm"><span class="font-semibold">Scraper external ID:</span> <%= @theater.scraper_external_id %></p>
+    <% end %>
     <p class="text-sm"><span class="font-semibold">Discounted days:</span> <%= @theater.discounted_days_string %>.</p>
   </div>
 

@@ -10,12 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_22_154058) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_30_141034) do
   create_table "movies", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.integer "data_source", default: 0, null: false
+    t.text "description"
+    t.string "directors"
     t.integer "duration"
     t.string "genre"
-    t.string "name"
+    t.boolean "is_enabled", default: true, null: false
+    t.string "poster"
+    t.string "title"
     t.datetime "updated_at", null: false
   end
 
@@ -30,6 +35,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_22_154058) do
 
   create_table "showtimes", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.integer "language", default: 0, null: false
     t.integer "movie_id", null: false
     t.datetime "showtime"
     t.integer "theater_id", null: false
@@ -43,10 +49,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_22_154058) do
     t.datetime "created_at", null: false
     t.string "discounted_days"
     t.decimal "discounted_price"
+    t.boolean "is_enabled", default: true, null: false
     t.string "location"
     t.string "name"
     t.decimal "price"
+    t.string "scraper_external_id"
+    t.integer "scraper_key"
     t.datetime "updated_at", null: false
+    t.string "website"
   end
 
   create_table "users", force: :cascade do |t|

@@ -44,7 +44,9 @@ class TheatersController < ApplicationController
   private
 
   def theater_params
-    params.require(:theater).permit(:name, :location, :price, :discounted_price, :discounted_days)
+    params.require(:theater).permit(:name, :location, :price, :discounted_price, :is_enabled, :scraper_key, :scraper_external_id, :website, discounted_days: []).tap do |p|
+      p[:discounted_days].reject!(&:empty?)
+    end
   end
 
   def set_theater

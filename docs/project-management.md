@@ -14,11 +14,14 @@ The project is in a very early state, so I don't want to waste any time creating
 - User preferences. Store parameters?
 - Ending hour (limiting time): hour + duration should not reach the specified ending hour.
 - Movie theaters by location?
-- VOSE movies.
 - Discounted days stored as int? check buttons for creation/editing.
-- Movies should have sinopsis, country, director, cast, and poster.
 - Movies - SHOW - Group by date
 - Enable/Disable showtimes.
-- Enable/Disable movies? and theaters.
 - Theaters link to scrap.
 - Proper API filtering.
+
+### Model data TODO
+
+  -  IMDB / Letterboxd / Filmaffinity links.
+  -  Trailer
+  -  Country, cast?

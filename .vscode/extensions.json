@@ -1,0 +1,4 @@
+{
+  "recommendations": ["rubocop.vscode-rubocop", "Shopify.ruby-lsp"],
+  "unwantedRecommendations": ["misogi.ruby-rubocop"]
+}

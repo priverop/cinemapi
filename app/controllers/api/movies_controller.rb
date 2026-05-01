@@ -49,7 +49,7 @@ class Api::MoviesController < ApplicationController
     result = showtimes.map do |showtime|
       time = showtime.showtime
       {
-        name: showtime.movie.name,
+        title: showtime.movie.title,
         genre: showtime.movie.genre,
         duration: showtime.movie.duration,
         theater: showtime.theater.name,
@@ -92,6 +92,6 @@ class Api::MoviesController < ApplicationController
     end
 
     def movie_params
-      params.expect(movie: [ :name, :duration, :genre ])
+      params.expect(movie: [ :title, :duration, :genre ])
     end
 end

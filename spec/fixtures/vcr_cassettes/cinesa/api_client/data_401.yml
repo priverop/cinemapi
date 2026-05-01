@@ -1,0 +1,23 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://vwc.cinesa.es/WSVistaWebClient/ocapi/v1/film-screening-dates?siteIds=027
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <AUTH_TOKEN>
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"error":"Unauthorized"}'
+  recorded_at: Thu, 30 Apr 2026 10:00:00 GMT
+recorded_with: VCR 6.4.0

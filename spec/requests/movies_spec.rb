@@ -22,7 +22,7 @@ RSpec.describe "Movies", type: :request do
 
   describe "POST /movies" do
     it "creates a movie and redirects" do
-      attrs = { name: movie.name, duration: movie.duration, genre: movie.genre }
+      attrs = { title: "Testing the movie", duration: movie.duration, genre: movie.genre }
       expect {
         post movies_url, params: { movie: attrs }
       }.to change(Movie, :count).by(1)

@@ -2,11 +2,22 @@
   data-controller="clickable-card"
   data-clickable-card-url-value="<%= theater_path(theater) %>"
   data-action="click->clickable-card#navigate"
-  class="border cursor-pointer p-5 mt-3 rounded flex justify-between hover:bg-gray-100">
+  class="border cursor-pointer p-5 mt-3 rounded flex justify-between hover:bg-gray-100 <%= 'disabled' if !theater.is_enabled %>">
   <div>
-    <p class="font-bold block"><%= theater.name %></p>
+    <p class="font-bold block"><%= theater.name %>
+    <% if !theater.is_enabled %> 
+        <span class="font-regular border p-1">Disabled</span>
+      <% end %>
+    </p>
     <p class="italic text-sm"><%= theater.location %></p>
     <p class="text-sm"><span class="font-semibold">Discounted days:</span> <%= theater.discounted_days_string %>.</p>
+    <p class="text-sm"><%= link_to nil, theater.website %></p>
+    <p class="text-sm"><span class="font-semibold">Scraper type:</span> <%= theater.scraper_key %></p>
+    <% 
+      if theater.scraper_external_id.present?
+    %>
+    <p class="text-sm"><span class="font-semibold">Scraper external ID:</span> <%= theater.scraper_external_id %></p>
+    <% end %>
   </div>
   <div>
     <%= link_to "Edit", edit_theater_path(theater.id), class: "button primary" %>

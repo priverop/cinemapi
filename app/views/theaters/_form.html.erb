@@ -4,6 +4,14 @@
       <%= form.text_field :name %>
     </div>
     <div>
+      <%= form.label :website %>
+      <%= form.text_field :website %>
+    </div>
+    <div>
+      <%= form.label :scraper_external_id %>
+      <%= form.text_field :scraper_external_id %>
+    </div>
+    <div>
       <%= form.label :location %>
       <%= form.text_field :location %>
     </div>
@@ -11,14 +19,28 @@
       <%= form.label :price %>
       <%= form.text_field :price %>
     </div>
-    TODO - Estos dos pueden estar empty, cambiar el modelo
     <div>
       <%= form.label :discounted_price %>
       <%= form.text_field :discounted_price %>
     </div>
     <div>
       <%= form.label :discounted_days %>
-      <%= form.text_field :discounted_days %>
+      <div class="flex gap-4">
+        <input type="hidden" name="theater[discounted_days][]" value="">
+        <% Date::DAYNAMES.map(&:downcase).each do |day| %>
+          <div class="flex items-center gap-1">
+            <%= check_box_tag "theater[discounted_days][]", day, @theater.discounted_days.to_a.include?(day), id: "theater_discounted_days_#{day}" %>
+            <%= label_tag "theater_discounted_days_#{day}", day.capitalize %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div>
+      <%= form.label :is_enabled %>
+      <%= form.checkbox :is_enabled %>
+    </div>
+    <div>
+      <%= form.select :scraper_key, Theater.scraper_keys.keys %>
     </div>
 
     <% if @theater.errors.any? %>

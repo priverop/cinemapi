@@ -18,9 +18,9 @@ pio = Theater.create!(name: 'Cinesa Príncipe Pío', location: 'Centro Comercial
 
 puts 'Creating Movies'
 puts '- - - - - - - - - -'
-due = Movie.create!(name: 'Due Date', genre: 'comedy', duration: 90)
-gone = Movie.create!(name: 'Gone Girl', genre: 'thriller', duration: 150)
-weapons = Movie.create!(name: 'Weapons', genre: 'horror', duration: 110)
+due = Movie.create!(title: 'Due Date', duration: 90)
+gone = Movie.create!(title: 'Gone Girl', duration: 150)
+weapons = Movie.create!(title: 'Weapons', duration: 110)
 
 puts 'Creating Showtimes'
 puts '- - - - - - - - - -'

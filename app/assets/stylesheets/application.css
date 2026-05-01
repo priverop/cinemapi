@@ -8,3 +8,9 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+/* Theater global */
+
+.disabled {
+  color: grey;
+}

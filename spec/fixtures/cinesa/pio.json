@@ -1,0 +1,2561 @@
+{
+  "businessDate": "2026-04-27",
+  "showtimes": [
+    {
+      "id": "027-44626",
+      "schedule": {
+        "businessDate": "2026-04-27",
+        "startsAt": "2026-04-27T16:45:00+02:00",
+        "endsAt": "2026-04-27T18:48:00+02:00",
+        "filmStartsAt": "2026-04-27T16:55:00+02:00",
+        "filmEndsAt": "2026-04-27T18:48:00+02:00",
+        "inSeatItemDelivery": null
+      },
+      "isSoldOut": false,
+      "seatLayoutId": "027-1-1",
+      "filmId": "HO00003171",
+      "siteId": "027",
+      "screenId": "027-1",
+      "areaCategories": [
+        {
+          "areaCategoryId": "027-0000000001",
+          "isAllocatedSeating": true
+        },
+        {
+          "areaCategoryId": "027-0000000002",
+          "isAllocatedSeating": true
+        }
+      ],
+      "attributeIds": [
+        "0000000122"
+      ],
+      "isAllocatedSeating": true,
+      "requires3dGlasses": false,
+      "eventId": null,
+      "restrictions": [
+        "FilmAdvanceBookingRule"
+      ],
+      "filmAdvanceBookingRuleId": "027-219-HO00003171"
+    },
+    {
+      "id": "027-44627",
+      "schedule": {
+        "businessDate": "2026-04-27",
+        "startsAt": "2026-04-27T17:00:00+02:00",
+        "endsAt": "2026-04-27T19:27:00+02:00",
+        "filmStartsAt": "2026-04-27T17:20:00+02:00",
+        "filmEndsAt": "2026-04-27T19:27:00+02:00",
+        "inSeatItemDelivery": null
+      },
+      "isSoldOut": false,
+      "seatLayoutId": "027-9-27",
+      "filmId": "HO00003067",
+      "siteId": "027",
+      "screenId": "027-9",
+      "areaCategories": [
+        {
+          "areaCategoryId": "027-0000000001",
+          "isAllocatedSeating": true
+        }
+      ],
+      "attributeIds": [],
+      "isAllocatedSeating": true,
+      "requires3dGlasses": false,
+      "eventId": null,
+      "restrictions": [
+        "FilmAdvanceBookingRule"
+      ],
+      "filmAdvanceBookingRuleId": "027-217-HO00003067"
+    },
+    {
+      "id": "027-44623",
+      "schedule": {
+        "businessDate": "2026-04-27",
+        "startsAt": "2026-04-27T17:45:00+02:00",
+        "endsAt": "2026-04-27T20:41:00+02:00",
+        "filmStartsAt": "2026-04-27T18:05:00+02:00",
+        "filmEndsAt": "2026-04-27T20:41:00+02:00",
+        "inSeatItemDelivery": null
+      },
+      "isSoldOut": false,
+      "seatLayoutId": "027-5-10",
+      "filmId": "HO00003091",
+      "siteId": "027",
+      "screenId": "027-5",
+      "areaCategories": [
+        {
+          "areaCategoryId": "027-0000000001",
+          "isAllocatedSeating": true
+        }
+      ],
+      "attributeIds": [
+        "0000000068"
+      ],
+      "isAllocatedSeating": true,
+      "requires3dGlasses": false,
+      "eventId": null,
+      "restrictions": [
+        "FilmAdvanceBookingRule"
+      ],
+      "filmAdvanceBookingRuleId": "027-211-HO00003091"
+    },
+    {
+      "id": "027-44628",
+      "schedule": {
+        "businessDate": "2026-04-27",
+        "startsAt": "2026-04-27T18:00:00+02:00",
+        "endsAt": "2026-04-27T20:27:00+02:00",
+        "filmStartsAt": "2026-04-27T18:20:00+02:00",
+        "filmEndsAt": "2026-04-27T20:27:00+02:00",
+        "inSeatItemDelivery": null
+      },
+      "isSoldOut": false,
+      "seatLayoutId": "027-3-6",
+      "filmId": "HO00003067",
+      "siteId": "027",
+      "screenId": "027-3",
+      "areaCategories": [
+        {
+          "areaCategoryId": "027-0000000001",
+          "isAllocatedSeating": true
+        }
+      ],
+      "attributeIds": [],
+      "isAllocatedSeating": true,
+      "requires3dGlasses": false,
+      "eventId": null,
+      "restrictions": [
+        "FilmAdvanceBookingRule"
+      ],
+      "filmAdvanceBookingRuleId": "027-217-HO00003067"
+    },
+    {
+      "id": "027-44629",
+      "schedule": {
+        "businessDate": "2026-04-27",
+        "startsAt": "2026-04-27T18:15:00+02:00",
+        "endsAt": "2026-04-27T20:13:00+02:00",
+        "filmStartsAt": "2026-04-27T18:35:00+02:00",
+        "filmEndsAt": "2026-04-27T20:13:00+02:00",
+        "inSeatItemDelivery": null
+      },
+      "isSoldOut": false,
+      "seatLayoutId": "027-7-15",
+      "filmId": "HO00003065",
+      "siteId": "027",
+      "screenId": "027-7",
+      "areaCategories": [
+        {
+          "areaCategoryId": "027-0000000001",
+          "isAllocatedSeating": true
+        },
+        {
+          "areaCategoryId": "027-0000000002",
+          "isAllocatedSeating": true
+        }
+      ],
+      "attributeIds": [],
+      "isAllocatedSeating": true,
+      "requires3dGlasses": false,
+      "eventId": null,
+      "restrictions": [
+        "FilmAdvanceBookingRule"
+      ],
+      "filmAdvanceBookingRuleId": "027-212-HO00003065"
+    },
+    {
+      "id": "027-44630",
+      "schedule": {
+        "businessDate": "2026-04-27",
+        "startsAt": "2026-04-27T18:40:00+02:00",
+        "endsAt": "2026-04-27T21:07:00+02:00",
+        "filmStartsAt": "2026-04-27T19:00:00+02:00",
+        "filmEndsAt": "2026-04-27T21:07:00+02:00",
+        "inSeatItemDelivery": null
+      },
+      "isSoldOut": false,
+      "seatLayoutId": "027-6-12",
+      "filmId": "HO00003067",
+      "siteId": "027",
+      "screenId": "027-6",
+      "areaCategories": [
+        {
+          "areaCategoryId": "027-0000000001",
+          "isAllocatedSeating": true
+        },
+        {
+          "areaCategoryId": "027-0000000002",
+          "isAllocatedSeating": true
+        }
+      ],
+      "attributeIds": [
+        "0000000068"
+      ],
+      "isAllocatedSeating": true,
+      "requires3dGlasses": false,
+      "eventId": null,
+      "restrictions": [
+        "FilmAdvanceBookingRule"
+      ],
+      "filmAdvanceBookingRuleId": "027-217-HO00003067"
+    },
+    {
+      "id": "027-44631",
+      "schedule": {
+        "businessDate": "2026-04-27",
+        "startsAt": "2026-04-27T18:50:00+02:00",
+        "endsAt": "2026-04-27T20:37:00+02:00",
+        "filmStartsAt": "2026-04-27T19:10:00+02:00",
+        "filmEndsAt": "2026-04-27T20:37:00+02:00",
+        "inSeatItemDelivery": null
+      },
+      "isSoldOut": false,
+      "seatLayoutId": "027-8-18",
+      "filmId": "HO00003197",
+      "siteId": "027",
+      "screenId": "027-8",
+      "areaCategories": [
+        {
+          "areaCategoryId": "027-0000000001",
+          "isAllocatedSeating": true
+        }
+      ],
+      "attributeIds": [
+        "0000000122"
+      ],
+      "isAllocatedSeating": true,
+      "requires3dGlasses": false,
+      "eventId": null,
+      "restrictions": [],
+      "filmAdvanceBookingRuleId": null
+    },
+    {
+      "id": "027-44632",
+      "schedule": {
+        "businessDate": "2026-04-27",
+        "startsAt": "2026-04-27T19:00:00+02:00",
+        "endsAt": "2026-04-27T21:27:00+02:00",
+        "filmStartsAt": "2026-04-27T19:20:00+02:00",
+        "filmEndsAt": "2026-04-27T21:27:00+02:00",
+        "inSeatItemDelivery": null
+      },
+      "isSoldOut": false,
+      "seatLayoutId": "027-2-24",
+      "filmId": "HO00003067",
+      "siteId": "027",
+      "screenId": "027-2",
+      "areaCategories": [
+        {
+          "areaCategoryId": "027-0000000001",
+          "isAllocatedSeating": true
+        }
+      ],
+      "attributeIds": [
+        "0000000069"
+      ],
+      "isAllocatedSeating": true,
+      "requires3dGlasses": false,
+      "eventId": null,
+      "restrictions": [
+        "FilmAdvanceBookingRule"
+      ],
+      "filmAdvanceBookingRuleId": "027-217-HO00003067"
+    },
+    {
+      "id": "027-44644",
+      "schedule": {
+        "businessDate": "2026-04-27",
+        "startsAt": "2026-04-27T19:10:00+02:00",
+        "endsAt": "2026-04-27T21:01:00+02:00",
+        "filmStartsAt": "2026-04-27T19:30:00+02:00",
+        "filmEndsAt": "2026-04-27T21:01:00+02:00",
+        "inSeatItemDelivery": null
+      },
+      "isSoldOut": false,
+      "seatLayoutId": "027-1-1",
+      "filmId": "HO00003232",
+      "siteId": "027",
+      "screenId": "027-1",
+      "areaCategories": [
+        {
+          "areaCategoryId": "027-0000000001",
+          "isAllocatedSeating": true
+        },
+        {
+          "areaCategoryId": "027-0000000002",
+          "isAllocatedSeating": true
+        }
+      ],
+      "attributeIds": [
+        "0000000122",
+        "0000000105"
+      ],
+      "isAllocatedSeating": true,
+      "requires3dGlasses": false,
+      "eventId": null,
+      "restrictions": [],
+      "filmAdvanceBookingRuleId": null
+    },
+    {
+      "id": "027-44634",
+      "schedule": {
+        "businessDate": "2026-04-27",
+        "startsAt": "2026-04-27T19:20:00+02:00",
+        "endsAt": "2026-04-27T21:54:00+02:00",
+        "filmStartsAt": "2026-04-27T19:40:00+02:00",
+        "filmEndsAt": "2026-04-27T21:54:00+02:00",
+        "inSeatItemDelivery": null
+      },
+      "isSoldOut": false,
+      "seatLayoutId": "027-4-8",
+      "filmId": "HO00003184",
+      "siteId": "027",
+      "screenId": "027-4",
+      "areaCategories": [
+        {
+          "areaCategoryId": "027-0000000001",
+          "isAllocatedSeating": true
+        }
+      ],
+      "attributeIds": [
+        "0000000105",
+        "0000000068"
+      ],
+      "isAllocatedSeating": true,
+      "requires3dGlasses": false,
+      "eventId": null,
+      "restrictions": [
+        "FilmAdvanceBookingRule"
+      ],
+      "filmAdvanceBookingRuleId": "027-218-HO00003184"
+    },
+    {
+      "id": "027-44635",
+      "schedule": {
+        "businessDate": "2026-04-27",
+        "startsAt": "2026-04-27T20:00:00+02:00",
+        "endsAt": "2026-04-27T22:27:00+02:00",
+        "filmStartsAt": "2026-04-27T20:20:00+02:00",
+        "filmEndsAt": "2026-04-27T22:27:00+02:00",
+        "inSeatItemDelivery": null
+      },
+      "isSoldOut": false,
+      "seatLayoutId": "027-9-27",
+      "filmId": "HO00003067",
+      "siteId": "027",
+      "screenId": "027-9",
+      "areaCategories": [
+        {
+          "areaCategoryId": "027-0000000001",
+          "isAllocatedSeating": true
+        }
+      ],
+      "attributeIds": [],
+      "isAllocatedSeating": true,
+      "requires3dGlasses": false,
+      "eventId": null,
+      "restrictions": [
+        "FilmAdvanceBookingRule"
+      ],
+      "filmAdvanceBookingRuleId": "027-217-HO00003067"
+    },
+    {
+      "id": "027-44636",
+      "schedule": {
+        "businessDate": "2026-04-27",
+        "startsAt": "2026-04-27T20:35:00+02:00",
+        "endsAt": "2026-04-27T23:02:00+02:00",
+        "filmStartsAt": "2026-04-27T20:55:00+02:00",
+        "filmEndsAt": "2026-04-27T23:02:00+02:00",
+        "inSeatItemDelivery": null
+      },
+      "isSoldOut": false,
+      "seatLayoutId": "027-7-15",
+      "filmId": "HO00003067",
+      "siteId": "027",
+      "screenId": "027-7",
+      "areaCategories": [
+        {
+          "areaCategoryId": "027-0000000001",
+          "isAllocatedSeating": true
+        },
+        {
+          "areaCategoryId": "027-0000000002",
+          "isAllocatedSeating": true
+        }
+      ],
+      "attributeIds": [
+        "0000000068"
+      ],
+      "isAllocatedSeating": true,
+      "requires3dGlasses": false,
+      "eventId": null,
+      "restrictions": [
+        "FilmAdvanceBookingRule"
+      ],
+      "filmAdvanceBookingRuleId": "027-217-HO00003067"
+    },
+    {
+      "id": "027-44637",
+      "schedule": {
+        "businessDate": "2026-04-27",
+        "startsAt": "2026-04-27T21:00:00+02:00",
+        "endsAt": "2026-04-27T23:27:00+02:00",
+        "filmStartsAt": "2026-04-27T21:20:00+02:00",
+        "filmEndsAt": "2026-04-27T23:27:00+02:00",
+        "inSeatItemDelivery": null
+      },
+      "isSoldOut": false,
+      "seatLayoutId": "027-3-6",
+      "filmId": "HO00003067",
+      "siteId": "027",
+      "screenId": "027-3",
+      "areaCategories": [
+        {
+          "areaCategoryId": "027-0000000001",
+          "isAllocatedSeating": true
+        }
+      ],
+      "attributeIds": [],
+      "isAllocatedSeating": true,
+      "requires3dGlasses": false,
+      "eventId": null,
+      "restrictions": [
+        "FilmAdvanceBookingRule"
+      ],
+      "filmAdvanceBookingRuleId": "027-217-HO00003067"
+    },
+    {
+      "id": "027-44642",
+      "schedule": {
+        "businessDate": "2026-04-27",
+        "startsAt": "2026-04-27T21:10:00+02:00",
+        "endsAt": "2026-04-27T23:13:00+02:00",
+        "filmStartsAt": "2026-04-27T21:30:00+02:00",
+        "filmEndsAt": "2026-04-27T23:13:00+02:00",
+        "inSeatItemDelivery": null
+      },
+      "isSoldOut": false,
+      "seatLayoutId": "027-5-10",
+      "filmId": "HO00003050",
+      "siteId": "027",
+      "screenId": "027-5",
+      "areaCategories": [
+        {
+          "areaCategoryId": "027-0000000001",
+          "isAllocatedSeating": true
+        }
+      ],
+      "attributeIds": [
+        "0000000122"
+      ],
+      "isAllocatedSeating": true,
+      "requires3dGlasses": false,
+      "eventId": null,
+      "restrictions": [
+        "FilmAdvanceBookingRule"
+      ],
+      "filmAdvanceBookingRuleId": "027-203-HO00003050"
+    },
+    {
+      "id": "027-44638",
+      "schedule": {
+        "businessDate": "2026-04-27",
+        "startsAt": "2026-04-27T21:20:00+02:00",
+        "endsAt": "2026-04-28T00:16:00+02:00",
+        "filmStartsAt": "2026-04-27T21:40:00+02:00",
+        "filmEndsAt": "2026-04-28T00:16:00+02:00",
+        "inSeatItemDelivery": null
+      },
+      "isSoldOut": false,
+      "seatLayoutId": "027-8-18",
+      "filmId": "HO00003091",
+      "siteId": "027",
+      "screenId": "027-8",
+      "areaCategories": [
+        {
+          "areaCategoryId": "027-0000000001",
+          "isAllocatedSeating": true
+        }
+      ],
+      "attributeIds": [],
+      "isAllocatedSeating": true,
+      "requires3dGlasses": false,
+      "eventId": null,
+      "restrictions": [
+        "FilmAdvanceBookingRule"
+      ],
+      "filmAdvanceBookingRuleId": "027-211-HO00003091"
+    },
+    {
+      "id": "027-44640",
+      "schedule": {
+        "businessDate": "2026-04-27",
+        "startsAt": "2026-04-27T21:30:00+02:00",
+        "endsAt": "2026-04-27T23:21:00+02:00",
+        "filmStartsAt": "2026-04-27T21:50:00+02:00",
+        "filmEndsAt": "2026-04-27T23:21:00+02:00",
+        "inSeatItemDelivery": null
+      },
+      "isSoldOut": false,
+      "seatLayoutId": "027-1-1",
+      "filmId": "HO00003232",
+      "siteId": "027",
+      "screenId": "027-1",
+      "areaCategories": [
+        {
+          "areaCategoryId": "027-0000000001",
+          "isAllocatedSeating": true
+        },
+        {
+          "areaCategoryId": "027-0000000002",
+          "isAllocatedSeating": true
+        }
+      ],
+      "attributeIds": [
+        "0000000122",
+        "0000000105"
+      ],
+      "isAllocatedSeating": true,
+      "requires3dGlasses": false,
+      "eventId": null,
+      "restrictions": [],
+      "filmAdvanceBookingRuleId": null
+    },
+    {
+      "id": "027-44639",
+      "schedule": {
+        "businessDate": "2026-04-27",
+        "startsAt": "2026-04-27T21:40:00+02:00",
+        "endsAt": "2026-04-28T00:07:00+02:00",
+        "filmStartsAt": "2026-04-27T22:00:00+02:00",
+        "filmEndsAt": "2026-04-28T00:07:00+02:00",
+        "inSeatItemDelivery": null
+      },
+      "isSoldOut": false,
+      "seatLayoutId": "027-6-12",
+      "filmId": "HO00003067",
+      "siteId": "027",
+      "screenId": "027-6",
+      "areaCategories": [
+        {
+          "areaCategoryId": "027-0000000001",
+          "isAllocatedSeating": true
+        },
+        {
+          "areaCategoryId": "027-0000000002",
+          "isAllocatedSeating": true
+        }
+      ],
+      "attributeIds": [
+        "0000000068"
+      ],
+      "isAllocatedSeating": true,
+      "requires3dGlasses": false,
+      "eventId": null,
+      "restrictions": [
+        "FilmAdvanceBookingRule"
+      ],
+      "filmAdvanceBookingRuleId": "027-217-HO00003067"
+    },
+    {
+      "id": "027-44641",
+      "schedule": {
+        "businessDate": "2026-04-27",
+        "startsAt": "2026-04-27T22:00:00+02:00",
+        "endsAt": "2026-04-28T00:27:00+02:00",
+        "filmStartsAt": "2026-04-27T22:20:00+02:00",
+        "filmEndsAt": "2026-04-28T00:27:00+02:00",
+        "inSeatItemDelivery": null
+      },
+      "isSoldOut": false,
+      "seatLayoutId": "027-2-24",
+      "filmId": "HO00003067",
+      "siteId": "027",
+      "screenId": "027-2",
+      "areaCategories": [
+        {
+          "areaCategoryId": "027-0000000001",
+          "isAllocatedSeating": true
+        }
+      ],
+      "attributeIds": [
+        "0000000069"
+      ],
+      "isAllocatedSeating": true,
+      "requires3dGlasses": false,
+      "eventId": null,
+      "restrictions": [
+        "FilmAdvanceBookingRule"
+      ],
+      "filmAdvanceBookingRuleId": "027-217-HO00003067"
+    },
+    {
+      "id": "027-44643",
+      "schedule": {
+        "businessDate": "2026-04-27",
+        "startsAt": "2026-04-27T22:20:00+02:00",
+        "endsAt": "2026-04-28T00:44:00+02:00",
+        "filmStartsAt": "2026-04-27T22:30:00+02:00",
+        "filmEndsAt": "2026-04-28T00:44:00+02:00",
+        "inSeatItemDelivery": null
+      },
+      "isSoldOut": false,
+      "seatLayoutId": "027-4-8",
+      "filmId": "HO00003184",
+      "siteId": "027",
+      "screenId": "027-4",
+      "areaCategories": [
+        {
+          "areaCategoryId": "027-0000000001",
+          "isAllocatedSeating": true
+        }
+      ],
+      "attributeIds": [
+        "0000000105"
+      ],
+      "isAllocatedSeating": true,
+      "requires3dGlasses": false,
+      "eventId": null,
+      "restrictions": [
+        "FilmAdvanceBookingRule"
+      ],
+      "filmAdvanceBookingRuleId": "027-218-HO00003184"
+    }
+  ],
+  "relatedData": {
+    "sites": [
+      {
+        "id": "027",
+        "name": {
+          "text": "Príncipe Pío",
+          "translations": []
+        },
+        "location": {
+          "latitude": 40.423,
+          "longitude": -3.7213
+        },
+        "contactDetails": {
+          "phoneNumbers": [],
+          "email": "",
+          "address": {
+            "line1": "C.C Principe Pío",
+            "line2": "Pso. de la Florida s/n",
+            "city": "28008 Madrid"
+          }
+        },
+        "ianaTimeZoneName": "Europe/Paris"
+      }
+    ],
+    "films": [
+      {
+        "id": "HO00003050",
+        "title": {
+          "text": "Torrente presidente",
+          "translations": []
+        },
+        "synopsis": {
+          "text": "Han pasado años desde su última aventura, pero José Luis Torrente, el ex-policía más políticamente incorrecto de España, sigue viéndose a sí mismo como un héroe nacional.",
+          "translations": []
+        },
+        "shortSynopsis": {
+          "text": "Han pasado años desde su última aventura, pero José Luis Torrente, el ex-policía más políticamente incorrecto de España, sigue viéndose a sí mismo como un héroe nacional.",
+          "translations": []
+        },
+        "censorRatingId": "0000000003",
+        "censorRatingNote": null,
+        "releaseDate": "2026-03-13",
+        "runtimeInMinutes": 103,
+        "trailerUrl": "https://www.youtube.com/watch?v=tnH_xUjTObI",
+        "displayPriority": 50,
+        "castAndCrew": [
+          {
+            "castAndCrewMemberId": "0000000945",
+            "roles": [
+              "Actor",
+              "Director"
+            ]
+          }
+        ],
+        "genreIds": [
+          "0000000002"
+        ],
+        "externalIds": {
+          "moviexchangeReleaseId": "39fe2f11-d611-4a15-b4a4-4b205d1fdf69",
+          "corporateId": null
+        },
+        "hopk": "HO00003050",
+        "hoCode": "A000005566",
+        "eventId": null,
+        "distributorName": "SONY PICTURES ENTERTAINMENT IB"
+      },
+      {
+        "id": "HO00003065",
+        "title": {
+          "text": "Super Mario Galaxy: La película",
+          "translations": []
+        },
+        "synopsis": {
+          "text": "La película tiene lugar después de los acontecimientos de la primera, en la que dos hermanos, Mario y Luigi, y la princesa Peach emprenden una aventura hasta los confines del espacio y a través de la galaxia.",
+          "translations": []
+        },
+        "shortSynopsis": {
+          "text": "La película tiene lugar después de los acontecimientos de la primera, en la que dos hermanos, Mario y Luigi, y la princesa Peach emprenden una nueva aventura.",
+          "translations": []
+        },
+        "censorRatingId": "0000000004",
+        "censorRatingNote": null,
+        "releaseDate": "2026-04-01",
+        "runtimeInMinutes": 98,
+        "trailerUrl": "https://www.youtube.com/watch?v=6-ekN5kmJbo",
+        "displayPriority": 2,
+        "castAndCrew": [
+          {
+            "castAndCrewMemberId": "0000000209",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000000698",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000000752",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000001675",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000001676",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000001677",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000001680",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000001681",
+            "roles": [
+              "Director"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000001682",
+            "roles": [
+              "Director"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000001683",
+            "roles": [
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000001881",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000008251",
+            "roles": [
+              "Producer"
+            ]
+          }
+        ],
+        "genreIds": [
+          "0000000001",
+          "0000000002",
+          "0000000010"
+        ],
+        "externalIds": {
+          "moviexchangeReleaseId": "d0c2e34d-14a1-4627-9ddc-aec74779ee53",
+          "corporateId": null
+        },
+        "hopk": "HO00003065",
+        "hoCode": "A000005584",
+        "eventId": null,
+        "distributorName": "UNIVERSAL PICTURES INT. SPAIN"
+      },
+      {
+        "id": "HO00003067",
+        "title": {
+          "text": "Michael",
+          "translations": []
+        },
+        "synopsis": {
+          "text": "MICHAEL es el retrato en la gran pantalla de la vida y el legado de uno de los artistas más influyentes que el mundo haya conocido. ",
+          "translations": []
+        },
+        "shortSynopsis": {
+          "text": "MICHAEL es el retrato en la gran pantalla de la vida y el legado de uno de los artistas más influyentes que el mundo haya conocido. ",
+          "translations": []
+        },
+        "censorRatingId": "0000000002",
+        "censorRatingNote": null,
+        "releaseDate": "2026-04-22",
+        "runtimeInMinutes": 127,
+        "trailerUrl": "https://www.youtube.com/watch?v=o1HQSh6zZ8s",
+        "displayPriority": 1,
+        "castAndCrew": [
+          {
+            "castAndCrewMemberId": "0000001031",
+            "roles": [
+              "Director"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000001611",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000002274",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000008252",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000008253",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000008254",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000008255",
+            "roles": [
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000008256",
+            "roles": [
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000008257",
+            "roles": [
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "HO00000031",
+            "roles": [
+              "Actor"
+            ]
+          }
+        ],
+        "genreIds": [
+          "0000000011",
+          "0000000013",
+          "0000000042"
+        ],
+        "externalIds": {
+          "moviexchangeReleaseId": "fabd9f12-12b0-4b85-abc6-f28efe9e2c0f",
+          "corporateId": null
+        },
+        "hopk": "HO00003067",
+        "hoCode": "A000005591",
+        "eventId": null,
+        "distributorName": "UNIVERSAL PICTURES INT. SPAIN"
+      },
+      {
+        "id": "HO00003171",
+        "title": {
+          "text": "Boulevard",
+          "translations": []
+        },
+        "synopsis": {
+          "text": "Cuando Hasley (Eve Ryan) se muda a una nueva ciudad con su madre, lo último que espera es cruzarse con Luke (Mikel Niso), un joven envuelto en un aura peligrosa y un pasado trágico. Atrapado en sus propios demonios, Luke es todo lo que Hasley debería temer... pero a lo que se siente irremediablemente atraída. A pesar de las sombras que lo rodean, Hasley descubre en Luke una vulnerabilidad y un mundo interior apasionante. Juntos, crearán su propio boulevard: un refugio escondido donde poder ser ellos mismos, cumplir sueños imposibles, atreverse a amar a pesar de los prejuicios, el dolor y las cicatrices que arrastran, y demostrar que el amor es capaz de florecer incluso en los corazones más insospechados. ",
+          "translations": []
+        },
+        "shortSynopsis": {
+          "text": "Cuando Hasley se muda a una nueva ciudad con su madre, lo último que espera es cruzarse con Luke, un joven envuelto en un aura peligrosa y un pasado trágico.",
+          "translations": []
+        },
+        "censorRatingId": "0000000003",
+        "censorRatingNote": null,
+        "releaseDate": "2026-04-10",
+        "runtimeInMinutes": 113,
+        "trailerUrl": "https://www.youtube.com/watch?v=rZ6xn57p4J0",
+        "displayPriority": 50,
+        "castAndCrew": [
+          {
+            "castAndCrewMemberId": "0000002381",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "HO00000619",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "HO00000802",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "HO00003547",
+            "roles": [
+              "Director"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "HO00005795",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "HO00005796",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "HO00005797",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "HO00005798",
+            "roles": [
+              "Actor"
+            ]
+          }
+        ],
+        "genreIds": [
+          "0000000011",
+          "0000000034"
+        ],
+        "externalIds": {
+          "moviexchangeReleaseId": "15aa0214-cbe1-4399-b1f9-d49af3cc7665",
+          "corporateId": null
+        },
+        "hopk": "HO00003171",
+        "hoCode": "A000005755",
+        "eventId": null,
+        "distributorName": "SONY PICTURES ENTERTAINMENT IB"
+      },
+      {
+        "id": "HO00003184",
+        "title": {
+          "text": "La momia de Lee Cronin",
+          "translations": []
+        },
+        "synopsis": {
+          "text": "La joven hija de un periodista desaparece en el desierto sin dejar rastro. Ocho años más tarde, la familia rota se conmociona cuando ella es devuelta a ellos, y lo que debiera haber sido una reunión jubilosa se convierte en una auténtica pesadilla.",
+          "translations": []
+        },
+        "shortSynopsis": {
+          "text": "La joven hija de un periodista desaparece en el desierto sin dejar rastro. Ocho años más tarde, la familia rota se conmociona cuando ella es devuelta a ellos.",
+          "translations": []
+        },
+        "censorRatingId": "0000000005",
+        "censorRatingNote": null,
+        "releaseDate": "2026-04-17",
+        "runtimeInMinutes": 134,
+        "trailerUrl": "https://www.youtube.com/watch?v=CqnQ4s-L9Mg",
+        "displayPriority": 3,
+        "castAndCrew": [
+          {
+            "castAndCrewMemberId": "0000000778",
+            "roles": [
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000001336",
+            "roles": [
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000005935",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000008494",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000008495",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000008496",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000008497",
+            "roles": [
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "HO00000088",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "HO00002026",
+            "roles": [
+              "Director",
+              "Producer"
+            ]
+          }
+        ],
+        "genreIds": [
+          "0000000006",
+          "0000000021"
+        ],
+        "externalIds": {
+          "moviexchangeReleaseId": "101d8e0a-b1b4-4a54-a60b-23f90a145a77",
+          "corporateId": null
+        },
+        "hopk": "HO00003184",
+        "hoCode": "A000005779",
+        "eventId": null,
+        "distributorName": "WARNER BROS. ENTERTAIMENT"
+      },
+      {
+        "id": "HO00003197",
+        "title": {
+          "text": "La familia Benetón +2",
+          "translations": []
+        },
+        "synopsis": {
+          "text": "Cuando Toni Benetón (Leo Harlem) cree que tiene todo bajo control en su entrañable y divertida familia multicultural, la llegada de dos nuevos bebés pondrá patas arriba la casa y a toda la familia. Los problemas crecen por partida doble pero las aventuras también.",
+          "translations": []
+        },
+        "shortSynopsis": {
+          "text": "Cuando Toni Benetón cree que tiene todo bajo control en su entrañable y divertida familia multicultural, la llegada de dos nuevos bebés pondrá patas arriba la casa.",
+          "translations": []
+        },
+        "censorRatingId": "0000000001",
+        "censorRatingNote": null,
+        "releaseDate": "2026-04-17",
+        "runtimeInMinutes": 87,
+        "trailerUrl": "https://www.youtube.com/watch?v=7Y7egkNomMg",
+        "displayPriority": 4,
+        "castAndCrew": [
+          {
+            "castAndCrewMemberId": "0000000946",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000000950",
+            "roles": [
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000003666",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000003667",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000007010",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000008072",
+            "roles": [
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "HO00000406",
+            "roles": [
+              "Director"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "HO00002540",
+            "roles": [
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "HO00005822",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "HO00005823",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "HO00005824",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "HO00005825",
+            "roles": [
+              "Actor"
+            ]
+          }
+        ],
+        "genreIds": [
+          "0000000002"
+        ],
+        "externalIds": {
+          "moviexchangeReleaseId": "5b6a7540-bdd9-4896-b6d5-ecc8a4406221",
+          "corporateId": null
+        },
+        "hopk": "HO00003197",
+        "hoCode": "A000005801",
+        "eventId": null,
+        "distributorName": "BETA FICTION SPAIN.S.L."
+      },
+      {
+        "id": "HO00003232",
+        "title": {
+          "text": "La ahorcada",
+          "translations": []
+        },
+        "synopsis": {
+          "text": "Una cantautora se suicida en el jardín de su amante después de ser abandonada por éste. Pero su fantasma se queda en la mansión. Sus ansias de venganza desencadenarán una espiral de locura, horror y muerte que convertirá la vida de la familia en un infierno. Sólo la pequeña Patti, médium espiritista, entenderá la naturaleza del Mal al que se enfrentan...",
+          "translations": []
+        },
+        "shortSynopsis": {
+          "text": "Una cantautora se suicida en el jardín de su amante después de ser abandonada por éste. Pero su fantasma se queda en la mansión.",
+          "translations": []
+        },
+        "censorRatingId": "0000000003",
+        "censorRatingNote": null,
+        "releaseDate": "2026-04-22",
+        "runtimeInMinutes": 91,
+        "trailerUrl": "https://www.youtube.com/watch?v=bQOcBnTGpuk",
+        "displayPriority": 50,
+        "castAndCrew": [
+          {
+            "castAndCrewMemberId": "0000001064",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000005582",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000006376",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000008580",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000008581",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000008582",
+            "roles": [
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "HO00005106",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "HO00005108",
+            "roles": [
+              "Director",
+              "Producer"
+            ]
+          }
+        ],
+        "genreIds": [
+          "0000000006"
+        ],
+        "externalIds": {
+          "moviexchangeReleaseId": "ead7d23f-c8bc-4370-a332-fcf625acc05b",
+          "corporateId": null
+        },
+        "hopk": "HO00003232",
+        "hoCode": "A000005852",
+        "eventId": null,
+        "distributorName": "CASTELAO PICTURES, S.L."
+      },
+      {
+        "id": "HO00003091",
+        "title": {
+          "text": "Proyecto Salvación",
+          "translations": []
+        },
+        "synopsis": {
+          "text": "El profesor de ciencias Ryland Grace (Ryan Gosling) se despierta en una nave espacial a años luz de casa sin recordar quién es ni cómo ha llegado hasta allí. A medida que recupera la memoria, empieza a descubrir su misión: resolver el enigma de la misteriosa sustancia que provoca la extinción del sol. Deberá recurrir a sus conocimientos científicos y a sus ideas poco ortodoxas para salvar todo lo que hay en la Tierra de la extinción... pero una amistad inesperada significa que quizá no tenga que hacerlo solo.",
+          "translations": []
+        },
+        "shortSynopsis": {
+          "text": "El profesor de ciencias Ryland Grace (Ryan Gosling) se despierta en una nave espacial a años luz de casa sin recordar quién es ni cómo ha llegado hasta allí.",
+          "translations": []
+        },
+        "censorRatingId": "0000000002",
+        "censorRatingNote": null,
+        "releaseDate": "2026-03-27",
+        "runtimeInMinutes": 156,
+        "trailerUrl": "https://www.youtube.com/watch?v=in-lUuKi0eE",
+        "displayPriority": 6,
+        "castAndCrew": [
+          {
+            "castAndCrewMemberId": "0000000086",
+            "roles": [
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000001459",
+            "roles": [
+              "Actor",
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000001615",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000001633",
+            "roles": [
+              "Director",
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000001634",
+            "roles": [
+              "Director",
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000001636",
+            "roles": [
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000003769",
+            "roles": [
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000008317",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000008318",
+            "roles": [
+              "Actor"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "0000008319",
+            "roles": [
+              "Producer"
+            ]
+          },
+          {
+            "castAndCrewMemberId": "HO00003050",
+            "roles": [
+              "Actor"
+            ]
+          }
+        ],
+        "genreIds": [
+          "0000000001",
+          "0000000009",
+          "0000000032"
+        ],
+        "externalIds": {
+          "moviexchangeReleaseId": "f741e25d-2e02-44e5-bc0f-5460117e540a",
+          "corporateId": null
+        },
+        "hopk": "HO00003091",
+        "hoCode": "A000005637",
+        "eventId": null,
+        "distributorName": "SONY PICTURES ENTERTAINMENT IB"
+      }
+    ],
+    "castAndCrew": [
+      {
+        "id": "0000000945",
+        "name": {
+          "givenName": "Santiago ",
+          "familyName": "Segura",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000000209",
+        "name": {
+          "givenName": "Benny ",
+          "familyName": "Safdie",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000000698",
+        "name": {
+          "givenName": "Anya ",
+          "familyName": "Taylor-Joy",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000000752",
+        "name": {
+          "givenName": "Chris",
+          "familyName": "Pratt",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000001675",
+        "name": {
+          "givenName": "Jack",
+          "familyName": "Black",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000001676",
+        "name": {
+          "givenName": "Charlie",
+          "familyName": "Day",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000001677",
+        "name": {
+          "givenName": "Keegan-Michael ",
+          "familyName": "Key",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000001680",
+        "name": {
+          "givenName": "Kevin Michael",
+          "familyName": "Richardson",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000001681",
+        "name": {
+          "givenName": "Michael ",
+          "familyName": "Jelenic",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000001682",
+        "name": {
+          "givenName": "Aaron ",
+          "familyName": "Horvath",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000001683",
+        "name": {
+          "givenName": "Shigeru",
+          "familyName": "Miyamoto",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000001881",
+        "name": {
+          "givenName": "Brie",
+          "familyName": "Larson",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000008251",
+        "name": {
+          "givenName": "Chris",
+          "familyName": "Meledandri",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000001031",
+        "name": {
+          "givenName": "Antoine",
+          "familyName": "Fuqua",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000001611",
+        "name": {
+          "givenName": "Nia",
+          "familyName": "Long",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000002274",
+        "name": {
+          "givenName": "Colman ",
+          "familyName": "Domingo",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000008252",
+        "name": {
+          "givenName": "Jaafar",
+          "familyName": "Jackson",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000008253",
+        "name": {
+          "givenName": "Laura",
+          "familyName": "Harrier",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000008254",
+        "name": {
+          "givenName": "Juliano Krue",
+          "familyName": "Valdi",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000008255",
+        "name": {
+          "givenName": "Graham",
+          "familyName": "King",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000008256",
+        "name": {
+          "givenName": "John",
+          "familyName": "Branca",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000008257",
+        "name": {
+          "givenName": "John",
+          "familyName": "McClain",
+          "middleName": null
+        }
+      },
+      {
+        "id": "HO00000031",
+        "name": {
+          "givenName": "Miles",
+          "familyName": "Teller",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000000086",
+        "name": {
+          "givenName": "Amy",
+          "familyName": "Pascal",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000001459",
+        "name": {
+          "givenName": "Ryan",
+          "familyName": "Gosling",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000001615",
+        "name": {
+          "givenName": "Ken ",
+          "familyName": "Leung",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000001633",
+        "name": {
+          "givenName": "Phil",
+          "familyName": "Lord",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000001634",
+        "name": {
+          "givenName": "Christopher",
+          "familyName": "Miller",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000001636",
+        "name": {
+          "givenName": "Aditya",
+          "familyName": "Sood",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000003769",
+        "name": {
+          "givenName": "Rachel",
+          "familyName": "O'Connor",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000008317",
+        "name": {
+          "givenName": "Lionel",
+          "familyName": "Boyce",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000008318",
+        "name": {
+          "givenName": "Milana",
+          "familyName": "Vayntrub",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000008319",
+        "name": {
+          "givenName": "Andy",
+          "familyName": "Weir",
+          "middleName": null
+        }
+      },
+      {
+        "id": "HO00003050",
+        "name": {
+          "givenName": "Sandra ",
+          "familyName": "Hüller",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000002381",
+        "name": {
+          "givenName": "Esther",
+          "familyName": "Acebo",
+          "middleName": null
+        }
+      },
+      {
+        "id": "HO00000619",
+        "name": {
+          "givenName": "Christian",
+          "familyName": "Checa",
+          "middleName": null
+        }
+      },
+      {
+        "id": "HO00000802",
+        "name": {
+          "givenName": "Luis",
+          "familyName": "Zahera",
+          "middleName": null
+        }
+      },
+      {
+        "id": "HO00003547",
+        "name": {
+          "givenName": "Sonia",
+          "familyName": "Méndez",
+          "middleName": null
+        }
+      },
+      {
+        "id": "HO00005795",
+        "name": {
+          "givenName": "Najwa",
+          "familyName": "Khliwa",
+          "middleName": null
+        }
+      },
+      {
+        "id": "HO00005796",
+        "name": {
+          "givenName": "Pepe",
+          "familyName": "Barroso",
+          "middleName": null
+        }
+      },
+      {
+        "id": "HO00005797",
+        "name": {
+          "givenName": "Biel",
+          "familyName": "Antón",
+          "middleName": null
+        }
+      },
+      {
+        "id": "HO00005798",
+        "name": {
+          "givenName": "Enzo",
+          "familyName": "Oliver",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000000778",
+        "name": {
+          "givenName": "Jason",
+          "familyName": "Blum",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000001336",
+        "name": {
+          "givenName": "James",
+          "familyName": "Wan",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000005935",
+        "name": {
+          "givenName": "Natalie",
+          "familyName": "Grace",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000008494",
+        "name": {
+          "givenName": "Jack",
+          "familyName": "Reynor",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000008495",
+        "name": {
+          "givenName": "May",
+          "familyName": "Calamawy",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000008496",
+        "name": {
+          "givenName": "Veronica",
+          "familyName": "Falcón",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000008497",
+        "name": {
+          "givenName": "John",
+          "familyName": "Keville",
+          "middleName": null
+        }
+      },
+      {
+        "id": "HO00000088",
+        "name": {
+          "givenName": "Laia",
+          "familyName": "Costa",
+          "middleName": null
+        }
+      },
+      {
+        "id": "HO00002026",
+        "name": {
+          "givenName": "Lee",
+          "familyName": "Cronin",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000000946",
+        "name": {
+          "givenName": "Leo",
+          "familyName": "Harlem",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000000950",
+        "name": {
+          "givenName": "María Luisa",
+          "familyName": "Gutiérrez",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000003666",
+        "name": {
+          "givenName": "Gala",
+          "familyName": "Bichir",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000003667",
+        "name": {
+          "givenName": "Diego",
+          "familyName": "Montejo",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000007010",
+        "name": {
+          "givenName": "Anabel",
+          "familyName": "Alonso",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000008072",
+        "name": {
+          "givenName": "Rosa",
+          "familyName": "Pérez",
+          "middleName": null
+        }
+      },
+      {
+        "id": "HO00000406",
+        "name": {
+          "givenName": "Joaquín",
+          "familyName": "Mazón",
+          "middleName": null
+        }
+      },
+      {
+        "id": "HO00002540",
+        "name": {
+          "givenName": "Álvaro",
+          "familyName": "Ariza",
+          "middleName": null
+        }
+      },
+      {
+        "id": "HO00005822",
+        "name": {
+          "givenName": "El",
+          "familyName": "Langui",
+          "middleName": null
+        }
+      },
+      {
+        "id": "HO00005823",
+        "name": {
+          "givenName": "Alí",
+          "familyName": "Dia",
+          "middleName": null
+        }
+      },
+      {
+        "id": "HO00005824",
+        "name": {
+          "givenName": "Meilin",
+          "familyName": "Chen",
+          "middleName": null
+        }
+      },
+      {
+        "id": "HO00005825",
+        "name": {
+          "givenName": "Kamsiyochi",
+          "familyName": "Ngene",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000001064",
+        "name": {
+          "givenName": "Amaia",
+          "familyName": "Salamanca",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000005582",
+        "name": {
+          "givenName": "Eduardo",
+          "familyName": "Noriega",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000006376",
+        "name": {
+          "givenName": "Cosette",
+          "familyName": "Silguero",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000008580",
+        "name": {
+          "givenName": "Anastasia",
+          "familyName": "Fauteck",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000008581",
+        "name": {
+          "givenName": "Veki",
+          "familyName": "Velilla",
+          "middleName": null
+        }
+      },
+      {
+        "id": "0000008582",
+        "name": {
+          "givenName": "Raúl",
+          "familyName": "García Medrano",
+          "middleName": null
+        }
+      },
+      {
+        "id": "HO00005106",
+        "name": {
+          "givenName": "Norma",
+          "familyName": "Ruiz",
+          "middleName": null
+        }
+      },
+      {
+        "id": "HO00005108",
+        "name": {
+          "givenName": "Miguel Ángel",
+          "familyName": "Lamata",
+          "middleName": null
+        }
+      }
+    ],
+    "genres": [
+      {
+        "id": "0000000001",
+        "name": {
+          "text": "Acción",
+          "translations": [
+            {
+              "languageTag": "pt-PT",
+              "text": "Ação"
+            }
+          ]
+        },
+        "description": null
+      },
+      {
+        "id": "0000000002",
+        "name": {
+          "text": "Comedia",
+          "translations": [
+            {
+              "languageTag": "pt-PT",
+              "text": "Comédia"
+            }
+          ]
+        },
+        "description": null
+      },
+      {
+        "id": "0000000006",
+        "name": {
+          "text": "Terror",
+          "translations": [
+            {
+              "languageTag": "pt-PT",
+              "text": "Terror"
+            }
+          ]
+        },
+        "description": null
+      },
+      {
+        "id": "0000000009",
+        "name": {
+          "text": "Aventura",
+          "translations": [
+            {
+              "languageTag": "pt-PT",
+              "text": "Aventura"
+            }
+          ]
+        },
+        "description": null
+      },
+      {
+        "id": "0000000010",
+        "name": {
+          "text": "Animación",
+          "translations": [
+            {
+              "languageTag": "pt-PT",
+              "text": "Animação"
+            }
+          ]
+        },
+        "description": null
+      },
+      {
+        "id": "0000000011",
+        "name": {
+          "text": "Drama",
+          "translations": [
+            {
+              "languageTag": "pt-PT",
+              "text": "Drama"
+            }
+          ]
+        },
+        "description": null
+      },
+      {
+        "id": "0000000013",
+        "name": {
+          "text": "Biografía",
+          "translations": [
+            {
+              "languageTag": "pt-PT",
+              "text": "Biografia"
+            }
+          ]
+        },
+        "description": null
+      },
+      {
+        "id": "0000000021",
+        "name": {
+          "text": "Fantasía",
+          "translations": [
+            {
+              "languageTag": "pt-PT",
+              "text": "Fantasia"
+            }
+          ]
+        },
+        "description": null
+      },
+      {
+        "id": "0000000032",
+        "name": {
+          "text": "Ciencia ficción",
+          "translations": [
+            {
+              "languageTag": "pt-PT",
+              "text": "Ficção científica"
+            }
+          ]
+        },
+        "description": null
+      },
+      {
+        "id": "0000000034",
+        "name": {
+          "text": "Romance",
+          "translations": [
+            {
+              "languageTag": "pt-PT",
+              "text": "Romance"
+            }
+          ]
+        },
+        "description": null
+      },
+      {
+        "id": "0000000042",
+        "name": {
+          "text": "Historia",
+          "translations": [
+            {
+              "languageTag": "pt-PT",
+              "text": "História"
+            }
+          ]
+        },
+        "description": null
+      }
+    ],
+    "censorRatings": [
+      {
+        "id": "0000000003",
+        "classification": {
+          "text": "16",
+          "translations": []
+        },
+        "classificationDescription": {
+          "text": "No recomendada para menores de 16 años",
+          "translations": []
+        },
+        "ageRestriction": {
+          "minimumAge": 0
+        }
+      },
+      {
+        "id": "0000000004",
+        "classification": {
+          "text": "7",
+          "translations": []
+        },
+        "classificationDescription": {
+          "text": "No recomendada para menores de 7 años",
+          "translations": []
+        },
+        "ageRestriction": {
+          "minimumAge": 0
+        }
+      },
+      {
+        "id": "0000000002",
+        "classification": {
+          "text": "12",
+          "translations": []
+        },
+        "classificationDescription": {
+          "text": "No recomendada para menores de 12 años",
+          "translations": []
+        },
+        "ageRestriction": {
+          "minimumAge": 0
+        }
+      },
+      {
+        "id": "0000000005",
+        "classification": {
+          "text": "18",
+          "translations": []
+        },
+        "classificationDescription": {
+          "text": "No recomendada para menores de 18 años",
+          "translations": []
+        },
+        "ageRestriction": {
+          "minimumAge": 0
+        }
+      },
+      {
+        "id": "0000000001",
+        "classification": {
+          "text": "TP",
+          "translations": []
+        },
+        "classificationDescription": {
+          "text": "Apta para todos los públicos",
+          "translations": []
+        },
+        "ageRestriction": {
+          "minimumAge": 0
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "id": "0000000122",
+        "name": {
+          "text": "Es Nuestro Cine",
+          "translations": []
+        },
+        "shortName": {
+          "text": "Es Nuestro",
+          "translations": []
+        },
+        "description": {
+          "text": "Película de producción local y perteneciente el programa \"Es Nuestro Cine\"",
+          "translations": [
+            {
+              "languageTag": "eu",
+              "text": "\"Es nuestro cine\" programako lokalean ekoitzitako filma"
+            },
+            {
+              "languageTag": "ca",
+              "text": "Pel·lícula de producció local i pertanyent al programa \"Es Nuestro Cine\""
+            },
+            {
+              "languageTag": "en",
+              "text": "\"Es Nuestro Cine\" brings the finest local movies to the big screen"
+            }
+          ]
+        },
+        "importantMessage": {
+          "text": "Película de producción local y perteneciente el programa \"Es Nuestro Cine\"",
+          "translations": [
+            {
+              "languageTag": "eu",
+              "text": "\"Es nuestro cine\" programako lokalean ekoitzitako filma"
+            },
+            {
+              "languageTag": "ca",
+              "text": "Pel·lícula de producció local i pertanyent al programa \"Es Nuestro Cine\""
+            },
+            {
+              "languageTag": "en",
+              "text": "\"Es Nuestro Cine\" brings the finest local movies to the big screen"
+            }
+          ]
+        },
+        "displayPriority": 6,
+        "isPromoted": false
+      },
+      {
+        "id": "0000000068",
+        "name": {
+          "text": "Vose",
+          "translations": []
+        },
+        "shortName": {
+          "text": "VOSE",
+          "translations": []
+        },
+        "description": {
+          "text": "Sesión con audio en versión original con subtítulos en español.",
+          "translations": [
+            {
+              "languageTag": "en",
+              "text": "Session in original language audio with spanish subtitles"
+            },
+            {
+              "languageTag": "ca",
+              "text": "Sessió amb àudio en versió original amb subtítols en espanyol."
+            },
+            {
+              "languageTag": "eu",
+              "text": "Audioa jatorrizko bertsioan duen saioa, gaztelaniazko azpitituluekin."
+            }
+          ]
+        },
+        "importantMessage": {
+          "text": "Sesión con audio en versión original con subtítulos en español.",
+          "translations": [
+            {
+              "languageTag": "en",
+              "text": "Session in original language audio with spanish subtitles"
+            },
+            {
+              "languageTag": "ca",
+              "text": "Sessió amb àudio en versió original amb subtítols en espanyol."
+            },
+            {
+              "languageTag": "eu",
+              "text": "Audioa jatorrizko bertsioan duen saioa, gaztelaniazko azpitituluekin."
+            }
+          ]
+        },
+        "displayPriority": 6,
+        "isPromoted": false
+      },
+      {
+        "id": "0000000069",
+        "name": {
+          "text": "iSense",
+          "translations": []
+        },
+        "shortName": {
+          "text": "iSense.",
+          "translations": []
+        },
+        "description": {
+          "text": "Sesión en sala iSense: sonido envolvente con Dolby Atmos®, pantalla extragrande de pared a pared y proyector full HD.",
+          "translations": [
+            {
+              "languageTag": "en",
+              "text": "Session in iSense screen. inmersive sound with Dolby Atmos, extra-large screen wall to wall, full HD projector and XXL seats."
+            },
+            {
+              "languageTag": "ca",
+              "text": "Sessió a sala iSense: so envoltant amb Dolby Atmos®, pantalla extragran de paret a paret, projector full HD i butaques XXL"
+            },
+            {
+              "languageTag": "eu",
+              "text": "\"Saioa iSense aretoan: soinu inguratzailea Dolby Atmos ® -rekin, hormatik hormarako pantaila estrahandia, full HD proiektorea eta XXL besaulkiak\n\""
+            },
+            {
+              "languageTag": "pt-PT",
+              "text": "Sessão em sala iSense: som surround com Dolby Atmos®, ecrã extra grande de parede a parede, projector Full HD e assentos XXL"
+            }
+          ]
+        },
+        "importantMessage": {
+          "text": "Sesión en sala iSense: sonido envolvente con Dolby Atmos®, pantalla extragrande de pared a pared y proyector full HD.",
+          "translations": [
+            {
+              "languageTag": "en",
+              "text": "Session in iSense screen. inmersive sound with Dolby Atmos, extra-large screen wall to wall, full HD projector and XXL seats."
+            },
+            {
+              "languageTag": "ca",
+              "text": "Sessió a sala iSense: so envoltant amb Dolby Atmos®, pantalla extragran de paret a paret, projector full HD i butaques XXL"
+            },
+            {
+              "languageTag": "eu",
+              "text": "\"Saioa iSense aretoan: soinu inguratzailea Dolby Atmos ® -rekin, hormatik hormarako pantaila estrahandia, full HD proiektorea eta XXL besaulkiak\n\""
+            },
+            {
+              "languageTag": "pt-PT",
+              "text": "Sessão em sala iSense: som surround com Dolby Atmos®, ecrã extra grande de parede a parede, projector Full HD e assentos XXL"
+            }
+          ]
+        },
+        "displayPriority": 1,
+        "isPromoted": false
+      },
+      {
+        "id": "0000000105",
+        "name": {
+          "text": "Terror y Suspense",
+          "translations": []
+        },
+        "shortName": {
+          "text": "T Y S.",
+          "translations": []
+        },
+        "description": {
+          "text": "Selección de películas de Terror y Suspense, solo para los cinéfilos más atrevidos. ",
+          "translations": []
+        },
+        "importantMessage": {
+          "text": "Selección de películas de Terror y Suspense, solo para los cinéfilos más atrevidos. ",
+          "translations": []
+        },
+        "displayPriority": 1,
+        "isPromoted": false
+      }
+    ],
+    "screens": [
+      {
+        "id": "027-1",
+        "name": {
+          "text": "Sala 1",
+          "translations": [
+            {
+              "languageTag": "en",
+              "text": "Sala 1"
+            }
+          ]
+        }
+      },
+      {
+        "id": "027-9",
+        "name": {
+          "text": "Sala 9",
+          "translations": [
+            {
+              "languageTag": "en",
+              "text": "Sala 9"
+            }
+          ]
+        }
+      },
+      {
+        "id": "027-5",
+        "name": {
+          "text": "Sala 5",
+          "translations": [
+            {
+              "languageTag": "en",
+              "text": "Sala 5"
+            }
+          ]
+        }
+      },
+      {
+        "id": "027-3",
+        "name": {
+          "text": "Sala 3",
+          "translations": [
+            {
+              "languageTag": "en",
+              "text": "Sala 3"
+            }
+          ]
+        }
+      },
+      {
+        "id": "027-7",
+        "name": {
+          "text": "Sala 7",
+          "translations": [
+            {
+              "languageTag": "en",
+              "text": "Sala 7"
+            }
+          ]
+        }
+      },
+      {
+        "id": "027-6",
+        "name": {
+          "text": "Sala 6",
+          "translations": [
+            {
+              "languageTag": "en",
+              "text": "Sala 6"
+            }
+          ]
+        }
+      },
+      {
+        "id": "027-8",
+        "name": {
+          "text": "Sala 8",
+          "translations": [
+            {
+              "languageTag": "en",
+              "text": "Sala 8"
+            }
+          ]
+        }
+      },
+      {
+        "id": "027-2",
+        "name": {
+          "text": "Sala 2 iSense",
+          "translations": [
+            {
+              "languageTag": "en",
+              "text": "Sala 2 iSense"
+            }
+          ]
+        }
+      },
+      {
+        "id": "027-4",
+        "name": {
+          "text": "Sala 4",
+          "translations": [
+            {
+              "languageTag": "en",
+              "text": "Sala 4"
+            }
+          ]
+        }
+      }
+    ],
+    "events": [],
+    "filmAdvanceBookingRules": [
+      {
+        "id": "027-203-HO00003050",
+        "filmId": "HO00003050",
+        "siteId": "027",
+        "bookingPeriods": [
+          {
+            "startsAt": "2026-02-13T00:00:00+01:00",
+            "orderBookingModes": [
+              "Paid",
+              "Unpaid",
+              "UnpaidConfirmed"
+            ],
+            "restriction": "None",
+            "rewardId": null
+          }
+        ]
+      },
+      {
+        "id": "027-212-HO00003065",
+        "filmId": "HO00003065",
+        "siteId": "027",
+        "bookingPeriods": [
+          {
+            "startsAt": "2026-03-09T23:00:00+01:00",
+            "orderBookingModes": [
+              "Paid",
+              "Unpaid",
+              "UnpaidConfirmed"
+            ],
+            "restriction": "None",
+            "rewardId": null
+          }
+        ]
+      },
+      {
+        "id": "027-217-HO00003067",
+        "filmId": "HO00003067",
+        "siteId": "027",
+        "bookingPeriods": [
+          {
+            "startsAt": "2026-04-06T08:00:00+02:00",
+            "orderBookingModes": [
+              "Paid",
+              "Unpaid",
+              "UnpaidConfirmed"
+            ],
+            "restriction": "None",
+            "rewardId": null
+          }
+        ]
+      },
+      {
+        "id": "027-211-HO00003091",
+        "filmId": "HO00003091",
+        "siteId": "027",
+        "bookingPeriods": [
+          {
+            "startsAt": "2026-03-06T00:00:00+01:00",
+            "orderBookingModes": [
+              "Paid",
+              "Unpaid",
+              "UnpaidConfirmed"
+            ],
+            "restriction": "None",
+            "rewardId": null
+          }
+        ]
+      },
+      {
+        "id": "027-219-HO00003171",
+        "filmId": "HO00003171",
+        "siteId": "027",
+        "bookingPeriods": [
+          {
+            "startsAt": "2026-04-06T00:00:00+02:00",
+            "orderBookingModes": [
+              "Paid",
+              "Unpaid",
+              "UnpaidConfirmed"
+            ],
+            "restriction": "None",
+            "rewardId": null
+          }
+        ]
+      },
+      {
+        "id": "027-218-HO00003184",
+        "filmId": "HO00003184",
+        "siteId": "027",
+        "bookingPeriods": [
+          {
+            "startsAt": "2026-04-01T00:00:00+02:00",
+            "orderBookingModes": [
+              "Paid",
+              "Unpaid",
+              "UnpaidConfirmed"
+            ],
+            "restriction": "None",
+            "rewardId": null
+          }
+        ]
+      }
+    ],
+    "areaCategories": [
+      {
+        "id": "027-0000000001",
+        "name": {
+          "text": "Normal",
+          "translations": []
+        },
+        "hopk": "0000000002",
+        "isAllocatedSeating": true,
+        "isInSeatItemDeliveryAvailable": false
+      },
+      {
+        "id": "027-0000000002",
+        "name": {
+          "text": "VIP",
+          "translations": []
+        },
+        "hopk": "0000000003",
+        "isAllocatedSeating": true,
+        "isInSeatItemDeliveryAvailable": false
+      }
+    ]
+  }
+}
