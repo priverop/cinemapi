@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "uri"
-require "debug"
 
 module Scraper
   module Cinesa
@@ -21,6 +20,7 @@ module Scraper
           calendar_data = Scraper.logger.tagged("ApiClient") { client.data(calendar_url) }
           calendar_dates = Scraper.logger.tagged("CalendarParser") { Scraper::Cinesa::CalendarParser.new(calendar_data).parse }
 
+          # We only want to scrap the next 7 days
           calendar_dates[0...7].each do |date|
             Scraper.logger.tagged(date) do
               begin

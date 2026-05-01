@@ -69,7 +69,7 @@ module Scraper
       end
 
       def movie_showtimes(movie)
-        movie.css(CSS_SELECTORS[:movie_showtimes])&.map do |showtime|
+        movie.css(CSS_SELECTORS[:movie_showtimes]).map do |showtime|
           showtime&.text
         end
       end

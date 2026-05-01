@@ -66,8 +66,7 @@ module Scraper
         def normalize_poster(poster_id)
           return nil if poster_id.nil? || poster_id.empty?
 
-          poster = POSTER_URL
-          poster.gsub("{poster_id}", poster_id)
+          POSTER_URL.sub("{poster_id}", poster_id)
         end
 
         def normalize_showtimes(showtimes)
