@@ -28,13 +28,13 @@ module Scraper
 
         def normalize_movie(movie)
           {
+            title: normalize_title(movie[:title]),
             description: normalize_description(movie[:description]),
             directors: normalize_directors(movie[:directors]),
             duration: normalize_duration(movie[:duration]),
             genres: normalize_genres(movie[:genres]),
             poster: normalize_poster(movie[:poster_id]),
             showtimes: normalize_showtimes(movie[:showtimes]),
-            title: normalize_title(movie[:title]),
             trailer: normalize_trailer(movie[:trailer])
           }
         end
@@ -89,7 +89,7 @@ module Scraper
         end
 
         def normalize_title(title)
-          return nil if title.nil? || title.strip.empty?
+          raise Scraper::InvalidMovieError, "Movie has an empty title." if title.nil? || title.strip.empty?
 
           title.strip
         end

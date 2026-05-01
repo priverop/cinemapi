@@ -57,7 +57,7 @@ module Scraper
       end
 
       def normalize_title(title)
-        return nil if title.nil? || title.strip.empty?
+        raise Scraper::InvalidMovieError, "Movie has an empty title." if title.nil? || title.strip.empty?
 
         title.strip # TODO: Falta hacer lo de la capitalizacion y borrar los [WILDER CINEMA]?
       end
