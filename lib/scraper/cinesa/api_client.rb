@@ -16,6 +16,7 @@ module Scraper
       end
 
       def data(url)
+        validate_url!(url)
         Scraper.logger.info("GET #{build_url(url)}.")
         uri = URI(build_url(url))
         response = Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
@@ -31,6 +32,10 @@ module Scraper
 
       def build_url(url)
         "#{url}?siteIds=#{site_id}"
+      end
+
+      def validate_url!(url)
+        raise Scraper::InvalidUrlError, "Invalid URI '#{url}'." unless Scraper.valid_http_url?(url)
       end
     end
   end
