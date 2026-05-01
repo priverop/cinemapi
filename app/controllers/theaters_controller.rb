@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class TheatersController < ApplicationController
+class TheatersController < DashboardController
   before_action :set_theater, only: %i[ show edit update destroy ]
 
   def index
