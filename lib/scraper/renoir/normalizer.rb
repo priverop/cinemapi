@@ -59,13 +59,13 @@ module Scraper
       def normalize_title(title)
         raise Scraper::InvalidMovieError, "Movie has an empty title." if title.nil? || title.strip.empty?
 
-        title.strip # TODO: Falta hacer lo de la capitalizacion y borrar los [WILDER CINEMA]?
+        title.strip # TODO: Renoir always have UPPERCASE MOVIE TITLES, we should normalize that as well.
       end
 
       def normalize_directors(directors)
-        return nil if directors.nil? || directors.strip.empty?
+        return [] if directors.nil? || directors.strip.empty?
 
-        directors.gsub("de", "").strip.split(", ")
+        directors.sub("de", "").strip.split(", ")
       end
 
       def normalize_language(language)
@@ -89,7 +89,7 @@ module Scraper
       end
 
       def normalize_showtimes(showtimes)
-        return nil if showtimes.nil? || showtimes.empty? # || showtimes.all? { |s| s.empty? }
+        return [] if showtimes.nil? || showtimes.empty? # || showtimes.all? { |s| s.empty? }
 
         showtimes.map { |s| { date: Time.strptime("#{date} #{s.strip}", "%Y-%m-%d %H:%M") } }
       end

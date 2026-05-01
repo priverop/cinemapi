@@ -46,7 +46,7 @@ module Scraper
         end
 
         def normalize_directors(directors)
-          return nil if directors.nil? || directors.empty?
+          return [] if directors.nil? || directors.empty?
 
           directors.map { |director| "#{director["givenName"]} #{director["familyName"]}" }
         end
@@ -58,7 +58,7 @@ module Scraper
         end
 
         def normalize_genres(genres)
-          return nil if genres.nil? || genres.empty?
+          return [] if genres.nil? || genres.empty?
 
           genres.map { |genre| genre.strip }
         end
@@ -71,7 +71,7 @@ module Scraper
         end
 
         def normalize_showtimes(showtimes)
-          return nil if showtimes.nil? || showtimes.empty? # || showtimes.all? { |s| s.empty? }
+          return [] if showtimes.nil? || showtimes.empty? # || showtimes.all? { |s| s.empty? }
 
           showtimes.map { |s| { date: normalize_date(s[:date]), language: normalize_language(s[:language]) } }
         end
@@ -85,7 +85,7 @@ module Scraper
         def normalize_language(languages)
           return nil if languages.nil?
 
-          languages.include?("Vose") ? :vose : :dubbed # TODO: aquí habrá que hacer algo para las pelis en version original / dobladas
+          languages.include?("Vose") ? :vose : :dubbed # TODO: we need to figure something out for dubbed vs VO (spanish)
         end
 
         def normalize_title(title)
