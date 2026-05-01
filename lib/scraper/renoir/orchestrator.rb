@@ -14,10 +14,11 @@ module Scraper
           Scraper.logger.info("Starting scrape for #{base_url}.")
 
             main_html = Scraper::Client.read(base_url)
-            calendar_urls = Scraper.logger.tagged("CalendarParser") { Scraper::Renoir::CalendarParser.new(main_html).urls }
+            calendar_days = Scraper.logger.tagged("CalendarParser") { Scraper::Renoir::CalendarParser.new(main_html).days }
 
-            calendar_urls.each do |url|
-              date = url.split("fecha=").last
+            calendar_days.each do |day|
+              url = day[:url]
+              date = day[:date]
               Scraper.logger.tagged(date) do
                 begin
                   new_url = base_url.merge(url)
