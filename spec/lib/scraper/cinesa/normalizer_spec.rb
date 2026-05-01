@@ -50,11 +50,53 @@ RSpec.describe Scraper::Cinesa::Normalizer do
           duration: 91,
           genres: [ "Terror" ],
           poster: "https://film-cdn.moviexchange.com/api/cdn/release/ead7d23f-c8bc-4370-a332-fcf625acc05b/media/Poster",
-          showtimes: [ { date: DateTime.parse("2026-04-27T19:10:00+02:00"), language: :dubbed }, { date: DateTime.parse("2026-04-27T21:30:00+02:00"), language: :dubbed } ],
+          showtimes: [ { date: DateTime.parse("2026-04-27T19:10:00+02:00"), language: :vo }, { date: DateTime.parse("2026-04-27T21:30:00+02:00"), language: :vo } ],
           title: "La ahorcada",
           trailer: "https://www.youtube.com/watch?v=bQOcBnTGpuk"
         }
         ])
+      end
+    end
+
+    context "when mapping showtime language attributes" do
+      let(:movie) do
+        {
+          description: "desc",
+          directors: [],
+          duration: 100,
+          genres: [],
+          poster_id: "p",
+          title: "Test",
+          trailer: nil,
+          showtimes: showtimes
+        }
+      end
+
+      subject(:languages) { described_class.normalize([ movie ]).first[:showtimes].map { |s| s[:language] } }
+
+      context "with Vose attribute" do
+        let(:showtimes) { [ { date: "2026-04-27T17:45:00+02:00", language: [ "Vose" ] } ] }
+        it { expect(languages).to eq([ :vose ]) }
+      end
+
+      context "with Es Nuestro Cine attribute" do
+        let(:showtimes) { [ { date: "2026-04-27T17:45:00+02:00", language: [ "Es Nuestro Cine" ] } ] }
+        it { expect(languages).to eq([ :vo ]) }
+      end
+
+      context "with both Vose and Es Nuestro Cine" do
+        let(:showtimes) { [ { date: "2026-04-27T17:45:00+02:00", language: [ "Es Nuestro Cine", "Vose" ] } ] }
+        it { expect(languages).to eq([ :vose ]) }
+      end
+
+      context "with Es Nuestro Cine plus a genre tag" do
+        let(:showtimes) { [ { date: "2026-04-27T17:45:00+02:00", language: [ "Es Nuestro Cine", "Terror y Suspense" ] } ] }
+        it { expect(languages).to eq([ :vo ]) }
+      end
+
+      context "with no language-relevant attributes" do
+        let(:showtimes) { [ { date: "2026-04-27T17:45:00+02:00", language: [] } ] }
+        it { expect(languages).to eq([ :dubbed ]) }
       end
     end
 
