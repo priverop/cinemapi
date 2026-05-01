@@ -1,4 +1,5 @@
 class Movie < ApplicationRecord
+  scope :today, -> { joins(:showtimes).merge(Showtime.today).distinct }
   enum :data_source, scraper: 0, manual: 1
 
   has_many :showtimes, dependent: :destroy
