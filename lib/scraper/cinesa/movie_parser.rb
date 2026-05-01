@@ -18,9 +18,9 @@ module Scraper
         movies.map do |movie|
           {
             description: movie_description(movie),
-            directors: movie_director(movie),
+            directors: movie_directors(movie),
             duration: movie_duration(movie),
-            genres: movie_genre(movie),
+            genres: movie_genres(movie),
             poster_id: movie_poster(movie),
             showtimes: movie_showtimes(movie),
             title: movie_title(movie),
@@ -32,7 +32,7 @@ module Scraper
       private
 
       def movies_to_parse
-        scraped_movies = json["relatedData"]["films"]
+        scraped_movies = json.dig("relatedData", "films")
 
         raise Scraper::MoviesNotFoundError, "Movies not found." if scraped_movies.nil? || scraped_movies.empty?
 
@@ -40,21 +40,23 @@ module Scraper
       end
 
       def movie_poster(movie)
-        movie["externalIds"]["moviexchangeReleaseId"]
+        movie.dig("externalIds", "moviexchangeReleaseId")
       end
 
       def movie_title(movie)
-        movie["title"]["text"]
+        movie.dig("title", "text")
       end
 
-      def movie_genre(movie)
+      def movie_genres(movie)
+        return [] unless movie["genreIds"]
+
         movie["genreIds"].map do |g_id|
-          json["relatedData"]["genres"].find { |genre| genre["id"] == g_id }&.dig("name", "text")
+          json.dig("relatedData", "genres")&.find { |genre| genre["id"] == g_id }&.dig("name", "text")
         end
       end
 
       def movie_description(movie)
-        movie["synopsis"]["text"]
+        movie.dig("synopsis", "text")
       end
 
       def movie_trailer(movie)
@@ -65,25 +67,33 @@ module Scraper
         movie["runtimeInMinutes"]
       end
 
-      def movie_director(movie)
+      def movie_directors(movie)
+        return [] unless movie["castAndCrew"]
+
         movie["castAndCrew"].filter_map do |member|
-          json["relatedData"]["castAndCrew"].find { |c| c["id"] == member["castAndCrewMemberId"] if member["roles"].include?("Director") }&.dig("name")
+          next unless member.dig("roles")&.include?("Director")
+
+          json.dig("relatedData", "castAndCrew")&.find { |c| c["id"] == member["castAndCrewMemberId"] }&.dig("name")
         end
       end
 
       def movie_showtimes(movie)
-        showtimes = json["showtimes"].select { |showtime| showtime["filmId"] == movie["id"]  }
+        return [] unless json["showtimes"]
+
+        showtimes = json["showtimes"].select { |showtime| showtime["filmId"] == movie["id"] }
         showtimes.map do |st|
           {
-            date: st["schedule"]["startsAt"],
+            date: st.dig("schedule", "startsAt"),
             language: showtime_language(st["attributeIds"])
           }
         end
       end
 
       def showtime_language(language_ids)
+        return [] unless language_ids
+
         language_ids.map do |l_id|
-          json["relatedData"]["attributes"].find { |attribute| attribute["id"] == l_id  }&.dig("name", "text")
+          json.dig("relatedData", "attributes")&.find { |attribute| attribute["id"] == l_id }&.dig("name", "text")
         end
       end
     end
