@@ -37,7 +37,6 @@ module Scraper
       end
     rescue ActiveRecord::RecordInvalid => e
       Scraper.logger.error("Import failed for '#{movie[:title]}': #{e.message}.")
-      raise
     end
 
     def import_showtime(movie_record, showtime, language)
