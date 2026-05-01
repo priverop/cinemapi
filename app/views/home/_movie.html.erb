@@ -1,0 +1,32 @@
+<article class="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col">
+  <% if movie.poster.present? %>
+    <%= image_tag movie.poster, class: "h-40 w-full object-cover", alt: movie.title %>
+  <% else %>
+    <div class="bg-gray-200 h-40 w-full"></div>
+  <% end %>
+
+  <div class="p-5 flex flex-col gap-3">
+    <h3 class="text-xl font-bold text-gray-900"><%= movie.title %></h3>
+
+    <div class="flex items-center gap-4 text-xs text-gray-500 uppercase tracking-wide border-b border-gray-100 pb-3">
+      <% if movie.duration %>
+        <div>
+          <span class="font-semibold">Duration</span><br>
+          <span class="text-gray-800 text-sm font-medium normal-case"><%= movie.duration %> min</span>
+        </div>
+      <% end %>
+    </div>
+
+    <% if movie.genre.present? %>
+      <div class="flex flex-wrap gap-2">
+        <% movie.genre.split(",").map(&:strip).each do |g| %>
+          <span class="border border-gray-300 text-gray-600 text-xs rounded-full px-3 py-1"><%= g %></span>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if movie.description.present? %>
+      <p class="text-sm text-gray-600 line-clamp-3"><%= movie.description %></p>
+    <% end %>
+  </div>
+</article>
