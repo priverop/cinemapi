@@ -12,7 +12,7 @@ Built with Rails 8, Turbo, and SQLite.
 
 - **Backoffice:** theaters and movies management.
 - **API:** stateless read of theaters and movies, with filtering.
-- **Scrapper:** aggregates movies from a list of local cinema websites.
+- **Scrapper:** aggregates movies from the theater websites.
 
 ## Setup
 
@@ -23,4 +23,4 @@ Or install Ruby (3.4.7), and run `bin/setup`.
 ## Docs
 
 - [Project description and ideas](/docs/project.md)
-- [ADR](/docs/adr.md)
+- [Decision Records](/docs/decision-records.md)
