@@ -18,4 +18,5 @@ module Scraper
   class CalendarNotFoundError < ScraperError; end
   class UnknownLanguageError < ScraperError; end
   class AuthRequiredError < ScraperError; end
+  class HttpError < ScraperError; end
 end

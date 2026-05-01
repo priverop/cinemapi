@@ -10,7 +10,10 @@ module Scraper
       def read(url)
         validate_url!(url)
         Scraper.logger.info("GET #{url}.")
-        Net::HTTP.get(url)
+        response = Net::HTTP.get_response(url)
+        raise Scraper::HttpError, "HTTP #{response.code} fetching #{url}." unless response.is_a?(Net::HTTPSuccess)
+
+        response.body
       end
 
       private

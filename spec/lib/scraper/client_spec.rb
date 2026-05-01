@@ -41,5 +41,15 @@ RSpec.describe Scraper::Client do
         end.to raise_error Scraper::InvalidUrlError, "Invalid URI ''."
       end
     end
+
+    context "non-2xx response" do
+      it 'raises HttpError' do
+        url = URI("https://www.example.com/not-found")
+        allow(Net::HTTP).to receive(:get_response).and_return(Net::HTTPNotFound.new("1.1", "404", "Not Found"))
+        expect do
+          described_class.read(url)
+        end.to raise_error Scraper::HttpError, "HTTP 404 fetching #{url}."
+      end
+    end
   end
 end
