@@ -13,7 +13,7 @@ module Scraper
 
           Scraper.logger.info("Starting scrape for #{base_url}.")
 
-          main_html = Scraper::Client.read(base_url)
+          main_html = Scraper.logger.tagged("Client") { Scraper::Client.read(base_url) }
           calendar_days = Scraper.logger.tagged("CalendarParser") { Scraper::Renoir::CalendarParser.new(main_html).days }
 
           calendar_days.each do |day|
@@ -22,7 +22,7 @@ module Scraper
             Scraper.logger.tagged(date) do
               begin
                 new_url = base_url.merge(url)
-                html = Scraper::Client.read(new_url)
+                html = Scraper.logger.tagged("Client") { Scraper::Client.read(new_url) }
                 parsed = Scraper.logger.tagged("MovieParser") { Scraper::Renoir::MovieParser.new(html).parse }
                 normalized = Scraper.logger.tagged("Normalizer") { Scraper::Renoir::Normalizer.new(date).normalize(parsed) }
                 Scraper.logger.tagged("Importer") { Scraper::Importer.new(theater:).import(normalized) }

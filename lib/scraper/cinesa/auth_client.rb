@@ -13,12 +13,14 @@ module Scraper
 
       class << self
         def fetch_headers(theater_url)
-          Scraper.logger.info("Launching browser to capture JWT...")
-          headers = with_browser { |page| capture_headers(page, theater_url) }
-          raise Scraper::AuthRequiredError, "Could not capture JWT from #{theater_url} within #{TIMEOUT}s." unless headers
+          Scraper.logger.tagged("AuthClient") do
+            Scraper.logger.info("Launching browser to capture JWT.")
+            headers = with_browser { |page| capture_headers(page, theater_url) }
+            raise Scraper::AuthRequiredError, "Could not capture JWT from #{theater_url} within #{TIMEOUT}s." unless headers
 
-          Scraper.logger.info("JWT captured.")
-          headers
+            Scraper.logger.info("JWT captured.")
+            headers
+          end
         end
 
         private
@@ -46,7 +48,7 @@ module Scraper
             url = params.dig("request", "url").to_s
             next unless url.start_with?(VISTA_HOST)
 
-            Scraper.logger.debug("[auth_client] vista request: #{url}")
+            Scraper.logger.tagged("AuthClient") { Scraper.logger.debug("Vista request: #{url}.") }
 
             auth = find_auth_header(params.dig("request", "headers"))
             token ||= auth if auth&.start_with?("Bearer ")
@@ -55,10 +57,10 @@ module Scraper
           begin
             page.go_to(theater_url)
           rescue Ferrum::TimeoutError => e
-            Scraper.logger.warn("[auth_client] Navigation timed out: #{e.message}.")
+            Scraper.logger.warn("Navigation timed out: #{e.message}.")
           end
 
-          Scraper.logger.debug("[auth_client] Navigation complete. URL: #{page.url}")
+          Scraper.logger.debug("Navigation complete. URL: #{page.url}.")
 
           deadline = Time.now + TIMEOUT
           sleep 0.2 until token || Time.now >= deadline
