@@ -13,7 +13,12 @@ module Scraper
       end
 
       def parse
-        json["filmScreeningDates"].map { |date| date["businessDate"]  }
+        dates = json["filmScreeningDates"]
+
+        raise Scraper::CalendarNotFoundError, "Calendar not found." if dates.nil?
+
+        Scraper.logger.info("Found #{dates.count} day dates.")
+        dates.map { |date| date["businessDate"] }
       end
     end
   end
