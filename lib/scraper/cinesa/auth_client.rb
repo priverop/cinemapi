@@ -54,7 +54,8 @@ module Scraper
 
           begin
             page.go_to(theater_url)
-          rescue Ferrum::TimeoutError
+          rescue Ferrum::TimeoutError => e
+            Scraper.logger.warn("[auth_client] Navigation timed out: #{e.message}.")
           end
 
           Scraper.logger.debug("[auth_client] Navigation complete. URL: #{page.url}")
