@@ -7,6 +7,8 @@ module Scraper
   module Cinesa
     class Normalizer
       POSTER_URL = "https://film-cdn.moviexchange.com/api/cdn/release/{poster_id}/media/Poster"
+      VOSE_ATTRIBUTE = "Vose"
+      ES_NUESTRO_CINE_ATTRIBUTE = "Es Nuestro Cine"
 
       class << self
         #
@@ -83,8 +85,10 @@ module Scraper
 
         def normalize_language(languages)
           return nil if languages.nil?
+          return :vose if languages.include?(VOSE_ATTRIBUTE)
+          return :vo if languages.include?(ES_NUESTRO_CINE_ATTRIBUTE)
 
-          languages.include?("Vose") ? :vose : :dubbed # TODO: we need to figure something out for dubbed vs VO (spanish)
+          :dubbed
         end
 
         def normalize_title(title)
