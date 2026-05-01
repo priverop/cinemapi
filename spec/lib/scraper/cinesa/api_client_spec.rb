@@ -18,9 +18,8 @@ RSpec.describe Scraper::Cinesa::ApiClient do
     end
 
     context "with an error response", vcr: { cassette_name: "cinesa/api_client/data_401" } do
-      it "returns the body without raising" do
-        result = client.data(calendar_url)
-        expect(result).to include("Unauthorized")
+      it "raises HttpError" do
+        expect { client.data(calendar_url) }.to raise_error(Scraper::HttpError, /HTTP 401/)
       end
     end
   end

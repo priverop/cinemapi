@@ -7,6 +7,7 @@ require_relative '../../../../lib/scraper/cinesa/api_client'
 require_relative '../../../../lib/scraper/cinesa/calendar_parser'
 require_relative '../../../../lib/scraper/cinesa/movie_parser'
 require_relative '../../../../lib/scraper/cinesa/normalizer'
+require_relative '../../../../lib/scraper/cinesa/auth_client'
 require_relative '../../../../lib/scraper/cinesa/orchestrator'
 
 RSpec.describe Scraper::Cinesa::Orchestrator do
@@ -21,6 +22,7 @@ RSpec.describe Scraper::Cinesa::Orchestrator do
   let(:movies_url)   { "https://vwc.cinesa.es/WSVistaWebClient/ocapi/v1/showtimes/by-business-date" }
 
   before do
+    allow(Scraper::Cinesa::AuthClient).to receive(:fetch_headers).and_return({ "Authorization" => "Bearer test-token" })
     allow(Scraper::Cinesa::ApiClient).to receive(:new).and_return(api_client)
     allow(api_client).to receive(:data).with(calendar_url).and_return(calendar_json)
     allow(api_client).to receive(:data).with(a_string_including(movies_url)).and_return(movies_json)
