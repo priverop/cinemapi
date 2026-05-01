@@ -1,0 +1,12 @@
+{
+  "ignored_warnings": [
+    {
+      "fingerprint": "2e246746503babdee5d56afdeec4b6820917c3a037a266fd0e5b16fb5ca22c1f",
+      "note": "Theater#website is validated as a URL before save; low risk in backoffice-only view"
+    },
+    {
+      "fingerprint": "53fa8472b7386f40835124275ca663d92de7219d440f71d5643aff10e61099af",
+      "note": "Theater#website is validated as a URL before save; low risk in backoffice-only view"
+    }
+  ]
+}
