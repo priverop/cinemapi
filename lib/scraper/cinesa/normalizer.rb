@@ -95,14 +95,10 @@ module Scraper
 
         def normalize_trailer(trailer)
           return nil if trailer.nil? || trailer.strip.empty?
+          return trailer if Scraper.valid_http_url?(trailer)
 
-          trailer_url = URI.parse(trailer)
-          unless trailer_url.is_a?(URI::HTTP) && !trailer_url.host.empty?
-            Scraper.logger.warn("Could not normalize trailer: #{trailer.inspect}.")
-            return nil
-          end
-
-          trailer
+          Scraper.logger.warn("Could not normalize trailer: #{trailer.inspect}.")
+          nil
         end
       end
     end

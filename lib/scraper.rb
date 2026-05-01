@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "logger"
+require "uri"
 
 module Scraper
   def self.logger
@@ -9,6 +10,13 @@ module Scraper
 
   def self.logger=(logger)
     @logger = logger
+  end
+
+  def self.valid_http_url?(value)
+    uri = value.is_a?(URI::Generic) ? value : URI.parse(value.to_s)
+    uri.is_a?(URI::HTTP) && !uri.host.to_s.empty?
+  rescue URI::InvalidURIError
+    false
   end
 
   class ScraperError < StandardError; end

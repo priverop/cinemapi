@@ -46,14 +46,10 @@ module Scraper
 
       def normalize_poster(poster)
         return nil if poster.nil? || poster.strip.empty?
+        return poster if Scraper.valid_http_url?(poster)
 
-        poster_url = URI.parse(poster)
-        unless poster_url.is_a?(URI::HTTP) && !poster_url.host.empty?
-          Scraper.logger.warn("Could not normalize poster: #{poster.inspect}.")
-          return nil
-        end
-
-        poster
+        Scraper.logger.warn("Could not normalize poster: #{poster.inspect}.")
+        nil
       end
 
       def normalize_title(title)
