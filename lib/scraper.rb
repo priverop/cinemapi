@@ -11,9 +11,11 @@ module Scraper
     @logger = logger
   end
 
-  class InvalidUrlError < StandardError; end
-  class MoviesNotFoundError < StandardError; end
-  class CalendarNotFoundError < StandardError; end
-  class UnknownLanguageError < StandardError; end
-  class AuthRequiredError < StandardError; end
+  class ScraperError < StandardError; end
+  class InvalidUrlError < ScraperError; end
+  class MoviesNotFoundError < ScraperError; end
+  class InvalidMovieError < ScraperError; end
+  class CalendarNotFoundError < ScraperError; end
+  class UnknownLanguageError < ScraperError; end
+  class AuthRequiredError < ScraperError; end
 end
