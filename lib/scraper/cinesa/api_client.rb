@@ -21,6 +21,8 @@ module Scraper
         response = Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
           http.get(uri.request_uri, headers)
         end
+        raise Scraper::HttpError, "HTTP #{response.code} fetching #{url}." unless response.is_a?(Net::HTTPSuccess)
+
         Scraper.logger.info("Data obtained.")
         response.body
       end

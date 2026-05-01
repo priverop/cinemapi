@@ -49,7 +49,7 @@ module Scraper
       end
 
       def movie_poster(movie)
-        movie.at_css(CSS_SELECTORS[:movie_poster])[ "href" ]
+        movie.at_css(CSS_SELECTORS[:movie_poster])&.dig("href")
       end
 
       def movie_title(movie)

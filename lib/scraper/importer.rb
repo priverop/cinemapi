@@ -44,7 +44,7 @@ module Scraper
       if st.new_record?
         st.language = language.present? ? language : showtime[:language]
         st.save!
-        Scraper.logger.info("Showtime created: #{movie_record.title} @ #{showtime}.")
+        Scraper.logger.info("Showtime created: #{movie_record.title} @ #{showtime[:date]}.")
       else
         Scraper.logger.debug("Showtime exists: #{movie_record.title} @ #{showtime}.")
       end

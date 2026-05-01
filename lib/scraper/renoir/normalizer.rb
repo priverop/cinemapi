@@ -73,7 +73,7 @@ module Scraper
         normalized = language.downcase.strip
         language_symbol = LANGUAGE_MAP.find { |regex, _| normalized.match?(regex) }&.last
 
-        raise Scraper::UnknownLanguageError, "Unkown language '#{language}'." if language_symbol.nil?
+        raise Scraper::UnknownLanguageError, "Unknown language '#{language}'." if language_symbol.nil?
 
         language_symbol
       end
