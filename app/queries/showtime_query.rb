@@ -12,6 +12,8 @@ class ShowtimeQuery
     scope = filter_until_time(scope)
     scope = filter_from_time(scope)
     scope = filter_by_duration(scope)
+    scope = filter_by_price(scope)
+    scope = filter_by_vose(scope)
   end
 
   private
@@ -50,5 +52,17 @@ class ShowtimeQuery
     return scope unless params[:duration].present?
 
     scope.merge(Movie.by_max_duration(params[:duration]))
+  end
+
+  def filter_by_price(scope)
+    return scope unless params[:price].present?
+
+    scope.merge(Theater.by_price(params[:price]))
+  end
+
+  def filter_by_vose(scope)
+    return scope unless params[:vose] == "1"
+
+    scope.merge(Showtime.by_vose)
   end
 end

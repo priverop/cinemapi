@@ -1,5 +1,5 @@
 class Movie < ApplicationRecord
-  scope :by_max_duration, ->(duration) { where("duration < ?", duration) }
+  scope :by_max_duration, ->(duration) { where("duration <= ?", duration) }
   enum :data_source, scraper: 0, manual: 1
 
   has_many :showtimes, dependent: :destroy
