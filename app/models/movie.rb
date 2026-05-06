@@ -1,4 +1,5 @@
 class Movie < ApplicationRecord
+  scope :by_date, ->(date) { joins(:showtimes).where(showtimes: { showtime: date.all_day }) }
   scope :today, -> { joins(:showtimes).merge(Showtime.today).distinct }
   enum :data_source, scraper: 0, manual: 1
 
