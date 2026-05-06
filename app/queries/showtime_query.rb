@@ -11,6 +11,7 @@ class ShowtimeQuery
     scope = filter_by_date(scope)
     scope = filter_until_time(scope)
     scope = filter_from_time(scope)
+    scope = filter_by_duration(scope)
   end
 
   private
@@ -43,5 +44,11 @@ class ShowtimeQuery
     time = Time.parse("#{date} #{params[key]} UTC")
 
     scope.merge(Showtime.public_send(key, time))
+  end
+
+  def filter_by_duration(scope)
+    return scope unless params[:duration].present?
+
+    scope.merge(Movie.by_max_duration(params[:duration]))
   end
 end
