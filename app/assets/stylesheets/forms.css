@@ -19,7 +19,6 @@ select {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-  background: white;
 }
 
 input[type="submit"] {
