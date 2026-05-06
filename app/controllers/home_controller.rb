@@ -2,6 +2,6 @@
 
 class HomeController < ApplicationController
   def index
-    @movies = MovieQuery.new(params).call
+    @movies = ShowtimeQuery.new(params).call.group_by(&:movie)
   end
 end
