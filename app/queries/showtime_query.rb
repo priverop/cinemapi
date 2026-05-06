@@ -26,26 +26,22 @@ class ShowtimeQuery
   end
 
   def filter_until_time(scope)
-    return scope unless params[:until_time].present?
-
-    date = params[:date].presence || Date.current.to_s
-
-    # Time.parse converts the user time into timezone time.
-    # We don't want any conversion.
-    time = Time.parse("#{date} #{params[:until_time]} UTC")
-
-    scope.merge(Showtime.until_time(time))
+    filter_by_time(scope, :until_time)
   end
 
   def filter_from_time(scope)
-    return scope unless params[:from_time].present?
+    filter_by_time(scope, :from_time)
+  end
+
+  def filter_by_time(scope, key)
+    return scope unless params[key].present?
 
     date = params[:date].presence || Date.current.to_s
 
     # Time.parse converts the user time into timezone time.
     # We don't want any conversion.
-    time = Time.parse("#{date} #{params[:from_time]} UTC")
+    time = Time.parse("#{date} #{params[key]} UTC")
 
-    scope.merge(Showtime.from_time(time))
+    scope.merge(Showtime.public_send(key, time))
   end
 end
