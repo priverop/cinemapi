@@ -1,4 +1,7 @@
 class Showtime < ApplicationRecord
+  scope :by_date, ->(date) { where(showtime: date.all_day) }
+  scope :until_time, ->(time) { where("showtime < ?", time) }
+  scope :from_time, ->(time) { where("showtime > ?", time) }
   scope :today, -> { where(showtime: Date.current.all_day) }
   enum :language, dubbed: 0, vo: 1, vose: 2
 
