@@ -6,7 +6,7 @@ require "time"
 module Scraper
   module Cinesa
     class Normalizer
-      POSTER_URL = "https://film-cdn.moviexchange.com/api/cdn/release/{poster_id}/media/Poster"
+      POSTER_URL = "https://film-cdn.moviexchange.com/api/cdn/release/{poster_id}/media/Poster?width=400"
       VOSE_ATTRIBUTE = "Vose"
       ES_NUESTRO_CINE_ATTRIBUTE = "Es Nuestro Cine"
 
@@ -66,9 +66,11 @@ module Scraper
         end
 
         def normalize_poster(poster_id)
-          return nil if poster_id.nil? || poster_id.empty?
+          nil if poster_id.nil? || poster_id.empty?
 
-          POSTER_URL.sub("{poster_id}", poster_id)
+          # Disabled until we setup image downloads.
+          # Currently the
+          # POSTER_URL.sub("{poster_id}", poster_id)
         end
 
         def normalize_showtimes(showtimes)
