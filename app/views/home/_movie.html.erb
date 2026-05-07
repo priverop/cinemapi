@@ -1,38 +1,41 @@
 <article class="bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden flex flex-col">
   <% if movie.poster.present? %>
-    <%= image_tag movie.poster, class: "h-40 w-full object-cover", alt: movie.title %>
+    <%= image_tag movie.poster, class: "h-40 w-full object-cover", alt: movie.title, referrerpolicy: "no-referrer" %>
   <% else %>
-    <div class="bg-gray-200 dark:bg-gray-700 h-40 w-full"></div>
+    <div class="bg-gray-200 dark:bg-gray-700 h-40 w-full">NO IMAGE FOUND</div>
   <% end %>
 
   <div class="p-5 flex flex-col gap-3">
     <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100"><%= movie.title %></h3>
 
-    <div class="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide border-b border-gray-100 dark:border-gray-700 pb-3">
+    <% if movie.description.present? %>
+      <div data-controller="expand-text">
+        <p data-expand-text-target="text" class="text-xs text-gray-600 dark:text-gray-400 line-clamp-3"><%= movie.description %></p>
+        <button data-expand-text-target="button" data-action="expand-text#toggle" class="block ml-auto text-[10px] text-gray-400 dark:text-gray-500 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">Read more</button>
+      </div>
+    <% end %>
+
+    <div class="flex items-center justify-between gap-4 text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide border-b border-gray-100 dark:border-gray-700 pb-3">
       <% if movie.duration %>
         <div>
           <span class="font-semibold">Duration</span><br>
           <span class="text-gray-800 dark:text-gray-200 text-sm font-medium normal-case"><%= movie.duration %> min</span>
         </div>
       <% end %>
+
+    <% if movie.genre.present? %>
+      <% movie.genre.split(",").map(&:strip).each do |g| %>
+        <span class="border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 text-xs rounded-full px-3 py-1"><%= g %></span>
+      <% end %>
+    <% end %>
     </div>
 
     <div class="flex flex-wrap gap-2 border-b border-gray-100 dark:border-gray-700 pb-3">
-      <% showtimes.each do |showtime| %>
-        <span class="border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 text-xs rounded-full px-3 py-1"><%= showtime.showtime %></span>
-      <% end %>
+      <%= render partial: "home/showtime", collection: showtimes %>
     </div>
 
-    <% if movie.genre.present? %>
-      <div class="flex flex-wrap gap-2">
-        <% movie.genre.split(",").map(&:strip).each do |g| %>
-          <span class="border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 text-xs rounded-full px-3 py-1"><%= g %></span>
-        <% end %>
-      </div>
-    <% end %>
 
-    <% if movie.description.present? %>
-      <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-3"><%= movie.description %></p>
-    <% end %>
+
+
   </div>
 </article>
