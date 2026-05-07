@@ -7,9 +7,30 @@
                     method: :get, 
                     data: { turbo_frame: "movies", turbo_action: "advance", controller: "auto-submit", action: "change->auto-submit#submit" }, 
                     class: "flex flex-col gap-4") do |form| %>
-        <div class="flex flex-col gap-1">
+        <div class="flex flex-col gap-1"
+             data-controller="theaters-autocomplete"
+             data-theaters-autocomplete-url-value="<%= theater_search_path %>">
           <%= form.label :theaters, class: "text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide" %>
-          <%= form.text_field :theaters, value: params[:theaters], class: "rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 px-3 py-2 text-sm text-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" %>
+
+          <div class="flex flex-wrap gap-1" data-theaters-autocomplete-target="pills">
+            <% Array(params[:theaters]).each do |name| %>
+              <%= render "pill", name: name %>
+            <% end %>
+          </div>
+
+          <template data-theaters-autocomplete-target="template">
+            <%= render "pill", name: "" %>
+          </template>
+
+          <div class="relative">
+            <input type="text" placeholder="Search theater..."
+                   class="w-full rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 px-3 py-2 text-sm text-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                   data-theaters-autocomplete-target="input"
+                   data-action="input->theaters-autocomplete#search blur->theaters-autocomplete#hideResults">
+
+            <ul class="hidden absolute z-10 w-full bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg shadow-md max-h-48 overflow-auto"
+                data-theaters-autocomplete-target="results"></ul>
+          </div>
         </div>
 
         <div class="flex flex-col gap-1">
@@ -42,9 +63,9 @@
         <div class="flex flex-col gap-2" data-controller="range">
           <div class="flex justify-between items-center">
             <%= form.label :price, class: "text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide" %>
-            <span class="text-sm text-gray-800 dark:text-gray-100 font-medium"><span data-range-target="output"><%= params[:price] || 10 %></span> €</span>
+            <span class="text-sm text-gray-800 dark:text-gray-100 font-medium"><span data-range-target="output"><%= params[:price] || 20 %></span> €</span>
           </div>
-          <%= form.range_field :price, in: 0..20, step: 1, value: params[:price] || 10,
+          <%= form.range_field :price, in: 0..20, step: 1, value: params[:price] || 20,
               class: "slide w-full accent-blue-600",
               data: { range_target: "input", action: "input->range#update" } %>
         </div>

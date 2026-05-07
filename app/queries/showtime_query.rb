@@ -7,13 +7,14 @@ class ShowtimeQuery
   end
 
   def call
-    scope = Showtime.includes(:movie, :theater).joins(:movie).order("movies.title")
+    scope = Showtime.includes(:movie, :theater).joins(:movie, :theater).order("movies.title")
     scope = filter_by_date(scope)
     scope = filter_until_time(scope)
     scope = filter_from_time(scope)
     scope = filter_by_duration(scope)
     scope = filter_by_price(scope)
     scope = filter_by_vose(scope)
+    scope = filter_by_theaters(scope)
   end
 
   private
@@ -64,5 +65,11 @@ class ShowtimeQuery
     return scope unless params[:vose] == "1"
 
     scope.merge(Showtime.by_vose)
+  end
+
+  def filter_by_theaters(scope)
+    return scope unless params[:theaters].present?
+
+    scope.merge(Theater.by_names(params[:theaters]))
   end
 end

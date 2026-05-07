@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :theaters
   end
 
+  get "theater_search", to: "home#theater_search"
+
   # Defines the root path route ("/")
   root "home#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
