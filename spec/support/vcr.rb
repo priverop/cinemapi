@@ -10,4 +10,5 @@ VCR.configure do |config|
   config.filter_sensitive_data("<AUTH_TOKEN>") { ENV.fetch("CINESA_AUTH_TOKEN", nil) }
   config.default_cassette_options = { record: :none }
   config.allow_http_connections_when_no_cassette = false
+  config.ignore_localhost = true
 end
