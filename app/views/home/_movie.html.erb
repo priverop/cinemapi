@@ -1,6 +1,6 @@
 <article class="bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden flex flex-col">
   <% if movie.poster.present? %>
-    <%= image_tag movie.poster, class: "h-40 w-full object-cover", alt: movie.title, referrerpolicy: "no-referrer" %>
+    <%= image_tag movie.poster.include?("moviexchange.com") ? image_proxy_path(url: movie.poster) : movie.poster, class: "h-40 w-full object-cover", alt: movie.title %>
   <% else %>
     <div class="bg-gray-200 dark:bg-gray-700 h-40 w-full">NO IMAGE FOUND</div>
   <% end %>

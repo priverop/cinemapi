@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   get "theater_search", to: "home#theater_search"
+  get "image_proxy", to: "image_proxy#show", as: :image_proxy
 
   # Defines the root path route ("/")
   root "home#index"
