@@ -66,11 +66,9 @@ module Scraper
         end
 
         def normalize_poster(poster_id)
-          nil if poster_id.nil? || poster_id.empty?
+          return nil if poster_id.nil? || poster_id.empty?
 
-          # Disabled until we setup image downloads.
-          # Currently the
-          # POSTER_URL.sub("{poster_id}", poster_id)
+          POSTER_URL.sub("{poster_id}", poster_id)
         end
 
         def normalize_showtimes(showtimes)
