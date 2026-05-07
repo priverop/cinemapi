@@ -2,7 +2,7 @@
   <% if movie.poster.present? %>
     <%= image_tag movie.poster.include?("moviexchange.com") ? image_proxy_path(url: movie.poster) : movie.poster, class: "h-40 w-full object-cover", alt: movie.title %>
   <% else %>
-    <div class="bg-gray-200 dark:bg-gray-700 h-40 w-full">NO IMAGE FOUND</div>
+    <div class="bg-gray-200 dark:bg-gray-700 h-40 w-full flex items-center justify-center text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wide">No image</div>
   <% end %>
 
   <div class="p-5 flex flex-col gap-3">
@@ -33,9 +33,5 @@
     <div class="flex flex-wrap gap-2 border-b border-gray-100 dark:border-gray-700 pb-3">
       <%= render partial: "home/showtime", collection: showtimes %>
     </div>
-
-
-
-
   </div>
 </article>

@@ -1,5 +1,5 @@
 <main class="flex flex-col md:flex-row relative gap-6 p-5">
-  <section class="w-full md:w-1/4 md:sticky md:top-5 md:self-start">
+  <section class="w-full md:w-1/4 md:sticky md:top-5 md:self-start" aria-label="Filters">
     <details class="group bg-white dark:bg-gray-800 rounded-2xl shadow-md" data-controller="collapse-filters">
       <summary class="flex items-center justify-between cursor-pointer px-6 py-4 md:cursor-default group-open:border-b group-open:border-gray-100 dark:group-open:border-gray-700">
         <h2 class="font-bold text-2xl text-gray-900 dark:text-gray-100">Filters</h2>
@@ -62,6 +62,9 @@
           <%= form.range_field :duration, in: 90..300, step: 30, value: params[:duration] || 300,
               class: "slide w-full accent-blue-600",
               data: { range_target: "input", action: "input->range#update" } %>
+          <div class="flex justify-between text-xs text-gray-400 dark:text-gray-500">
+            <span>90 min</span><span>300 min</span>
+          </div>
         </div>
 
         <div class="flex flex-col gap-2" data-controller="range">
@@ -72,6 +75,9 @@
           <%= form.range_field :price, in: 0..20, step: 1, value: params[:price] || 20,
               class: "slide w-full accent-blue-600",
               data: { range_target: "input", action: "input->range#update" } %>
+          <div class="flex justify-between text-xs text-gray-400 dark:text-gray-500">
+            <span>0 €</span><span>20 €</span>
+          </div>
         </div>
 
         <label class="flex items-center gap-2 cursor-pointer pt-1">
@@ -83,9 +89,10 @@
     </details>
   </section>
 
-  <section class="h-full w-full md:w-3/4">
+  <section class="h-full w-full md:w-3/4" aria-label="Movies">
     <%= turbo_frame_tag "movies" do %>
-      <h2 class="font-bold text-4xl text-gray-900 dark:text-gray-100 mb-2">Movies for <%= params[:date].presence || "today" %></h2>
+      <% display_date = params[:date].present? ? Date.parse(params[:date]).strftime("%-d %B") : "today, #{Date.today.strftime("%-d %B")}" %>
+      <h2 class="font-bold text-4xl text-gray-900 dark:text-gray-100 mb-2">Movies for <%= display_date %></h2>
       <% if @movies.empty? %>
         <p class="text-gray-500 dark:text-gray-400 py-5">No results.</p>
       <% else %>
