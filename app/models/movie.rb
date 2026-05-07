@@ -19,4 +19,8 @@ class Movie < ApplicationRecord
   def display_name
     title
   end
+
+  def genres
+    genre.to_s.split(",").map(&:strip).reject(&:empty?)
+  end
 end
