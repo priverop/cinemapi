@@ -39,7 +39,7 @@ RSpec.describe Scraper::Cinesa::Normalizer do
           directors: [ "Phil Lord", "Christopher Miller" ],
           duration: 156,
           genres: [ "Acción", "Aventura", "Ciencia ficción" ],
-          poster: "https://film-cdn.moviexchange.com/api/cdn/release/f741e25d-2e02-44e5-bc0f-5460117e540a/media/Poster",
+          poster: "https://film-cdn.moviexchange.com/api/cdn/release/f741e25d-2e02-44e5-bc0f-5460117e540a/media/Poster?width=400",
           showtimes: [ { date: DateTime.parse("2026-04-27T17:45:00+02:00"), language: :vose }, { date: DateTime.parse("2026-04-27T21:20:00+02:00"), language: :dubbed } ],
           title: "Proyecto Salvación",
           trailer: "https://www.youtube.com/watch?v=in-lUuKi0eE"
@@ -49,7 +49,7 @@ RSpec.describe Scraper::Cinesa::Normalizer do
           directors: [ "Miguel Ángel Lamata" ],
           duration: 91,
           genres: [ "Terror" ],
-          poster: "https://film-cdn.moviexchange.com/api/cdn/release/ead7d23f-c8bc-4370-a332-fcf625acc05b/media/Poster",
+          poster: "https://film-cdn.moviexchange.com/api/cdn/release/ead7d23f-c8bc-4370-a332-fcf625acc05b/media/Poster?width=400",
           showtimes: [ { date: DateTime.parse("2026-04-27T19:10:00+02:00"), language: :vo }, { date: DateTime.parse("2026-04-27T21:30:00+02:00"), language: :vo } ],
           title: "La ahorcada",
           trailer: "https://www.youtube.com/watch?v=bQOcBnTGpuk"

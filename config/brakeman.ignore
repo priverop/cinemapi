@@ -1,12 +1,106 @@
 {
   "ignored_warnings": [
     {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
       "fingerprint": "2e246746503babdee5d56afdeec4b6820917c3a037a266fd0e5b16fb5ca22c1f",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/theaters/_theater.html.erb",
+      "line": 14,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(nil, Theater.new.website)",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "TheatersController",
+          "method": "index",
+          "line": 8,
+          "file": "app/controllers/theaters_controller.rb",
+          "rendered": {
+            "name": "theaters/index",
+            "file": "app/views/theaters/index.html.erb"
+          }
+        },
+        {
+          "type": "template",
+          "name": "theaters/index",
+          "line": 9,
+          "file": "app/views/theaters/index.html.erb",
+          "rendered": {
+            "name": "theaters/_theater",
+            "file": "app/views/theaters/_theater.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "theaters/_theater"
+      },
+      "user_input": "Theater.new.website",
+      "confidence": "Weak",
+      "cwe_id": [
+        79
+      ],
       "note": "Theater#website is validated as a URL before save; low risk in backoffice-only view"
     },
     {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
       "fingerprint": "53fa8472b7386f40835124275ca663d92de7219d440f71d5643aff10e61099af",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/theaters/show.html.erb",
+      "line": 11,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(nil, Theater.find(params[:id]).website)",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "TheatersController",
+          "method": "show",
+          "line": 25,
+          "file": "app/controllers/theaters_controller.rb",
+          "rendered": {
+            "name": "theaters/show",
+            "file": "app/views/theaters/show.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "theaters/show"
+      },
+      "user_input": "Theater.find(params[:id]).website",
+      "confidence": "Weak",
+      "cwe_id": [
+        79
+      ],
       "note": "Theater#website is validated as a URL before save; low risk in backoffice-only view"
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "ee499582098f7124a8115d916c6d1da7285ace5e112483495e40a5c77dbbfb15",
+      "check_name": "FileAccess",
+      "message": "Parameter value used in file name",
+      "file": "app/controllers/image_proxy_controller.rb",
+      "line": 12,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "Net::HTTP.new(URI.parse(params[:url]).host, URI.parse(params[:url]).port)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "ImageProxyController",
+        "method": "show"
+      },
+      "user_input": "params[:url]",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
     }
-  ]
+  ],
+  "brakeman_version": "8.0.4"
 }

@@ -1,0 +1,14 @@
+<div class="flex flex-col gap-2" data-controller="range">
+  <div class="flex justify-between items-center">
+    <%= form.label field, class: "text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide" %>
+    <span class="text-sm text-gray-800 dark:text-gray-100 font-medium">
+      <span data-range-target="output"><%= params[field] || default %></span> <%= unit %>
+    </span>
+  </div>
+  <%= form.range_field field, in: min..max, step: step, value: params[field] || default,
+      class: "slide w-full accent-blue-600",
+      data: { range_target: "input", action: "input->range#update" } %>
+  <div class="flex justify-between text-xs text-gray-400 dark:text-gray-500">
+    <span><%= min %> <%= unit %></span><span><%= max %> <%= unit %></span>
+  </div>
+</div>

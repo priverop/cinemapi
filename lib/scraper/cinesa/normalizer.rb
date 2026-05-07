@@ -6,7 +6,7 @@ require "time"
 module Scraper
   module Cinesa
     class Normalizer
-      POSTER_URL = "https://film-cdn.moviexchange.com/api/cdn/release/{poster_id}/media/Poster"
+      POSTER_URL = "https://film-cdn.moviexchange.com/api/cdn/release/{poster_id}/media/Poster?width=400"
       VOSE_ATTRIBUTE = "Vose"
       ES_NUESTRO_CINE_ATTRIBUTE = "Es Nuestro Cine"
 

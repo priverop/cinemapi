@@ -1,0 +1,29 @@
+<main class="flex flex-col md:flex-row relative gap-6 p-5">
+  <section class="w-full md:w-1/4 md:sticky md:top-5 md:self-start" aria-label="Filters">
+    <details class="group bg-white dark:bg-gray-800 rounded-2xl shadow-md" data-controller="collapse-filters">
+      <summary class="flex items-center justify-between cursor-pointer px-6 py-4 md:cursor-default group-open:border-b group-open:border-gray-100 dark:group-open:border-gray-700">
+        <h2 class="font-bold text-2xl text-gray-900 dark:text-gray-100">Filters</h2>
+        <span class="text-gray-400 hover:text-blue-500 md:hidden text-lg leading-none transition-colors">&#9776;</span>
+      </summary>
+      <div class="p-6">
+        <%= render "filters" %>
+      </div>
+    </details>
+  </section>
+
+  <section class="h-full w-full md:w-3/4" aria-label="Movies">
+    <%= turbo_frame_tag "movies" do %>
+      <% display_date = params[:date].present? ? Date.parse(params[:date]).strftime("%-d %B") : "today, #{Date.today.strftime("%-d %B")}" %>
+      <h2 class="font-bold text-4xl text-gray-900 dark:text-gray-100 mb-2">Movies for <%= display_date %></h2>
+      <% if @movies.empty? %>
+        <p class="text-gray-500 dark:text-gray-400 py-5">No results.</p>
+      <% else %>
+        <article class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-5">
+          <% @movies.each do |movie, showtimes| %>
+            <%= render "home/movie", movie: movie, showtimes: showtimes %>
+          <% end %>
+        </article>
+      <% end %>
+    <% end %>
+  </section>
+</main>

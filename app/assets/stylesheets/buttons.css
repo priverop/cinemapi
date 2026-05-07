@@ -1,16 +1,16 @@
 button,
 a.button {
-  border: 1px solid black;
   border-radius: 4px;
   font-size: 0.875rem; /* tailwind sm */
   line-height: 1.25rem; /* tailwind sm */
   cursor: pointer;
-  padding: 4px;
 }
 
 button.primary,
 a.primary {
+  border: 1px solid black;
   background: red;
+  padding: 4px;
 }
 
 button.primary:hover,
@@ -21,7 +21,9 @@ a.primary:hover {
 
 button.secondary,
 a.secondary {
+  border: 1px solid black;
   color: red;
+  padding: 4px;
 }
 
 button.secondary:hover,

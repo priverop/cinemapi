@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class MoviesController < ApplicationController
+class MoviesController < DashboardController
   before_action :set_movie, only: %i[ edit update destroy ]
 
   # GET /movies or /movies.json

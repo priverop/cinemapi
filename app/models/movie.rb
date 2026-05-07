@@ -1,4 +1,5 @@
 class Movie < ApplicationRecord
+  scope :by_max_duration, ->(duration) { where("duration <= ?", duration) }
   enum :data_source, scraper: 0, manual: 1
 
   has_many :showtimes, dependent: :destroy
@@ -17,5 +18,9 @@ class Movie < ApplicationRecord
 
   def display_name
     title
+  end
+
+  def genres
+    genre.to_s.split(",").map(&:strip).reject(&:empty?)
   end
 end
