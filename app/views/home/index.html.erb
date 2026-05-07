@@ -1,7 +1,7 @@
 <main class="flex relative gap-6 p-5">
   <section class="w-1/4 sticky top-5 self-start">
     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6">
-      <h2 class="font-bold text-2xl text-gray-900 dark:text-gray-100 mb-5 pb-3 border-b border-gray-100 dark:border-gray-700">Filtros</h2>
+      <h2 class="font-bold text-2xl text-gray-900 dark:text-gray-100 mb-5 pb-3 border-b border-gray-100 dark:border-gray-700">Filters</h2>
 
       <%= form_with(url: root_path, 
                     method: :get, 
@@ -79,8 +79,8 @@
   </section>
 
   <section class="h-full w-3/4">
-    <h2 class="font-bold text-4xl text-gray-900 dark:text-gray-100 mb-2">Cartelera</h2>
     <%= turbo_frame_tag "movies" do %>
+      <h2 class="font-bold text-4xl text-gray-900 dark:text-gray-100 mb-2">Movies for <%= params[:date].presence || "today" %></h2>
       <% if @movies.empty? %>
         <p class="text-gray-500 dark:text-gray-400 py-5">No results.</p>
       <% else %>
