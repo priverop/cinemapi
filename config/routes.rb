@@ -1,16 +1,17 @@
 Rails.application.routes.draw do
   namespace :api do
     get "movies/search", to: "movies#search"
-    resources :movies
-    resources :theaters
+    resources :movies, only: [ :index, :show ]
+    resources :theaters, only: [ :index, :show ]
   end
 
   scope "/backoffice" do
-    get "/", to: "dashboard#index"
+    get "/", to: "dashboard#index", as: :backoffice_root
     resource :session
     resources :passwords, param: :token
     resources :movies
     resources :theaters
+    post "scraper", to: "scraper#run"
   end
 
   get "theater_search", to: "home#theater_search"
