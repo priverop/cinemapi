@@ -24,16 +24,18 @@ class Api::MoviesController < ApplicationController
     # Validation
     if datetime_param.blank? || theaters_param.blank?
       render json: {
-        error: "Missing required parameters: date and time"
+        error: "Missing required parameters: date and time."
       }, status: :bad_request
+      return
     end
 
     begin
       datetime = DateTime.parse(datetime_param)
     rescue ArgumentError => e
       render json: {
-        error: "Invalid datetime format: #{e.message}"
+        error: "Invalid datetime format: #{e.message}."
       }, status: :bad_request
+      return
     end
 
     # Query
