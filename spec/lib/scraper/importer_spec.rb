@@ -9,7 +9,7 @@ RSpec.describe Scraper::Importer do
     let(:input) do
       [ {
         poster: nil,
-        title: "PRIME CRIME: A TRUE STORY",
+        title: "Prime Crime: A True Story",
         directors: [ "Víctor García León" ],
         language: :vo,
         duration: 101,
@@ -17,7 +17,7 @@ RSpec.describe Scraper::Importer do
       },
       {
         poster: "https://subdomain.domain.com/imagenes/hash.jpg",
-        title: "EL CRISTAL OSCURO [WILDER CINEMA]",
+        title: "El Cristal Oscuro",
         directors: [ "Lluís Galter", "Eduardo Casanova", "Màrius Sánchez" ],
         language: :vose,
         duration: 123,
@@ -74,7 +74,7 @@ RSpec.describe Scraper::Importer do
       let(:movies_no_showtimes) do
         [ {
           poster: nil,
-          title: "PRIME CRIME: A TRUE STORY",
+          title: "Prime Crime: A True Story",
           directors: [ "Víctor García León" ],
           language: :vo,
           duration: 101,
@@ -82,7 +82,7 @@ RSpec.describe Scraper::Importer do
         },
         {
           poster: "https://subdomain.domain.com/imagenes/hash.jpg",
-          title: "EL CRISTAL OSCURO [WILDER CINEMA]",
+          title: "El Cristal Oscuro",
           directors: [ "Lluís Galter", "Eduardo Casanova", "Màrius Sánchez" ],
           language: :vose,
           duration: 123,
@@ -99,6 +99,82 @@ RSpec.describe Scraper::Importer do
 
       it "creates new showtimes" do
         expect { importer.import(input) }.to change { Showtime.count }.from(4).to(8)
+      end
+    end
+
+    context "when movie exists with missing attributes" do
+      let!(:existing) do
+        create(:movie,
+               title: "Prime Crime: A True Story",
+               duration: 101,
+               description: nil,
+               directors: nil,
+               genre: nil,
+               poster: nil)
+      end
+
+      let(:enriched) do
+        [ {
+          poster: "https://example.com/poster.jpg",
+          title: "Prime Crime: A True Story",
+          description: "A thrilling story.",
+          directors: [ "Víctor García León" ],
+          genres: [ "Drama" ],
+          language: :vo,
+          duration: 101,
+          showtimes: [ { date: Time.new(2026, 4, 23, 15, 50) } ]
+        } ]
+      end
+
+      it "fills blank attributes" do
+        importer.import(enriched)
+
+        expect(existing.reload).to have_attributes(
+          description: "A thrilling story.",
+          directors: [ "Víctor García León" ],
+          genre: "Drama",
+          poster: "https://example.com/poster.jpg"
+        )
+      end
+
+      it "does not change duration" do
+        expect { importer.import(enriched) }.not_to(change { existing.reload.duration })
+      end
+    end
+
+    context "when movie exists with attributes already populated" do
+      let!(:existing) do
+        create(:movie,
+               title: "Prime Crime: A True Story",
+               duration: 101,
+               description: "Original description.",
+               directors: [ "Original Director" ],
+               genre: "Thriller",
+               poster: "https://example.com/original.jpg")
+      end
+
+      let(:enriched) do
+        [ {
+          poster: "https://example.com/new.jpg",
+          title: "Prime Crime: A True Story",
+          description: "New description.",
+          directors: [ "New Director" ],
+          genres: [ "Drama" ],
+          language: :vo,
+          duration: 101,
+          showtimes: [ { date: Time.new(2026, 4, 23, 15, 50) } ]
+        } ]
+      end
+
+      it "does not overwrite existing attributes" do
+        importer.import(enriched)
+
+        expect(existing.reload).to have_attributes(
+          description: "Original description.",
+          directors: [ "Original Director" ],
+          genre: "Thriller",
+          poster: "https://example.com/original.jpg"
+        )
       end
     end
   end

@@ -24,19 +24,33 @@ module Scraper
             description: movie[:description],
             duration: movie[:duration],
             directors: movie[:directors],
-            genre: movie[:genres]&.first, # TODO: support multiple genres in Movie model.
+            genre: movie.dig(:genres)&.first, # TODO: support multiple genres in Movie model.
             poster: movie[:poster]
           )
           record.save!
           Scraper.logger.info("Movie created: #{record.title} (id=#{record.id}).")
         else
           Scraper.logger.info("Movie exists: #{record.title} (id=#{record.id}).")
+          update_movie_attributes(record, movie)
         end
 
         movie[:showtimes].each { |st| import_showtime(record, st, movie[:language]) }
       end
     rescue ActiveRecord::RecordInvalid => e
       Scraper.logger.error("Import failed for '#{movie[:title]}': #{e.message}.")
+    end
+
+    def update_movie_attributes(record, movie)
+      attrs = {}
+      attrs[:description] = movie[:description] if record.description.blank? && movie[:description].present?
+      attrs[:directors] = movie[:directors] if record.directors.blank? && movie[:directors].present?
+      attrs[:genre] = movie[:genres].first if record.genre.blank? && movie[:genres].present?
+      attrs[:poster] = movie[:poster] if record.poster.blank? && movie[:poster].present?
+
+      if attrs.any?
+        record.update!(attrs)
+        Scraper.logger.info("Movie updated: #{record.title} (id=#{record.id}, fields=#{attrs.keys.join(', ')}).")
+      end
     end
 
     def import_showtime(movie_record, showtime, language)
