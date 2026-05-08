@@ -1,0 +1,29 @@
+<aside
+  class="relative mx-5 mt-5 rounded-2xl border border-blue-200 dark:border-blue-900/60 bg-blue-50 dark:bg-blue-950/40 p-5 pr-12 shadow-sm"
+  data-controller="dismissible-banner"
+  data-dismissible-banner-key-value="welcome_banner_dismissed_v1"
+  role="note"
+  aria-label="Welcome message">
+  <div class="flex items-start gap-3">
+    <span class="text-2xl leading-none" aria-hidden="true">🎬</span>
+    <div class="text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
+      <p class="font-semibold text-blue-700 dark:text-blue-300 text-base mb-1">Welcome to Cinemapi!</p>
+      <p>
+        Your local theater aggregator. Filter your favorite theaters by your own preferences and
+        decide what to watch at a glance. We currently only support three theaters, with more on the way!
+      </p>
+      <p class="mt-2 text-gray-500 dark:text-gray-400 text-xs">
+        <strong class="font-semibold">Note:</strong> this project is in an early stage, so it won't be difficult to find errors.
+      </p>
+    </div>
+  </div>
+  <button
+    type="button"
+    class="absolute top-3 right-3 text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors p-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+    aria-label="Dismiss welcome message"
+    data-action="click->dismissible-banner#dismiss">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path fill-rule="evenodd" d="M4.22 4.22a.75.75 0 0 1 1.06 0L10 8.94l4.72-4.72a.75.75 0 1 1 1.06 1.06L11.06 10l4.72 4.72a.75.75 0 1 1-1.06 1.06L10 11.06l-4.72 4.72a.75.75 0 0 1-1.06-1.06L8.94 10 4.22 5.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+    </svg>
+  </button>
+</aside>
