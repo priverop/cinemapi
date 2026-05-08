@@ -28,8 +28,15 @@
     <% end %>
     </div>
 
-    <div class="flex flex-wrap gap-2 border-b border-gray-100 dark:border-gray-700 pb-3">
-      <%= render partial: "home/showtime", collection: showtimes %>
+    <div class="flex flex-col gap-3 dark:border-gray-700 pb-3">
+      <% showtimes.group_by(&:theater).each do |theater, theater_showtimes| %>
+        <div class="flex flex-col gap-2">
+          <h4 class="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400"><%= theater.name %></h4>
+          <div class="flex flex-wrap gap-2">
+            <%= render partial: "home/showtime", collection: theater_showtimes %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </article>
