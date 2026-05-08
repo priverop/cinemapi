@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :passwords, param: :token
     resources :movies
     resources :theaters
-    get "scraper", to: "scraper#run"
+    post "scraper", to: "scraper#run"
   end
 
   get "theater_search", to: "home#theater_search"
