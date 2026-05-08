@@ -6,11 +6,12 @@ Rails.application.routes.draw do
   end
 
   scope "/backoffice" do
-    get "/", to: "dashboard#index"
+    get "/", to: "dashboard#index", as: :backoffice_root
     resource :session
     resources :passwords, param: :token
     resources :movies
     resources :theaters
+    get "scraper", to: "scraper#run"
   end
 
   get "theater_search", to: "home#theater_search"

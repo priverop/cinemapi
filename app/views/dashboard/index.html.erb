@@ -1,5 +1,9 @@
 <h2 class="text-xl">Dashboard</h2>
 
+<div class="my-4">
+  <%= link_to "Run scraper now", scraper_path, data: { turbo_confirm: "Run scraper? This may take a while." }, class: "px-3 py-2 bg-blue-600 text-white rounded inline-block" %>
+</div>
+
 <div class="flex">
   <%= render "card", locals: { title: "Theaters",
                                sub_info: :location,
