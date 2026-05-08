@@ -18,6 +18,12 @@ pio = Theater.create!(name: 'Cinesa Príncipe Pío', location: 'Centro Comercial
 
 puts 'Creating Users'
 puts '- - - - - - - - - -'
-User.create!(email_address: "admin@cinemapi.com", password: "123")
+if Rails.env.development?
+  User.create!(email_address: "admin@cinemapi.com", password: "123")
+else
+  admin_email = ENV.fetch("ADMIN_EMAIL")
+  admin_password = ENV.fetch("ADMIN_PASSWORD")
+  User.create!(email_address: admin_email, password: admin_password)
+end
 
 puts 'SUCCESS!'
