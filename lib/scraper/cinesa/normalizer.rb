@@ -94,7 +94,7 @@ module Scraper
         def normalize_title(title)
           raise Scraper::InvalidMovieError, "Movie has an empty title." if title.nil? || title.strip.empty?
 
-          title.strip
+          title.strip.titleize
         end
 
         def normalize_trailer(trailer)

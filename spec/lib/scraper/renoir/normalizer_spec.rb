@@ -33,7 +33,7 @@ RSpec.describe Scraper::Renoir::Normalizer do
       it "returns the clean movies" do
         expect(normalizer.normalize(input)).to match([ {
           poster: nil,
-          title: "PRIME CRIME: A TRUE STORY",
+          title: "Prime Crime: A True Story",
           directors: [ "Víctor García León" ],
           language: :vo,
           duration: 101,
@@ -41,7 +41,7 @@ RSpec.describe Scraper::Renoir::Normalizer do
         },
         {
           poster: "https://subdomain.domain.com/imagenes/hash.jpg",
-          title: "EL CRISTAL OSCURO [WILDER CINEMA]",
+          title: "El Cristal Oscuro",
           directors: [ "Lluís Galter", "Eduardo Casanova", "Màrius Sánchez" ],
           language: :vose,
           duration: 123,
