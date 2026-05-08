@@ -1,6 +1,4 @@
 class Api::MoviesController < ApplicationController
-  before_action :set_movie, only: %i[ show update destroy ]
-
   # GET /movies
   def index
     @movies = Movie.all
@@ -10,6 +8,8 @@ class Api::MoviesController < ApplicationController
 
   # GET /movies/1
   def show
+    @movie = Movie.find(params.expect(:id))
+
     render json: @movie
   end
 
@@ -60,38 +60,4 @@ class Api::MoviesController < ApplicationController
 
     render json: result
   end
-
-  # POST /movies
-  def create
-    @movie = Movie.new(movie_params)
-
-    if @movie.save
-      render json: @movie, status: :created, location: api_movie_url(@movie)
-    else
-      render json: @movie.errors, status: :unprocessable_content
-    end
-  end
-
-  # PATCH/PUT /movies/1
-  def update
-    if @movie.update(movie_params)
-      render json: @movie
-    else
-      render json: @movie.errors, status: :unprocessable_content
-    end
-  end
-
-  # DELETE /movies/1
-  def destroy
-    @movie.destroy!
-  end
-
-  private
-    def set_movie
-      @movie = Movie.find(params.expect(:id))
-    end
-
-    def movie_params
-      params.expect(movie: [ :title, :duration, :genre ])
-    end
 end

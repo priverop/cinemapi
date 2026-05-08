@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   namespace :api do
     get "movies/search", to: "movies#search"
-    resources :movies
-    resources :theaters
+    resources :movies, only: [ :index, :show ]
+    resources :theaters, only: [ :index, :show ]
   end
 
   scope "/backoffice" do
