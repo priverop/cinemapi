@@ -55,7 +55,7 @@ module Scraper
       def normalize_title(title)
         raise Scraper::InvalidMovieError, "Movie has an empty title." if title.nil? || title.strip.empty?
 
-        title.strip # TODO: Renoir always have UPPERCASE MOVIE TITLES, we should normalize that as well.
+        title.gsub(/\[.*?\]/, "").strip.titleize
       end
 
       def normalize_directors(directors)

@@ -26,7 +26,7 @@ RSpec.describe Scraper::Cinesa::Normalizer do
           genres: [ "Terror" ],
           poster_id: "ead7d23f-c8bc-4370-a332-fcf625acc05b",
           showtimes: [ { date: "2026-04-27T19:10:00+02:00", language: [ "Es Nuestro Cine", "Terror y Suspense" ] }, { date: "2026-04-27T21:30:00+02:00", language: [ "Es Nuestro Cine", "Terror y Suspense" ] } ],
-          title: "La ahorcada",
+          title: "La Ahorcada",
           trailer: "https://www.youtube.com/watch?v=bQOcBnTGpuk"
         }
         ]
@@ -51,7 +51,7 @@ RSpec.describe Scraper::Cinesa::Normalizer do
           genres: [ "Terror" ],
           poster: "https://film-cdn.moviexchange.com/api/cdn/release/ead7d23f-c8bc-4370-a332-fcf625acc05b/media/Poster?width=400",
           showtimes: [ { date: DateTime.parse("2026-04-27T19:10:00+02:00"), language: :vo }, { date: DateTime.parse("2026-04-27T21:30:00+02:00"), language: :vo } ],
-          title: "La ahorcada",
+          title: "La Ahorcada",
           trailer: "https://www.youtube.com/watch?v=bQOcBnTGpuk"
         }
         ])
