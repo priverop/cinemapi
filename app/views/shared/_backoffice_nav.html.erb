@@ -1,0 +1,8 @@
+<nav class="flex gap-6 mb-6 border-b border-gray-200 dark:border-gray-700 pb-3">
+  <%= link_to "Dashboard", backoffice_root_path,
+      class: "text-sm font-medium pb-3 -mb-3 border-b-2 #{controller_name == 'dashboard' ? 'border-red-500 text-red-600 dark:text-red-400' : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'}" %>
+  <%= link_to "Movies", movies_path,
+      class: "text-sm font-medium pb-3 -mb-3 border-b-2 #{controller_name == 'movies' ? 'border-red-500 text-red-600 dark:text-red-400' : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'}" %>
+  <%= link_to "Theaters", theaters_path,
+      class: "text-sm font-medium pb-3 -mb-3 border-b-2 #{controller_name == 'theaters' ? 'border-red-500 text-red-600 dark:text-red-400' : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'}" %>
+</nav>

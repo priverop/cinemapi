@@ -58,6 +58,9 @@
     
     <main class="container mx-auto mt-5 px-5">
       <%= render "shared/flash" %>
+      <% if controller.is_a?(DashboardController) %>
+        <%= render "shared/backoffice_nav" %>
+      <% end %>
       <%= yield %>
     </main>
   </body>
