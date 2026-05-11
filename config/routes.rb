@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :passwords, param: :token
     resources :movies
     resources :theaters
+    resources :showtimes, only: %i[new create edit update destroy]
     post "scraper", to: "scraper#run"
   end
 
