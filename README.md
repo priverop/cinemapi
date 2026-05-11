@@ -36,3 +36,10 @@ This project also runs with [Docker](https://www.docker.com/) or [Dev Containers
 
 - [Project description and ideas](/docs/project.md)
 - [Decision Records](/docs/decision-records.md)
+
+## What's next
+
+- Cinesa scraper anti-bot. The current system is not working in production. We should diagnose it, and test for different strategies.
+- Add more cinemas.
+- Complete movie info (trailer, link to buy ticket, etc).
+- Complete the API with all the filters.
