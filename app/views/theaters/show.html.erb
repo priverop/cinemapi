@@ -1,27 +1,90 @@
-<% content_for :title, "Cinemapi | Backoffice | Theater" %>
+<% content_for :title, "#{@theater.name} | Backoffice" %>
 
-<div class="border p-5 rounded flex justify-between">
-  <div>
-    <h2 class="font-bold"><%= @theater.name %> 
-      <% if !@theater.is_enabled %> 
-        <span class="font-regular border text-red-600 p-1">Disabled</span>
-      <% end %>
-    </h2>
-    <p class="italic text-sm"><%= @theater.location %></p>
-    <p class="text-sm"><%= link_to nil, @theater.website %></p>
-    <p class="text-sm"><span class="font-semibold">Scraper type:</span> <%= @theater.scraper_key %></p>
-    <% 
-      if @theater.scraper_external_id.present?
-    %>
-    <p class="text-sm"><span class="font-semibold">Scraper external ID:</span> <%= @theater.scraper_external_id %></p>
-    <% end %>
-    <p class="text-sm"><span class="font-semibold">Discounted days:</span> <%= @theater.discounted_days_string %>.</p>
-  </div>
-
-  <div>
-    <%= link_to "Edit", edit_theater_path(@theater.id), class: "button primary" %>
-    <%= button_to "Remove", @theater, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
-  </div>
+<div class="flex items-center gap-3 mb-6">
+  <%= link_to "← Theaters", theaters_path, class: "text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100" %>
 </div>
 
-<%= link_to "Back", theaters_path, class: "button secondary p-1 mt-5" %>
+<div class="flex flex-col md:flex-row gap-6">
+  <div class="flex-1">
+    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-5 mb-5">
+      <div class="flex items-start justify-between gap-3 mb-3">
+        <div>
+          <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">
+            <%= @theater.name %>
+            <% unless @theater.is_enabled %>
+              <span class="ml-2 text-xs font-medium border border-red-300 text-red-600 dark:text-red-400 rounded px-2 py-0.5">Disabled</span>
+            <% end %>
+          </h1>
+          <p class="text-sm text-gray-500 dark:text-gray-400 italic mt-0.5"><%= @theater.location %></p>
+        </div>
+        <div class="flex gap-2 shrink-0">
+          <%= link_to "Edit", edit_theater_path(@theater.id), class: "rounded px-3 py-1.5 border border-gray-300 dark:border-gray-600 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" %>
+          <%= button_to "Delete", @theater, method: :delete,
+              class: "rounded px-3 py-1.5 text-sm text-red-600 dark:text-red-400 border border-red-300 dark:border-red-700 hover:bg-red-50 dark:hover:bg-red-900/20 cursor-pointer",
+              data: { turbo_confirm: "Delete this theater and all its showtimes?" } %>
+        </div>
+      </div>
+
+      <dl class="grid grid-cols-2 gap-x-4 gap-y-2 text-sm mt-4">
+        <dt class="text-gray-500 dark:text-gray-400">Website</dt>
+        <dd><%= link_to @theater.website, @theater.website, target: "_blank", class: "text-red-600 dark:text-red-400 hover:underline truncate block" %></dd>
+
+        <dt class="text-gray-500 dark:text-gray-400">Scraper</dt>
+        <dd class="font-mono text-xs text-gray-700 dark:text-gray-300"><%= @theater.scraper_key %></dd>
+
+        <% if @theater.scraper_external_id.present? %>
+          <dt class="text-gray-500 dark:text-gray-400">External ID</dt>
+          <dd class="font-mono text-xs text-gray-700 dark:text-gray-300"><%= @theater.scraper_external_id %></dd>
+        <% end %>
+
+        <dt class="text-gray-500 dark:text-gray-400">Price</dt>
+        <dd class="text-gray-700 dark:text-gray-300"><%= @theater.price %>€</dd>
+
+        <dt class="text-gray-500 dark:text-gray-400">Discounted price</dt>
+        <dd class="text-gray-700 dark:text-gray-300"><%= @theater.discounted_price %>€</dd>
+
+        <dt class="text-gray-500 dark:text-gray-400">Discounted days</dt>
+        <dd class="flex flex-wrap gap-1">
+          <% if @theater.discounted_days.to_a.empty? %>
+            <span class="text-gray-400 dark:text-gray-500">None.</span>
+          <% else %>
+            <% @theater.discounted_days.each do |day| %>
+              <span class="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded px-2 py-0.5"><%= day.capitalize %></span>
+            <% end %>
+          <% end %>
+        </dd>
+      </dl>
+    </div>
+
+    <h2 class="text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-3">
+      Movies (<%= @movies.count %>)
+    </h2>
+
+    <% if @movies.empty? %>
+      <p class="text-sm text-gray-400 dark:text-gray-500">No movies with showtimes at this theater.</p>
+    <% else %>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="text-xs uppercase tracking-wide text-gray-400 dark:text-gray-500 border-b border-gray-200 dark:border-gray-700">
+              <th class="text-left py-2 pr-4 font-medium">Title</th>
+              <th class="text-left py-2 pr-4 font-medium">Genre</th>
+              <th class="text-right py-2 font-medium">Showtimes</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+            <% @movies.each do |movie| %>
+              <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                <td class="py-2 pr-4 font-medium">
+                  <%= link_to movie.title, movie_path(movie), class: "text-gray-900 dark:text-gray-100 hover:text-red-600 dark:hover:text-red-400" %>
+                </td>
+                <td class="py-2 pr-4 text-gray-500 dark:text-gray-400"><%= movie.genre&.capitalize %></td>
+                <td class="py-2 text-right font-mono text-xs text-gray-500 dark:text-gray-400"><%= @showtime_counts.dig(movie.id) || 0 %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </div>
+</div>

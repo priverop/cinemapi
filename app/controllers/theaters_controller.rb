@@ -17,11 +17,13 @@ class TheatersController < DashboardController
     if @theater.save
       redirect_to @theater, notice: "Theater was successfully created."
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
   def show
+    @movies = @theater.movies.distinct.order(:title)
+    @showtime_counts = @theater.showtimes.group(:movie_id).count
   end
 
   def edit
@@ -31,7 +33,7 @@ class TheatersController < DashboardController
     if @theater.update(theater_params)
       redirect_to @theater, notice: "Theater was successfully updated."
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 
@@ -45,7 +47,7 @@ class TheatersController < DashboardController
 
   def theater_params
     params.require(:theater).permit(:name, :location, :price, :discounted_price, :is_enabled, :scraper_key, :scraper_external_id, :website, discounted_days: []).tap do |p|
-      p[:discounted_days].reject!(&:empty?)
+      p[:discounted_days]&.reject!(&:empty?)
     end
   end
 

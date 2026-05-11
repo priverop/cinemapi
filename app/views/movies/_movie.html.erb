@@ -1,12 +1,5 @@
-<div id="<%= dom_id movie %>" class="w-full sm:w-auto my-5 space-y-5 flex justify-between">
-  <div>
-    <% if movie.poster.present? %>
-      <%= image_tag movie.poster.include?("moviexchange.com") ? image_proxy_path(url: movie.poster) : movie.poster, class: "h-40 w-full object-cover", alt: movie.title %>
-    <% end %>
-  </div>
-  <div class="px-5">
-    <h2><%= movie.title %></h2>
-    <p class="text-sm"><%= movie.duration %> mins - <%= movie.genre&.capitalize %></p>
-    <p class="text-sm text-gray-600"><%= movie.description %></p>
-  </div>
+<div id="<%= dom_id movie %>">
+  <% if movie.poster.present? %>
+    <%= image_tag movie_poster_url(movie), class: "h-10 w-8 object-cover rounded", alt: movie.title %>
+  <% end %>
 </div>

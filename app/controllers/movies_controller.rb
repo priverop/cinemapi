@@ -16,7 +16,7 @@ class MoviesController < DashboardController
 
   # GET /movies/new
   def new
-    @movie = Movie.new
+    @movie = Movie.new(data_source: :manual)
   end
 
   # GET /movies/1/edit
@@ -32,8 +32,8 @@ class MoviesController < DashboardController
         format.html { redirect_to @movie, notice: "Movie was successfully created." }
         format.json { render :show, status: :created, location: @movie }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @movie.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
+        format.json { render json: @movie.errors, status: :unprocessable_content }
       end
     end
   end
@@ -45,8 +45,8 @@ class MoviesController < DashboardController
         format.html { redirect_to @movie, notice: "Movie was successfully updated.", status: :see_other }
         format.json { render :show, status: :ok, location: @movie }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @movie.errors, status: :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_content }
+        format.json { render json: @movie.errors, status: :unprocessable_content }
       end
     end
   end
@@ -69,6 +69,6 @@ class MoviesController < DashboardController
 
     # Only allow a list of trusted parameters through.
     def movie_params
-      params.fetch(:movie, {}).permit(:title, :genre, :duration, :description)
+      params.fetch(:movie, {}).permit(:title, :genre, :duration, :description, :poster)
     end
 end

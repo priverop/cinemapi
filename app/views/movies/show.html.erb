@@ -1,28 +1,101 @@
-<% content_for :title, "Showing movie" %>
+<% content_for :title, "#{@movie.title} | Backoffice" %>
 
-<div class="md:w-2/3 w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+<div class="flex items-center gap-3 mb-6">
+  <%= link_to "← Movies", movies_path, class: "text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100" %>
+</div>
+
+<div class="flex flex-col md:flex-row gap-6">
+  <% if @movie.poster.present? %>
+    <div class="shrink-0">
+      <%= image_tag movie_poster_url(@movie), class: "w-40 rounded border border-gray-200 dark:border-gray-700 object-cover", alt: @movie.title %>
+    </div>
   <% end %>
 
-  <h1 class="font-bold text-4xl">Showing movie</h1>
+  <div class="flex-1 min-w-0">
+    <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+      <div>
+        <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100"><%= @movie.title %></h1>
+        <div class="flex flex-wrap items-center gap-2 mt-1">
+          <% @movie.genres.each do |g| %>
+            <span class="text-xs border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 rounded-full px-2 py-0.5"><%= g %></span>
+          <% end %>
+          <span class="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded px-2 py-0.5"><%= @movie.data_source %></span>
+          <% if @movie.duration.present? %>
+            <span class="text-xs text-gray-500 dark:text-gray-400"><%= @movie.duration %> min</span>
+          <% end %>
+        </div>
+      </div>
+      <div class="flex gap-2 shrink-0">
+        <%= link_to "Edit", edit_movie_path(@movie), class: "rounded px-3 py-1.5 border border-gray-300 dark:border-gray-600 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" %>
+        <%= button_to "Delete", @movie, method: :delete,
+            class: "rounded px-3 py-1.5 text-sm text-red-600 dark:text-red-400 border border-red-300 dark:border-red-700 hover:bg-red-50 dark:hover:bg-red-900/20 cursor-pointer",
+            data: { turbo_confirm: "Delete this movie and all its showtimes?" } %>
+      </div>
+    </div>
 
-  <h2><%= @movie.title %></h2>
-  <p class="text-sm"><%= @movie.duration %> mins.</p>
-  <p class="italic text-sm"><%= @movie.genre&.capitalize %></p>
-  <p class="mt-2 text-sm text-gray-700"><%= @movie.description %></p>
-  <h3>Showtimes</h3>
+    <% if @movie.description.present? %>
+      <p class="text-sm text-gray-600 dark:text-gray-400 mb-6"><%= @movie.description %></p>
+    <% end %>
 
-  <% @theater_showtimes.each do |theater, showtimes| %>
-    <p><span><%= theater.name %></span>: 
-      <% showtimes.each do |s| %>
-        <%= s.showtime.to_fs(:db) %>
-        - 
-      <% end %>
-    </p>
-  <% end %>
+    <h2 class="text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-3">Showtimes</h2>
 
-  <%= link_to "Edit this movie", edit_movie_path(@movie), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= link_to "Back to movies", movies_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= button_to "Destroy this movie", @movie, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "w-full rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
+    <% if @theater_showtimes.empty? %>
+      <p class="text-sm text-gray-400 dark:text-gray-500 mb-4">No showtimes.</p>
+      <%= link_to "+ Add showtime", new_showtime_path(movie_id: @movie.id),
+          class: "text-sm text-red-600 dark:text-red-400 hover:underline" %>
+    <% else %>
+      <div class="space-y-5">
+        <% @theater_showtimes.each do |theater, showtimes| %>
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-sm font-semibold text-gray-800 dark:text-gray-200">
+                <%= link_to theater.name, theater_path(theater), class: "hover:text-red-600 dark:hover:text-red-400" %>
+              </h3>
+              <%= link_to "+ Add", new_showtime_path(movie_id: @movie.id, theater_id: theater.id),
+                  class: "text-xs text-red-600 dark:text-red-400 hover:underline" %>
+            </div>
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="text-xs uppercase tracking-wide text-gray-400 dark:text-gray-500 border-b border-gray-200 dark:border-gray-700">
+                  <th class="text-left pb-1 font-medium">Date & Time</th>
+                  <th class="text-left pb-1 font-medium">Language</th>
+                  <th class="text-left pb-1 font-medium">Price</th>
+                  <th class="pb-1"></th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                <% showtimes.sort_by(&:showtime).each do |s| %>
+                  <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                    <td class="py-2 pr-4 font-mono text-xs text-gray-700 dark:text-gray-300"><%= s.showtime.strftime("%a %d/%m/%Y %H:%M") %></td>
+                    <td class="py-2 pr-4">
+                      <span class="text-xs font-medium uppercase px-2 py-0.5 rounded
+                        <%= s.vose? ? 'bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300' :
+                            s.vo?   ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300' :
+                                      'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300' %>">
+                        <%= s.language %>
+                      </span>
+                    </td>
+                    <td class="py-2 pr-4 text-xs text-gray-600 dark:text-gray-400"><%= theater.price_for_day(s.showtime) %>€</td>
+                    <td class="py-2 text-right">
+                      <div class="flex justify-end gap-2">
+                        <%= link_to "Edit", edit_showtime_path(s), class: "text-xs text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400" %>
+                        <%= button_to "Del", s, method: :delete,
+                            class: "text-xs text-red-500 dark:text-red-400 hover:underline cursor-pointer bg-transparent border-0 p-0",
+                            data: { turbo_confirm: "Delete this showtime?" } %>
+                      </div>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        <% end %>
+
+        <div class="pt-2">
+          <%= link_to "+ Add showtime for another theater", new_showtime_path(movie_id: @movie.id),
+              class: "text-sm text-red-600 dark:text-red-400 hover:underline" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

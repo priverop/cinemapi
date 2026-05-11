@@ -1,26 +1,26 @@
-<div
+<tr
+  id="<%= dom_id theater %>"
   data-controller="clickable-card"
   data-clickable-card-url-value="<%= theater_path(theater) %>"
   data-action="click->clickable-card#navigate"
-  class="border cursor-pointer p-5 mt-3 rounded flex justify-between hover:bg-gray-100 <%= 'disabled' if !theater.is_enabled %>">
-  <div>
-    <p class="font-bold block"><%= theater.name %>
-    <% if !theater.is_enabled %> 
-        <span class="font-regular border p-1">Disabled</span>
-      <% end %>
-    </p>
-    <p class="italic text-sm"><%= theater.location %></p>
-    <p class="text-sm"><span class="font-semibold">Discounted days:</span> <%= theater.discounted_days_string %>.</p>
-    <p class="text-sm"><%= link_to nil, theater.website %></p>
-    <p class="text-sm"><span class="font-semibold">Scraper type:</span> <%= theater.scraper_key %></p>
-    <% 
-      if theater.scraper_external_id.present?
-    %>
-    <p class="text-sm"><span class="font-semibold">Scraper external ID:</span> <%= theater.scraper_external_id %></p>
+  class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50 <%= 'opacity-50' unless theater.is_enabled %>">
+  <td class="py-2 pr-4 font-medium text-gray-900 dark:text-gray-100"><%= theater.name %></td>
+  <td class="py-2 pr-4 text-gray-500 dark:text-gray-400 italic text-xs"><%= theater.location %></td>
+  <td class="py-2 pr-4 font-mono text-xs text-gray-500 dark:text-gray-400"><%= theater.scraper_key %></td>
+  <td class="py-2 pr-4 text-xs text-gray-500 dark:text-gray-400"><%= theater.price %>€</td>
+  <td class="py-2 pr-4">
+    <% if theater.is_enabled %>
+      <span class="text-xs bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 rounded px-2 py-0.5">Enabled</span>
+    <% else %>
+      <span class="text-xs bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400 rounded px-2 py-0.5">Disabled</span>
     <% end %>
-  </div>
-  <div>
-    <%= link_to "Edit", edit_theater_path(theater.id), class: "button primary" %>
-    <%= button_to "Remove", theater, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "button secondary mt-3" %>
-  </div>
-</div>
+  </td>
+  <td class="py-2 text-right">
+    <div class="flex justify-end gap-3">
+      <%= link_to "Edit", edit_theater_path(theater.id), class: "text-xs text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400" %>
+      <%= button_to "Delete", theater, method: :delete,
+          class: "text-xs text-red-500 hover:underline cursor-pointer bg-transparent border-0 p-0",
+          data: { turbo_confirm: "Delete this theater?" } %>
+    </div>
+  </td>
+</tr>
