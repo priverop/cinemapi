@@ -1,19 +1,30 @@
-<h2 class="text-xl">Dashboard</h2>
+<% content_for :title, "Cinemapi | Backoffice" %>
 
-<div class="my-4">
-  <%= button_to "Run scraper now", scraper_path, method: :post, data: { turbo_confirm: "Run scraper? This may take a while." }, class: "px-3 py-2 bg-blue-600 text-white rounded cursor-pointer" %>
+<div class="flex items-center justify-between mb-6">
+  <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Dashboard</h1>
+  <%= button_to "Run scraper", scraper_path, method: :post,
+      data: { turbo_confirm: "Run scraper? This may take a while." },
+      class: "rounded px-4 py-2 bg-red-600 hover:bg-red-500 text-white text-sm font-medium cursor-pointer" %>
 </div>
 
-<div class="flex">
-  <%= render "card", locals: { title: "Theaters",
-                               sub_info: :location,
-                               side_info: :price,
-                               side_unit: "€",
-                               count: @theater_count,
-                               latest: @recent_theaters,
-                               path: theaters_path
-                              } %>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+  <%= render "card",
+      title: "Theaters",
+      count: @theater_count,
+      path: theaters_path,
+      items: @recent_theaters,
+      sub_info: :location,
+      side_info: :price,
+      side_unit: "€" %>
 
+  <%= render "card",
+      title: "Movies",
+      count: @movie_count,
+      path: movies_path,
+      items: @recent_movies,
+      sub_info: :genre,
+      side_info: :duration,
+      side_unit: "min" %>
 
   <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
     <div class="flex items-center justify-between mb-4">
