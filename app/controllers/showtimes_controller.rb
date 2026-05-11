@@ -17,7 +17,7 @@ class ShowtimesController < DashboardController
     else
       @movies = Movie.order(:title)
       @theaters = Theater.order(:name)
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -32,7 +32,7 @@ class ShowtimesController < DashboardController
     else
       @movies = Movie.order(:title)
       @theaters = Theater.order(:name)
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 

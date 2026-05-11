@@ -17,7 +17,7 @@ class TheatersController < DashboardController
     if @theater.save
       redirect_to @theater, notice: "Theater was successfully created."
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -33,7 +33,7 @@ class TheatersController < DashboardController
     if @theater.update(theater_params)
       redirect_to @theater, notice: "Theater was successfully updated."
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 
