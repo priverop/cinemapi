@@ -16,7 +16,7 @@ class MoviesController < DashboardController
 
   # GET /movies/new
   def new
-    @movie = Movie.new
+    @movie = Movie.new(data_source: :manual)
   end
 
   # GET /movies/1/edit
@@ -69,6 +69,6 @@ class MoviesController < DashboardController
 
     # Only allow a list of trusted parameters through.
     def movie_params
-      params.fetch(:movie, {}).permit(:title, :genre, :duration, :description)
+      params.fetch(:movie, {}).permit(:title, :genre, :duration, :description, :poster)
     end
 end

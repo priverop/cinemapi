@@ -1,10 +1,11 @@
-<% content_for :title, "Editing movie" %>
+<% content_for :title, "Edit #{@movie.title} | Backoffice" %>
 
-<div class="md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing movie</h1>
+<div class="max-w-lg">
+  <div class="flex items-center gap-3 mb-6">
+    <%= link_to "← #{@movie.title}", @movie, class: "text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100" %>
+  </div>
+
+  <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">Edit Movie</h1>
 
   <%= render "form", movie: @movie %>
-
-  <%= link_to "Show this movie", @movie, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= link_to "Back to movies", movies_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
 </div>
