@@ -14,12 +14,26 @@
                                path: theaters_path
                               } %>
 
-  <%= render "card", locals: { title: "Movies",
-                               sub_info: :genre,
-                               side_info: :duration,
-                               side_unit: "mins",
-                               count: @movie_count,
-                               latest: @recent_movies,
-                               path: movies_path
-                              } %>
+
+  <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100">Recent Showtimes</h3>
+    </div>
+    <% if @recent_showtimes.any? %>
+      <div class="divide-y divide-gray-100 dark:divide-gray-700">
+        <% @recent_showtimes.each do |s| %>
+          <div class="py-2 flex items-center justify-between gap-2">
+            <div class="min-w-0">
+              <%= link_to s.movie.title, movie_path(s.movie),
+                  class: "text-sm font-medium text-gray-900 dark:text-gray-100 truncate hover:text-red-600 dark:hover:text-red-400 block" %>
+              <p class="text-xs text-gray-500 dark:text-gray-400 truncate"><%= s.theater.name %></p>
+            </div>
+            <span class="font-mono text-xs text-gray-500 dark:text-gray-400 shrink-0"><%= s.showtime.strftime("%d/%m %H:%M") %></span>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="text-sm text-gray-400 dark:text-gray-500">No showtimes yet.</p>
+    <% end %>
+  </div>
 </div>
