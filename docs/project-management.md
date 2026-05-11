@@ -25,3 +25,5 @@ The project is in a very early state, so I don't want to waste any time creating
   -  IMDB / Letterboxd / Filmaffinity links.
   -  Trailer
   -  Country, cast?
+  - Theater scraper_key has manual. It should be consistent with movies.
+  - Showtimes data_source. 
