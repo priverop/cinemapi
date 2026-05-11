@@ -25,7 +25,8 @@ module Scraper
             duration: movie[:duration],
             directors: movie[:directors],
             genre: movie.dig(:genres)&.first, # TODO: support multiple genres in Movie model.
-            poster: movie[:poster]
+            poster: movie[:poster],
+            data_source: 0
           )
           record.save!
           Scraper.logger.info("Movie created: #{record.title} (id=#{record.id}).")

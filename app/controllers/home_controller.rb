@@ -7,7 +7,7 @@ class HomeController < ApplicationController
 
   def theater_search
     query = params[:query].to_s.strip
-    @theaters = Theater.like_name(query).limit(5)
+    @theaters = Theater.search_by_name(query)
 
     render json: @theaters.map { |t| { id: t.id, name: t.name } }, status: :ok
   end

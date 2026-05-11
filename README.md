@@ -1,24 +1,36 @@
-# Cinemapi
+<div align="center">
+  <h1 align="center" style="color: #c0392b; font-size: 3em; letter-spacing: 0.15em;">🎬 CINEMAPI</h1>
+</div>
 
-> WIP - Work in progress.
+<p align="center"><em>Your local theater aggregator. Filter your favorite theaters by your preferences and decide what to watch at a glance.</em></p>
 
-Cinemapi helps movie fans to choose the best local theater!
+<p align="center">
+<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/priverop/cinemapi">
+<img alt="CI Status" src="https://github.com/priverop/cinemapi/actions/workflows/ci.yml/badge.svg">
+<img alt="Rails" src="https://img.shields.io/badge/rails-8-brightgreen?logo=rubyonrails&logoColor=white">
+<img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat">
+</p>
 
-I was tired of opening multiple tabs to find the right theater any time I wanted to watch a movie. This app aggregates all the theaters and filters them following your preferences.
-
-Built with Rails 8, Turbo, and SQLite.
+---
 
 ## Features
 
 - **Backoffice:** theaters and movies management.
-- **API:** stateless read of theaters and movies, with filtering.
-- **Scrapper:** aggregates movies from the theater websites.
+- **API:** stateless read and search of theaters and movies, with filtering.
+- **Scraper:** aggregates movies from the theater websites.
 
 ## Setup
 
-You can either run the project using [VS Code](https://code.visualstudio.com/), and the [Dev Containers Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers). Run the project with `bin/dev`.
+Install [Ruby 3.4.7](https://www.ruby-lang.org/en/downloads/), then:
 
-Or install Ruby (3.4.7), and run `bin/setup`.
+```bash
+bin/setup --skip-server # install deps, create and migrate DB
+bin/rails db:seed       # load theater data
+bin/scraper             # scrape movies from theater websites
+bin/dev                 # start the server
+```
+
+This project also runs with [Docker](https://www.docker.com/) or [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) (VS Code).
 
 ## Docs
 
