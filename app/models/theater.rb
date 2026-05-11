@@ -2,7 +2,10 @@ class Theater < ApplicationRecord
   enum :scraper_key, manual: 0, renoir: 1, cinesa: 2
   scope :enabled, -> { where(is_enabled: true) }
   scope :by_price, ->(price) { where("price <= ?", price) }
-  scope :like_name, ->(name) { where("LOWER(name) LIKE LOWER(?)", "%#{name}%") }
+  def self.search_by_name(query, limit: 5)
+    normalized = I18n.transliterate(query.downcase)
+    all.select { |t| I18n.transliterate(t.name.downcase).include?(normalized) }.first(limit)
+  end
   scope :by_names, ->(names) { where(name: names) }
 
   has_many :showtimes, dependent: :destroy
