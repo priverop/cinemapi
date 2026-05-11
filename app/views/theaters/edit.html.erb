@@ -1,9 +1,11 @@
-<% content_for :title, "Cinemapi | Backoffice | Edit theater" %>
+<% content_for :title, "Edit #{@theater.name} | Backoffice" %>
 
-<h2 class="font-bold block">Editing Theater:</h2>
+<div class="max-w-lg">
+  <div class="flex items-center gap-3 mb-6">
+    <%= link_to "← #{@theater.name}", @theater, class: "text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100" %>
+  </div>
 
-<div>
+  <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">Edit Theater</h1>
+
   <%= render 'form', theater: @theater %>
 </div>
-
-<%= link_to "Back", theaters_path, class: "button secondary p-1 mt-5" %>

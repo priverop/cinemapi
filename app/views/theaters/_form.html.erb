@@ -1,56 +1,67 @@
-<%= form_with model: @theater, class: "form" do |form| %>
-    <div>
-      <%= form.label :name %>
-      <%= form.text_field :name %>
+<%= form_with model: theater, class: "space-y-4" do |form| %>
+  <% if theater.errors.any? %>
+    <div class="bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-700 text-red-700 dark:text-red-400 rounded px-4 py-3 text-sm">
+      <% theater.errors.each do |error| %>
+        <p><%= error.full_message %></p>
+      <% end %>
     </div>
-    <div>
-      <%= form.label :website %>
-      <%= form.text_field :website %>
-    </div>
-    <div>
-      <%= form.label :scraper_external_id %>
-      <%= form.text_field :scraper_external_id %>
-    </div>
-    <div>
-      <%= form.label :location %>
-      <%= form.text_field :location %>
-    </div>
-    <div>
-      <%= form.label :price %>
-      <%= form.text_field :price %>
-    </div>
-    <div>
-      <%= form.label :discounted_price %>
-      <%= form.text_field :discounted_price %>
-    </div>
-    <div>
-      <%= form.label :discounted_days %>
-      <div class="flex gap-4">
-        <input type="hidden" name="theater[discounted_days][]" value="">
-        <% Date::DAYNAMES.map(&:downcase).each do |day| %>
-          <div class="flex items-center gap-1">
-            <%= check_box_tag "theater[discounted_days][]", day, @theater.discounted_days.to_a.include?(day), id: "theater_discounted_days_#{day}" %>
-            <%= label_tag "theater_discounted_days_#{day}", day.capitalize %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <div>
-      <%= form.label :is_enabled %>
-      <%= form.checkbox :is_enabled %>
-    </div>
-    <div>
-      <%= form.select :scraper_key, Theater.scraper_keys.keys %>
-    </div>
-
-    <% if @theater.errors.any? %>
-      <div> Errors:
-        <% @theater.errors.each do |error| %>
-          <p><%= error.full_message %></p>
-        <% end %>
-      </div>
-    <% end %>
-
-    <%= form.submit %>
-
   <% end %>
+
+  <div>
+    <%= form.label :name, class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" %>
+    <%= form.text_field :name, class: "w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500" %>
+  </div>
+
+  <div>
+    <%= form.label :location, class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" %>
+    <%= form.text_field :location, class: "w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500" %>
+  </div>
+
+  <div>
+    <%= form.label :website, class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" %>
+    <%= form.url_field :website, class: "w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500" %>
+  </div>
+
+  <div class="grid grid-cols-2 gap-4">
+    <div>
+      <%= form.label :price, class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" %>
+      <%= form.number_field :price, step: 0.01, class: "w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500" %>
+    </div>
+    <div>
+      <%= form.label :discounted_price, class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" %>
+      <%= form.number_field :discounted_price, step: 0.01, class: "w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500" %>
+    </div>
+  </div>
+
+  <div>
+    <%= form.label :scraper_external_id, class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" %>
+    <%= form.text_field :scraper_external_id, class: "w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-red-500" %>
+  </div>
+
+  <div>
+    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Scraper type</label>
+    <%= form.select :scraper_key, Theater.scraper_keys.keys.map { |k| [k.capitalize, k] },
+        {},
+        class: "w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500" %>
+  </div>
+
+  <div>
+    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Discounted days</label>
+    <input type="hidden" name="theater[discounted_days][]" value="">
+    <div class="flex flex-wrap gap-3">
+      <% Date::DAYNAMES.map(&:downcase).each do |day| %>
+        <label class="flex items-center gap-1.5 text-sm text-gray-700 dark:text-gray-300 cursor-pointer">
+          <%= check_box_tag "theater[discounted_days][]", day, theater.discounted_days.to_a.include?(day), id: "theater_discounted_days_#{day}" %>
+          <%= day.capitalize %>
+        </label>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="flex items-center gap-2">
+    <%= form.checkbox :is_enabled, class: "rounded border-gray-300 dark:border-gray-600" %>
+    <%= form.label :is_enabled, class: "text-sm font-medium text-gray-700 dark:text-gray-300 cursor-pointer" %>
+  </div>
+
+  <%= form.submit class: "rounded px-4 py-2 bg-red-600 hover:bg-red-500 text-white text-sm font-medium cursor-pointer" %>
+<% end %>
