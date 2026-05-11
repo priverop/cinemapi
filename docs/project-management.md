@@ -10,12 +10,8 @@ The project is in a very early state, so I don't want to waste any time creating
 
 ## Ideas
 
-- Max price he wants to pay.
 - User preferences. Store parameters?
-- Ending hour (limiting time): hour + duration should not reach the specified ending hour.
 - Movie theaters by location?
-- Discounted days stored as int? check buttons for creation/editing.
-- Movies - SHOW - Group by date
 - Enable/Disable showtimes.
 - Theaters link to scrap.
 - Proper API filtering.
