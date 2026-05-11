@@ -29,7 +29,7 @@ module Scraper
           browser = Ferrum::Browser.new(
             headless: "new",
             window_size: [ 1280, 800 ],
-            browser_options: { "disable-blink-features" => "AutomationControlled" },
+            browser_options: { "disable-blink-features" => "AutomationControlled", "no-sandbox" => nil },
             timeout: TIMEOUT + 15
           )
           browser.headers.set(HEADERS)
