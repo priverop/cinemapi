@@ -11,4 +11,5 @@ VCR.configure do |config|
   config.default_cassette_options = { record: :none }
   config.allow_http_connections_when_no_cassette = false
   config.ignore_localhost = true
+  config.ignore_request { |req| %w[rails-app selenium chrome].include?(URI(req.uri).host) }
 end
