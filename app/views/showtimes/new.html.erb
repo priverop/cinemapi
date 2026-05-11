@@ -1,0 +1,14 @@
+<% content_for :title, "New Showtime" %>
+
+<div class="max-w-lg">
+  <div class="flex items-center gap-3 mb-6">
+    <% if @showtime.movie_id.present? %>
+      <%= link_to movie_path(@showtime.movie_id), class: "text-gray-400 hover:text-gray-600 dark:hover:text-gray-200" do %>
+        ← Back
+      <% end %>
+    <% end %>
+    <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">New Showtime</h1>
+  </div>
+
+  <%= render "form", showtime: @showtime %>
+</div>

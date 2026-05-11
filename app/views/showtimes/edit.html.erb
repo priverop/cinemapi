@@ -1,0 +1,15 @@
+<% content_for :title, "Edit Showtime" %>
+
+<div class="max-w-lg">
+  <div class="flex items-center gap-3 mb-6">
+    <% if @showtime.movie.present? %>
+      <%= link_to movie_path(@showtime.movie), class: "text-gray-400 hover:text-gray-600 dark:hover:text-gray-200" do %>
+        ← Back to <%= @showtime.movie.title %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">Edit Showtime</h1>
+
+  <%= render "form", showtime: @showtime %>
+</div>
