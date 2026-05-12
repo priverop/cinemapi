@@ -12,6 +12,8 @@ User.destroy_all
 
 puts 'Creating Theaters'
 puts '- - - - - - - - - -'
+Theater.create!(name: 'Renoir Princesa', location: 'Plaza de los Cubos, Madrid', price: 8.5, discounted_price: 5.5, discounted_days: [ 'monday', 'wednesday' ], website: "https://www.cinesrenoir.com/cine/cines-princesa/cartelera/", scraper_key: 1)
+Theater.create!(name: 'Renoir Plaza España', location: 'Calle Martín de los Heros, Madrid', price: 8.5, discounted_price: 5.5, discounted_days: [ 'monday', 'wednesday' ], website: "https://www.cinesrenoir.com/cine/renoir-plaza-de-espana/cartelera/", scraper_key: 1)
 Theater.create!(name: 'Renoir Retiro', location: 'Calle Narváez 42, Madrid', price: 8.5, discounted_price: 5.5, discounted_days: [ 'monday', 'wednesday' ], website: "https://www.cinesrenoir.com/cine/renoir-retiro/cartelera/", scraper_key: 1)
 Theater.create!(name: 'Renoir Floridablanca', location: 'Calle Floridablanca 135, Barcelona', price: 8.5, discounted_price: 5.5, discounted_days: [ 'monday', 'wednesday' ], website: "https://www.cinesrenoir.com/cine/renoir-floridablanca/cartelera/", scraper_key: 1)
 Theater.create!(name: 'Cinesa Príncipe Pío', location: 'Centro Comercial Principe Pío, Madrid', price: 11.5, discounted_price: 6.5, discounted_days: [ 'wednesday' ], website: "https://www.cinesa.es/cines/principe-pio/", scraper_key: 2, scraper_external_id: "027")
