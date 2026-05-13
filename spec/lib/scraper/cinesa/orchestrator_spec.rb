@@ -8,6 +8,7 @@ require_relative '../../../../lib/scraper/cinesa/calendar_parser'
 require_relative '../../../../lib/scraper/cinesa/movie_parser'
 require_relative '../../../../lib/scraper/cinesa/normalizer'
 require_relative '../../../../lib/scraper/cinesa/auth_client'
+require_relative '../../../../lib/scraper/base_orchestrator'
 require_relative '../../../../lib/scraper/cinesa/orchestrator'
 
 RSpec.describe Scraper::Cinesa::Orchestrator do

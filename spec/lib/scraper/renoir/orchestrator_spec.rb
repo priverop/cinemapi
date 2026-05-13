@@ -7,6 +7,7 @@ require_relative '../../../../lib/scraper/importer'
 require_relative '../../../../lib/scraper/renoir/calendar_parser'
 require_relative '../../../../lib/scraper/renoir/movie_parser'
 require_relative '../../../../lib/scraper/renoir/normalizer'
+require_relative '../../../../lib/scraper/base_orchestrator'
 require_relative '../../../../lib/scraper/renoir/orchestrator'
 
 RSpec.describe Scraper::Renoir::Orchestrator do
