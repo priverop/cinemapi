@@ -19,6 +19,8 @@ Theater.create!(name: 'Renoir Floridablanca', location: 'Calle Floridablanca 135
 Theater.create!(name: 'Cinesa Príncipe Pío', location: 'Centro Comercial Principe Pío, Madrid', price: 11.5, discounted_price: 6.5, discounted_days: [ 'wednesday' ], website: "https://www.cinesa.es/cines/principe-pio/", scraper_key: 2, scraper_external_id: "027")
 Theater.create!(name: 'mk2 Cine Paz', location: 'Calle de Fuencarral 125, Madrid', price: 10.9, discounted_price: 8, discounted_days: [ 'wednesday' ], website: "https://www.cinepazmadrid.es/es/cartelera", scraper_key: 3)
 Theater.create!(name: 'mk2 Palacio de Hielo', location: 'Calle Silvano 77, Madrid', price: 10.9, discounted_price: 8, discounted_days: [ 'wednesday' ], website: "https://www.mk2palaciodehielo.es/es/cartelera", scraper_key: 3)
+Theater.create!(name: 'Embajadores Sta María', location: 'Gta. Sta. Mª de la Cabeza 5, Madrid', price: 9.5, discounted_price: 5.9, discounted_days: [ 'monday', 'wednesday' ], website: "https://cinesembajadores.es/madrid/", scraper_key: 4)
+Theater.create!(name: 'Embajadores Río', location: 'Calle Ercilla 53, Madrid', price: 9.5, discounted_price: 5.9, discounted_days: [ 'monday', 'wednesday' ], website: "https://cinesembajadores.es/madrid/", scraper_key: 5)
 
 puts 'Creating Users'
 puts '- - - - - - - - - -'

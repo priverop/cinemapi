@@ -5,9 +5,11 @@ require "uri"
 
 module Scraper
   SOURCES = {
-    "renoir" => "Scraper::Renoir::Orchestrator",
-    "cinesa" => "Scraper::Cinesa::Orchestrator",
-    "mk2"    => "Scraper::Mk2::Orchestrator"
+    "renoir"              => "Scraper::Renoir::Orchestrator",
+    "cinesa"              => "Scraper::Cinesa::Orchestrator",
+    "mk2"                 => "Scraper::Mk2::Orchestrator",
+    "embajadores_cabeza"  => "Scraper::Embajadores::CabezaOrchestrator",
+    "embajadores_rio"     => "Scraper::Embajadores::RioOrchestrator"
   }.freeze
 
   def self.logger
