@@ -15,6 +15,10 @@ The project is in a very early state, so I don't want to waste any time creating
 - Enable/Disable showtimes.
 - Theaters link to scrap.
 - Proper API filtering.
+- Weekends more expensive - Theaters. https://www.cinesrenoir.com/precios/barcelona/
+- Scraper: recap at the end with all the info.
+- View more showtimes in home.
+- Note on language and price - check with the original website.
 
 ### Model data TODO
 

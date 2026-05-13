@@ -18,8 +18,6 @@ Cinesa sometimes have movie promotions, where they offer a certain movie for the
 
 It looks like Cinesa is behind a Cloudflare anti-scrap wall, which is easy to bypass by just changing your user-agent.
 
-### Languages
+### Timezone
 
-Cinesa has `original language` movies and `dubbed` movies, but they have no tag for it. We cannot distinguish them at the moment. However, in their attributes they have Vose, Vosi (original audio + english subtitles), CATALAN, Es Nuestro Cine (local Spanish production program). We use the `Es Nuestro Cine` for the `:vo` language label.
-
-Renoir has many possibilities, right now we only track two (vose, and vo), we'll have to keep an eye on it.
+The current scope of this project is Spain from Península (CET), we don't support other timezones. This means that the times you see in Cinemapi are the times the scraper saw at the websites. No conversions.
