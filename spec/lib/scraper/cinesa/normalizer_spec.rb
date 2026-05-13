@@ -100,6 +100,26 @@ RSpec.describe Scraper::Cinesa::Normalizer do
       end
     end
 
+    context "when language is nil" do
+      let(:movie_with_nil_language) do
+        {
+          description: "desc",
+          directors: [],
+          duration: 100,
+          genres: [],
+          poster_id: "p",
+          title: "Test",
+          trailer: nil,
+          showtimes: [ { date: "2026-04-27T17:45:00+02:00", language: nil } ]
+        }
+      end
+
+      it "raises UnknownLanguageError" do
+        expect { described_class.normalize([ movie_with_nil_language ]) }
+          .to raise_error(Scraper::UnknownLanguageError)
+      end
+    end
+
     context "when passing an empty array" do
       it 'raises ArgumentError' do
         expect do

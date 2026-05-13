@@ -84,7 +84,7 @@ module Scraper
         end
 
         def normalize_language(languages)
-          return nil if languages.nil?
+          raise Scraper::UnknownLanguageError, "Unknown language #{languages.inspect}." if languages.nil?
           return :vose if languages.include?(VOSE_ATTRIBUTE)
           return :vo if languages.include?(ES_NUESTRO_CINE_ATTRIBUTE)
 

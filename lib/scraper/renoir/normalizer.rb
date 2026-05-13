@@ -65,17 +65,13 @@ module Scraper
       end
 
       def normalize_language(language)
-        if language.nil? || language.strip.empty?
-          Scraper.logger.warn("Could not normalize language: #{language.inspect}.")
-          return nil
-        end
+        raise Scraper::UnknownLanguageError, "Unknown language #{language.inspect}." if language.nil? || language.strip.empty?
 
         normalized = language.downcase.strip
-        language_symbol = LANGUAGE_MAP.find { |regex, _| normalized.match?(regex) }&.last
+        result = LANGUAGE_MAP.find { |regex, _| normalized.match?(regex) }&.last
+        raise Scraper::UnknownLanguageError, "Unknown language '#{language}'." if result.nil?
 
-        raise Scraper::UnknownLanguageError, "Unknown language '#{language}'." if language_symbol.nil?
-
-        language_symbol
+        result
       end
 
       def normalize_duration(duration)

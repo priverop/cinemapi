@@ -145,6 +145,8 @@ Present your findings to the user: what labels the site uses and how you propose
 
 Once agreed, document the conclusion in `docs/languages.md` following the existing format (one bullet per theater).
 
+**Rule: `normalize_language` must never return nil.** If the language string is blank, nil, or does not match any known pattern, raise `Scraper::UnknownLanguageError`. Returning nil would pass nil language to the Importer, which stores NULL in the DB. Fail loudly instead.
+
 ### Implementation
 
 Write the new scraper classes following the existing scraper most structurally similar to the new one:
@@ -205,6 +207,7 @@ Present suggestions. Do not implement unless the user asks.
 - **No conditionals added to existing scrapers** to support the new theater — the reuse bar is strict.
 - **All user-facing logger messages must end with a period** (project convention in `CLAUDE.md`).
 - **Use `.dig`** when accessing nested arrays or hashes.
+- **`normalize_language` must raise `Scraper::UnknownLanguageError`** for nil, blank, or unrecognized input — never return nil.
 
 ---
 
