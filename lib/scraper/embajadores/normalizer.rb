@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
 require "time"
+require_relative "../normalizer_helpers"
 
 module Scraper
   module Embajadores
     class Normalizer
+      include Scraper::NormalizerHelpers
+
       LANGUAGE_MAP = {
         /V\.O\.S\.E\./ => :vose,
         /V\.O\./       => :vo,
@@ -63,20 +66,11 @@ module Scraper
       end
 
       def normalize_language(language)
-        raise Scraper::UnknownLanguageError, "Unknown language #{language.inspect}." if language.nil? || language.strip.empty?
-
-        result = LANGUAGE_MAP.find { |regex, _| language.match?(regex) }&.last
-        raise Scraper::UnknownLanguageError, "Unknown language '#{language}'." if result.nil?
-
-        result
+        normalize_language_from_map(language, LANGUAGE_MAP)
       end
 
       def normalize_poster(poster)
-        return nil if poster.nil? || poster.strip.empty?
-        return poster if Scraper.valid_http_url?(poster)
-
-        Scraper.logger.warn("Could not normalize poster: #{poster.inspect}.")
-        nil
+        normalize_poster_url(poster)
       end
 
       def normalize_showtimes(showtimes)

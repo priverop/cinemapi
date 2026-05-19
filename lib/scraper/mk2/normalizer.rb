@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
 require "time"
+require_relative "../normalizer_helpers"
 
 module Scraper
   module Mk2
     class Normalizer
+      include Scraper::NormalizerHelpers
+
       BASE_URL       = "https://www.cinepazmadrid.es/"
       DURATION_REGEX = /\d+/
 
@@ -54,10 +57,7 @@ module Scraper
       end
 
       def normalize_poster(poster)
-        return nil if poster.nil? || poster.strip.empty?
-        return poster if Scraper.valid_http_url?(poster)
-
-        "#{BASE_URL}#{poster.delete_prefix('/')}"
+        normalize_poster_url(poster, base_url: BASE_URL)
       end
 
       def normalize_showtimes(showtimes)
