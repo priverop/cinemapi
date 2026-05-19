@@ -17,6 +17,7 @@
 
 ## Ideas
 
+- Renoir/Golem (and ~Mk2) orchestrators are almost the same: differ only in parser/normalizer class refs and the `Normalizer.new`. Parameterize `BaseOrchestrator` with a config object (parser classes + normalizer factory lambda).
 - User preferences. Store parameters?
 - Movie theaters by location?
 - Enable/Disable showtimes.
