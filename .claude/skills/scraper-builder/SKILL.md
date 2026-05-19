@@ -8,6 +8,7 @@ description: Guides the creation of a new web scraper for lib/scraper/ in the ci
 You are helping add a new web scraper to the cinemapi Rails project. The scraper pipeline lives in `lib/scraper/` and follows established conventions. You will guide this process step by step, **asking before every non-trivial decision**.
 
 The two existing scrapers are your reference implementations:
+
 - **Renoir**: HTML/Nokogiri, `Scraper::Client` for HTTP, instance `Normalizer` (date injected at init because date comes from URL params)
 - **Cinesa**: JSON API + JWT auth, custom `AuthClient`/`ApiClient`, class-method `Normalizer` (date embedded in JSON data)
 
@@ -16,6 +17,7 @@ The two existing scrapers are your reference implementations:
 ## Step 1 — Read the codebase
 
 Read all files under `lib/scraper/` and `spec/lib/scraper/`. Also read:
+
 - `lib/scraper.rb` (module, SOURCES hash, error classes)
 - `app/models/theater.rb` (scraper_key enum)
 
@@ -26,6 +28,7 @@ Do not skip this step. You need full context before asking the user anything.
 ## Step 2 — Gather user input
 
 Ask the user for:
+
 1. The website URL to scrape
 2. What type of scraping is needed (HTML page, JSON API, API with auth, other)
 3. Any research they've already done (page structure, endpoints found, auth mechanism, etc.)
@@ -58,6 +61,7 @@ Decide whether new tests or fixtures are needed to cover the reused scraper with
 ## Step 5 — Generic component analysis
 
 Two components are shared across all scrapers (never recreate them):
+
 - `Scraper::Client` — plain HTTP fetch; use when no auth is needed
 - `Scraper::Importer` — DB upsert; always reused
 
@@ -103,6 +107,7 @@ SOURCES = {
 ## Step 10 — Create folder structure
 
 Create the directories:
+
 - `lib/scraper/<key>/`
 - `spec/lib/scraper/<key>/`
 
@@ -111,6 +116,7 @@ Create the directories:
 ## Step 11 — Fixtures
 
 Fixture type depends on scraper kind:
+
 - **HTML scraper** → real HTML page saved as `spec/fixtures/<key>/<theater>.html`
 - **JSON/API scraper** → real JSON responses as `spec/fixtures/<key>/<endpoint>.json`; VCR cassettes for HTTP calls in specs
 
@@ -121,6 +127,7 @@ Ask the user to provide fixture content, or fetch it directly if the URL is publ
 ## Step 12 — Write tests first (TDD)
 
 Write specs for every new class before writing any implementation. Follow the structure of the existing spec closest to the new scraper type:
+
 - HTML → follow `spec/lib/scraper/renoir/`
 - JSON API → follow `spec/lib/scraper/cinesa/`
 
@@ -129,13 +136,6 @@ Write specs for every new class before writing any implementation. Follow the st
 ---
 
 ## Step 13 — Implement the classes
-
-### Normalizer design: instance vs class methods
-
-Decide based on what the showtime data contains — no need to ask the user:
-
-- **Showtimes contain only hour/minute** → date must be injected externally → use instance `Normalizer` with date at `initialize` (Renoir pattern)
-- **Showtimes contain full date+time** → no external state needed → use class-method `Normalizer` (Cinesa pattern)
 
 ### Language mapping
 
@@ -150,6 +150,7 @@ Once agreed, document the conclusion in `docs/languages.md` following the existi
 ### Implementation
 
 Write the new scraper classes following the existing scraper most structurally similar to the new one:
+
 - **HTML site** → Nokogiri, `CSS_SELECTORS` constant
 - **JSON API** → `JSON.parse`
 
