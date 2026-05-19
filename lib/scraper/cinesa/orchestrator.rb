@@ -22,7 +22,7 @@ module Scraper
         def process_day(theater, day)
           raw_data   = Scraper.logger.tagged("ApiClient") { day[:client].data("#{MOVIES_URL}/#{day[:date]}") }
           parsed     = Scraper.logger.tagged("MovieParser") { Scraper::Cinesa::MovieParser.new(raw_data).parse }
-          normalized = Scraper.logger.tagged("Normalizer") { Scraper::Cinesa::Normalizer.normalize(parsed) }
+          normalized = Scraper.logger.tagged("Normalizer") { Scraper::Cinesa::Normalizer.new.normalize(parsed) }
           Scraper.logger.tagged("Importer") { Scraper::Importer.new(theater:).import(normalized) }
         end
 
