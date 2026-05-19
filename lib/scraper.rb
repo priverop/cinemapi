@@ -9,7 +9,8 @@ module Scraper
     "cinesa"              => "Scraper::Cinesa::Orchestrator",
     "mk2"                 => "Scraper::Mk2::Orchestrator",
     "embajadores_cabeza"  => "Scraper::Embajadores::CabezaOrchestrator",
-    "embajadores_rio"     => "Scraper::Embajadores::RioOrchestrator"
+    "embajadores_rio"     => "Scraper::Embajadores::RioOrchestrator",
+    "golem"               => "Scraper::Golem::Orchestrator"
   }.freeze
 
   def self.logger

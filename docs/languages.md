@@ -4,6 +4,7 @@ Each theater website has it's own rules for specifying the language. In most of 
 
 Here is a list with the info gathered:
 
-- m2k: Only VOSE. Dubbed means dubbed or VO.
+- m2k: Only VOSE. Dubbed means dubbed or VO, we can't distinguish.
 - Cinesa has `original language` movies and `dubbed` movies, but they have no tag for it. However, in their attributes they have Vose, Vosi (original audio + english subtitles), CATALAN, Es Nuestro Cine (local Spanish production program). We use the `Es Nuestro Cine` for the `:vo` language label.
 - Renoir has many possibilities, right now we only track two (vose, and vo), we'll have to keep an eye on it.
+- Golem: only `:vose` or `:vo`, no dubbed (this theater doesn't have dubbed movies). VOSE is detected by the `(V.O.S.E.)` suffix in the movie title; no suffix means `:vo`.
