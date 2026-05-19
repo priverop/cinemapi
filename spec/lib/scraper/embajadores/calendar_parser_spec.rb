@@ -9,24 +9,25 @@ RSpec.describe Scraper::Embajadores::CalendarParser do
 
   describe "#days" do
     context "valid HTML" do
-      let(:html) { File.read(File.join(fixtures_path, 'cartelera.html')) }
+      let(:html)  { File.read(File.join(fixtures_path, 'cartelera.html')) }
+      let(:today) { Date.new(2026, 5, 13) }
 
       it "returns 7 day entries" do
-        expect(described_class.new(html).days.count).to eq(7)
+        expect(described_class.new(html, today: today).days.count).to eq(7)
       end
 
       it "each entry has a :url and :date" do
-        first = described_class.new(html).days.first
+        first = described_class.new(html, today: today).days.first
         expect(first[:url]).to be_a(String).and include("cartelera-del-dia")
         expect(first[:date]).to be_a(Date)
       end
 
-      it "parses Hoy as today" do
-        expect(described_class.new(html).days.first[:date]).to eq(Date.today)
+      it "parses Hoy as the injected today" do
+        expect(described_class.new(html, today: today).days.first[:date]).to eq(today)
       end
 
       it "parses consecutive days in order" do
-        days = described_class.new(html).days
+        days = described_class.new(html, today: today).days
         expect(days[1][:date]).to eq(days[0][:date] + 1)
       end
     end

@@ -6,14 +6,15 @@ require "date"
 module Scraper
   module Embajadores
     class CalendarParser
-      attr_reader :document
+      attr_reader :document, :today
 
       CSS_SELECTORS = {
         day_link: "a.cartelera-dia[href*='cartelera-del-dia']"
       }.freeze
 
-      def initialize(html)
+      def initialize(html, today: Date.today)
         @document = Nokogiri::HTML(html)
+        @today = today
       end
 
       def days
@@ -35,15 +36,15 @@ module Scraper
       end
 
       def parse_date(text)
-        return Date.today if text.start_with?("Hoy")
+        return today if text.start_with?("Hoy")
 
         match = text.match(/(\d{2})\/(\d{2})/)
         return nil unless match
 
         day   = match[1].to_i
         month = match[2].to_i
-        year  = Date.today.year
-        year += 1 if month < Date.today.month
+        year  = today.year
+        year += 1 if month < today.month
         Date.new(year, month, day)
       end
     end
