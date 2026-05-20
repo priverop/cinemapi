@@ -21,7 +21,8 @@ Theater.create!(name: 'mk2 Cine Paz', location: 'Calle de Fuencarral 125, Madrid
 Theater.create!(name: 'mk2 Palacio de Hielo', location: 'Calle Silvano 77, Madrid', price: 10.9, discounted_price: 8, discounted_days: [ 'wednesday' ], website: "https://www.mk2palaciodehielo.es/es/cartelera", scraper_key: 3)
 Theater.create!(name: 'Embajadores Sta María', location: 'Gta. Sta. Mª de la Cabeza 5, Madrid', price: 9.5, discounted_price: 5.9, discounted_days: [ 'monday', 'wednesday' ], website: "https://cinesembajadores.es/madrid/", scraper_key: 4)
 Theater.create!(name: 'Embajadores Río', location: 'Calle Ercilla 53, Madrid', price: 9.5, discounted_price: 5.9, discounted_days: [ 'monday', 'wednesday' ], website: "https://cinesembajadores.es/madrid/", scraper_key: 5)
-Theater.create!(name: 'Golem Madrid', location: 'Calle Martín de los Heros 14, Madrid', price: 8.3, discounted_price: 5.9, discounted_days: [ 'monday', 'wednesday' ], website: "https://www.cinesrenoir.com/cine/renoir-retiro/cartelera/", scraper_key: 1)
+Theater.create!(name: 'Verdi Madrid', location: 'Calle de Bravo Murillo, 28, Madrid', price: 8.5, discounted_price: 5.9, discounted_days: [ 'monday' ], website: "https://madrid.cines-verdi.com/cartelera", scraper_key: 7)
+Theater.create!(name: 'Cinemes Girona', location: 'Carrer de Girona, 175, Barcelona', price: 7, discounted_price: 5, discounted_days: [ 'wednesday' ], website: "https://www.cinemesgirona.cat/es/cartelera", scraper_key: 7)
 
 puts 'Creating Users'
 puts '- - - - - - - - - -'

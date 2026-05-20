@@ -10,7 +10,8 @@ module Scraper
     "mk2"                 => "Scraper::Mk2::Orchestrator",
     "embajadores_cabeza"  => "Scraper::Embajadores::CabezaOrchestrator",
     "embajadores_rio"     => "Scraper::Embajadores::RioOrchestrator",
-    "golem"               => "Scraper::Golem::Orchestrator"
+    "golem"               => "Scraper::Golem::Orchestrator",
+    "admit_one"        => "Scraper::AdmitOne::Orchestrator"
   }.freeze
 
   def self.logger

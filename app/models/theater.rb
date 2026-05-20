@@ -1,5 +1,5 @@
 class Theater < ApplicationRecord
-  enum :scraper_key, manual: 0, renoir: 1, cinesa: 2, mk2: 3, embajadores_cabeza: 4, embajadores_rio: 5, golem: 6
+  enum :scraper_key, manual: 0, renoir: 1, cinesa: 2, mk2: 3, embajadores_cabeza: 4, embajadores_rio: 5, golem: 6, admit_one: 7
   scope :enabled, -> { where(is_enabled: true) }
   scope :by_price, ->(price) { where("price <= ?", price) }
   def self.search_by_name(query, limit: 5)
