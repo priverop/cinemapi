@@ -13,3 +13,8 @@ Here is a list with the info gathered:
   - `CASTELLANO`, `CASTELLÀ`, `CATALÀ`, `DIG` → `:vo`
   - `CONCIERTO` → skip whole movie (concerts/opera/ballet broadcasts, not films).
   - TODO: schema cannot distinguish Spanish vs Catalan subtitles, nor flag Catalan-language films.
+- Zumzeig: always original audio.
+  - `VOSE`, `VOSCAT`, `VOSC` → `:vose`
+  - `Doblada` / `Doblado` → `:dubbed`
+  - bare `VO` (no subs) → `:vo`
+  - TODO: Per-session variation (e.g. "VOSCAT Sá 19:30, el resto VOSE").
