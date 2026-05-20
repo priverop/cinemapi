@@ -13,7 +13,14 @@ RSpec.describe Scraper::Golem::MovieParser do
 
       it "returns the right amount of movies" do
         parser = described_class.new(html)
-        expect(parser.parse.count).to eq(11)
+        expect(parser.parse.count).to eq(9)
+      end
+
+      it "skips non-movie containers (ciclos, eventos)" do
+        parser = described_class.new(html)
+        titles = parser.parse.map { |m| m[:title] }
+        expect(titles).to all(be_present)
+        expect(titles).not_to include("Espacio Educativo Aula Golem", "GO! MADRID")
       end
 
       it "returns a valid parsed movie with VOSE marker" do

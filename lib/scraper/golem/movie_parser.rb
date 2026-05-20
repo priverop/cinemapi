@@ -22,7 +22,9 @@ module Scraper
       end
 
       def parse
-        movies = document.css(CSS_SELECTORS[:movie_container])
+        movies = document.css(CSS_SELECTORS[:movie_container]).select do |m|
+          m.at_css(CSS_SELECTORS[:title])
+        end
         raise Scraper::MoviesNotFoundError, "Movies not found." if movies.empty?
 
         parsed = movies.map { |m| parse_movie(m) }
