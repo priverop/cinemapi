@@ -23,3 +23,7 @@ Here is a list with the info gathered:
   - `/\Adoblada/i` → `:dubbed`
   - `/\Aoriginal/i` → `:vo`
   - TODO: site labelling is unreliable (e.g. a "V.O.S." URL may declare "Doblada en castellano"); we trust the Idioma field even when it contradicts the title.
+- Cines ABC (El Saler, Park, Gran Turia, Elx, Gandía): per-showtime tag inside `.linea-sesion`/`.etiq-hora`.
+  - `(VOSE)` → `:vose`
+  - empty / no tag → `:dubbed`
+  - TODO: site does not distinguish `:vo` (Spanish original) from `:dubbed`; both fall under `:dubbed`.

@@ -26,6 +26,11 @@ Theater.create!(name: 'Verdi Madrid', location: 'Calle de Bravo Murillo, 28, Mad
 Theater.create!(name: 'Cinemes Girona', location: 'Carrer de Girona, 175, Barcelona', price: 7, discounted_price: 5, discounted_days: [ 'wednesday' ], website: "https://www.cinemesgirona.cat/es/cartelera", scraper_key: 7)
 Theater.create!(name: 'Zumzeig', location: 'Carrer Béiar, 53, Barcelona', price: 7.5, discounted_price: 5.5, discounted_days: [ 'wednesday' ], website: "https://zumzeigcine.coop/es/", scraper_key: 8)
 Theater.create!(name: 'Zoco Majadahonda', location: 'Av de España, 51, Majadahonda (Madrid)', price: 8, discounted_price: 5.5, discounted_days: [ 'wednesday' ], website: "https://cineszocomajadahonda.org", scraper_key: 9)
+Theater.create!(name: 'ABC Saler', location: 'Av. Profesor Lopez Piñero, 16, Valencia', price: 9.9, discounted_price: 5.7, discounted_days: [ 'wednesday' ], website: "https://elsaler.cinesabc.com/", scraper_key: 10)
+Theater.create!(name: 'ABC Park', location: 'C/ Roger de Lauria, 21, Valencia', price: 9.9, discounted_price: 5.7, discounted_days: [ 'wednesday' ], website: "https://park.cinesabc.com/", scraper_key: 10)
+Theater.create!(name: 'ABC ELX', location: 'C/ Jacarilla, Elx (Alicante)', price: 10.2, discounted_price: 7.1, discounted_days: [ 'wednesday' ], website: "https://elx.cinesabc.com/", scraper_key: 10)
+Theater.create!(name: 'ABC Gran Turia', location: 'Pl. Europa, Xirivella (Valencia)', price: 8.2, discounted_price: 5.5, discounted_days: [ 'wednesday' ], website: "https://granturia.cinesabc.com/", scraper_key: 10)
+Theater.create!(name: 'ABC Gandía', location: 'Av. La Vital, 10, Gandía (Valencia)', price: 8.8, discounted_price: 5.3, discounted_days: [ 'wednesday' ], website: "https://gandia.cinesabc.com/", scraper_key: 10)
 
 
 puts 'Creating Users'

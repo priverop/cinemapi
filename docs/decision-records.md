@@ -26,3 +26,9 @@ The current scope of this project is Spain from Península (CET), we don't suppo
 
 Some theaters such as `Zoco Majadahonda` has different movie pages / entries for the same movie, just changing the language. This could be an issue if both movies are playing at the same time (same theater_id, movie_id, and showtime). The importer will skip the second showtime entirely, even if the language is different.
 
+### ABC Risk in UI / JSON
+
+We could scrap the  `<script>addToJSON('s', {...})</script>` JSON blob with `Fecha`, `Hora`, `Formato` fields, the data source the frontend itself uses to render the tabs.
+
+We are scraping the UI, but if it breaks, we'll switch to JSON parsing.
+
