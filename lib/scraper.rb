@@ -12,7 +12,8 @@ module Scraper
     "embajadores_rio"     => "Scraper::Embajadores::RioOrchestrator",
     "golem"               => "Scraper::Golem::Orchestrator",
     "admit_one"        => "Scraper::AdmitOne::Orchestrator",
-    "zumzeig"             => "Scraper::Zumzeig::Orchestrator"
+    "zumzeig"             => "Scraper::Zumzeig::Orchestrator",
+    "zoco"                => "Scraper::Zoco::Orchestrator"
   }.freeze
 
   def self.logger

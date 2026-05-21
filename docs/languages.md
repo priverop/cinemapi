@@ -18,3 +18,8 @@ Here is a list with the info gathered:
   - `Doblada` / `Doblado` → `:dubbed`
   - bare `VO` (no subs) → `:vo`
   - TODO: Per-session variation (e.g. "VOSCAT Sá 19:30, el resto VOSE").
+- Zoco (Cines Zoco Majadahonda): detected from the "Idioma" field on the single-movie page.
+  - `/con subt[ií]tulos/i` → `:vose`
+  - `/\Adoblada/i` → `:dubbed`
+  - `/\Aoriginal/i` → `:vo`
+  - TODO: site labelling is unreliable (e.g. a "V.O.S." URL may declare "Doblada en castellano"); we trust the Idioma field even when it contradicts the title.

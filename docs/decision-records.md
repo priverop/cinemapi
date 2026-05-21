@@ -21,3 +21,8 @@ It looks like Cinesa is behind a Cloudflare anti-scrap wall, which is easy to by
 ### Timezone
 
 The current scope of this project is Spain from Península (CET), we don't support other timezones. This means that the times you see in Cinemapi are the times the scraper saw at the websites. No conversions.
+
+### Duplicated showtimes with different languages
+
+Some theaters such as `Zoco Majadahonda` has different movie pages / entries for the same movie, just changing the language. This could be an issue if both movies are playing at the same time (same theater_id, movie_id, and showtime). The importer will skip the second showtime entirely, even if the language is different.
+
