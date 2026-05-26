@@ -27,3 +27,7 @@ Here is a list with the info gathered:
   - `(VOSE)` → `:vose`
   - empty / no tag → `:dubbed`
   - TODO: site does not distinguish `:vo` (Spanish original) from `:dubbed`; both fall under `:dubbed`.
+- Verdi Barcelona: no dubbed films.
+  - `V.O. SUB. CASTELLANO` → `:vose`
+  - `CASTELLANO`, `CATALÁN`, `VARIOS` (multilingual original version) → `:vo`
+  - TODO: we need to differ between Castellano and Catalán — the schema maps both to `:vo`.
