@@ -32,6 +32,7 @@ Theater.create!(name: 'ABC ELX', location: 'C/ Jacarilla, Elx (Alicante)', price
 Theater.create!(name: 'ABC Gran Turia', location: 'Pl. Europa, Xirivella (Valencia)', price: 8.2, discounted_price: 5.5, discounted_days: [ 'wednesday' ], website: "https://granturia.cinesabc.com/", scraper_key: 10)
 Theater.create!(name: 'ABC Gandía', location: 'Av. La Vital, 10, Gandía (Valencia)', price: 8.8, discounted_price: 5.3, discounted_days: [ 'wednesday' ], website: "https://gandia.cinesabc.com/", scraper_key: 10)
 Theater.create!(name: 'Ocine Urban X-Madrid', location: 'Calle Oslo 53, Alcorcón (Madrid)', price: 8.9, discounted_price: 6.9, discounted_days: [ 'wednesday' ], website: "https://ocineurbanxmadrid.es/", scraper_key: 11)
+Theater.create!(name: 'Ocine Premium Aqua', location: 'Carrer de Menorca, 19, Camins al Grau, Valencia', price: 10.3, discounted_price: 7.5, discounted_days: [ 'wednesday' ], website: "https://www.ocinepremiumaqua.es/", scraper_key: 11)
 
 puts 'Creating Users'
 puts '- - - - - - - - - -'
