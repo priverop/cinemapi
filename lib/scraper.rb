@@ -14,7 +14,8 @@ module Scraper
     "admit_one"        => "Scraper::AdmitOne::Orchestrator",
     "zumzeig"             => "Scraper::Zumzeig::Orchestrator",
     "zoco"                => "Scraper::Zoco::Orchestrator",
-    "cines_abc"           => "Scraper::CinesAbc::Orchestrator"
+    "cines_abc"           => "Scraper::CinesAbc::Orchestrator",
+    "ocine"               => "Scraper::Ocine::Orchestrator"
   }.freeze
 
   def self.logger
