@@ -209,6 +209,7 @@ Present suggestions. Do not implement unless the user asks.
 - **All user-facing logger messages must end with a period** (project convention in `CLAUDE.md`).
 - **Use `.dig`** when accessing nested arrays or hashes.
 - **`normalize_language` must raise `Scraper::UnknownLanguageError`** for nil, blank, or unrecognized input — never return nil.
+- **Skip any Concert, event, or non movie**: many theaters have concerts or events in their movies. If you are unsure, ask the user.
 
 ---
 
