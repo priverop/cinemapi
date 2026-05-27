@@ -34,3 +34,10 @@ Here is a list with the info gathered:
 - Maldà (Cinema Maldà): per-session tag. No dubbed films.
   - `(VOE)` (original audio, no subtitles) → `:vo`
   - `(VOSE)` (original audio + Spanish subtitles) → `:vose`
+- Mooby Cinemas:
+  - `VOSE`, `VOSE ATMOS` → `:vose`
+  - `DOBLADA ESP`, `DOBLADA ESP ATMOS`, `DOBLADA CAT` → `:dubbed`
+  - `ESP`, `CAT` (original audio, no subtitles) → `:vo`
+  - blank `version` → inferred from subtitles: `subtitles_lang` present → `:vose`, else `:vo`.
+  - `keywords` containing `Eventos` → skip whole event (concerts/live broadcasts, e.g. BTS world tour).
+  - `VOSI` raises `UnknownLanguageError`; re-add a `:vosi` enum + mapping if that happens.

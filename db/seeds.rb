@@ -35,6 +35,12 @@ Theater.create!(name: 'Ocine Urban X-Madrid', location: 'Calle Oslo 53, Alcorcó
 Theater.create!(name: 'Ocine Premium Aqua', location: 'Carrer de Menorca, 19, Camins al Grau, Valencia', price: 10.3, discounted_price: 7.5, discounted_days: [ 'wednesday' ], website: "https://www.ocinepremiumaqua.es/", scraper_key: 11)
 Theater.create!(name: 'Verdi Barcelona', location: 'Carrer de Verdi, 32, Barcelona', price: 8.5, discounted_price: 5.9, discounted_days: [ 'monday' ], website: "https://barcelona.cines-verdi.com/cartelera", scraper_key: 12)
 Theater.create!(name: 'Cinema Maldà', location: 'Carrer del Pi, 5, Barcelona', price: 7.5, discounted_price: 5.9, discounted_days: [ 'monday' ], website: "https://www.cinemamalda.com/cartelera-dia-dia/", scraper_key: 13)
+Theater.create!(name: 'Mooby Arenas de Barcelona', location: 'Gran Vía Corts Catalanes, 385, Barcelona', price: 9, discounted_price: 6.5, discounted_days: [ 'wednesday', 'thursday' ], website: "https://www.moobycinemas.com/cartelera", scraper_key: 14, scraper_external_id: "BAL-ARENAS")
+Theater.create!(name: 'Mooby Aribau | Aribau Cinema', location: 'Aribau, 8-10, Barcelona', price: 9, discounted_price: 6.5, discounted_days: [ 'wednesday', 'thursday' ], website: "https://www.moobycinemas.com/cartelera", scraper_key: 14, scraper_external_id: "BAL-ARIBAU")
+Theater.create!(name: 'Mooby Balmes', location: 'Balmes 422-424, Barcelona', price: 9, discounted_price: 6.5, discounted_days: [ 'wednesday', 'thursday' ], website: "https://www.moobycinemas.com/cartelera", scraper_key: 14, scraper_external_id: "BAL-BALMES")
+Theater.create!(name: 'Mooby Bosque', location: 'Rambla de Prat, 16, Barcelona', price: 9, discounted_price: 6.5, discounted_days: [ 'wednesday', 'thursday' ], website: "https://www.moobycinemas.com/cartelera", scraper_key: 14, scraper_external_id: "BAL-BOSQUE")
+Theater.create!(name: 'Mooby Glòries', location: 'Diagonal, 208 (C.C. Westfield Glòries), Barcelona', price: 9, discounted_price: 6.5, discounted_days: [ 'wednesday', 'thursday' ], website: "https://www.moobycinemas.com/cartelera", scraper_key: 14, scraper_external_id: "BAL-GLORIAS")
+Theater.create!(name: 'Mooby Gran Sarrià Club', location: 'Ronda General Mitre, 38-44, Barcelona', price: 9, discounted_price: 6.5, discounted_days: [ 'wednesday', 'thursday' ], website: "https://www.moobycinemas.com/cartelera", scraper_key: 14, scraper_external_id: "BAL-SARRIA")
 
 puts 'Creating Users'
 puts '- - - - - - - - - -'
