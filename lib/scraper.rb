@@ -16,7 +16,8 @@ module Scraper
     "zoco"                => "Scraper::Zoco::Orchestrator",
     "cines_abc"           => "Scraper::CinesAbc::Orchestrator",
     "ocine"               => "Scraper::Ocine::Orchestrator",
-    "verdi_barcelona"     => "Scraper::VerdiBarcelona::Orchestrator"
+    "verdi_barcelona"     => "Scraper::VerdiBarcelona::Orchestrator",
+    "malda"               => "Scraper::Malda::Orchestrator"
   }.freeze
 
   def self.logger

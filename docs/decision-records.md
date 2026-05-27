@@ -32,3 +32,19 @@ We could scrap the  `<script>addToJSON('s', {...})</script>` JSON blob with `Fec
 
 We are scraping the UI, but if it breaks, we'll switch to JSON parsing.
 
+### Maldà: skipping lines without a language tag
+
+Every real film line in Maldà's schedule is tagged `(VOE)` or `(VOSE)`. Other lines — hall rentals (`LLOGUER DE SALA "EL KALAM"`), concerts, events — have no such tag. We skip them.
+
+### Maldà: movies with no movie page
+
+There are movies in the showtime page, with no movie page. Importing fails:
+
+```
+[Scraper] [malda] [Cinema Maldà] [CONOCE A LOS BÁRBAROS] [PostFinder] GET https://www.cinemamalda.com/wp-json/wp/v2/posts?search=CONOCE+A+LOS+B%C3%81RBAROS&_fields=slug%2Ctitle&per_page=1.
+[Scraper] [malda] [Cinema Maldà] [CONOCE A LOS BÁRBAROS] [Normalizer] Normalizing 1 movies.
+[Scraper] [malda] [Cinema Maldà] [CONOCE A LOS BÁRBAROS] [Importer] Importing 1 movies.
+[Scraper] [malda] [Cinema Maldà] [CONOCE A LOS BÁRBAROS] [Importer] Import failed for 'CONOCE A LOS BÁRBAROS': Validation failed: Duration can't be blank.
+```
+
+Maybe in the future we can fix this

@@ -31,3 +31,6 @@ Here is a list with the info gathered:
   - `V.O. SUB. CASTELLANO` → `:vose`
   - `CASTELLANO`, `CATALÁN`, `VARIOS` (multilingual original version) → `:vo`
   - TODO: we need to differ between Castellano and Catalán — the schema maps both to `:vo`.
+- Maldà (Cinema Maldà): per-session tag. No dubbed films.
+  - `(VOE)` (original audio, no subtitles) → `:vo`
+  - `(VOSE)` (original audio + Spanish subtitles) → `:vose`
