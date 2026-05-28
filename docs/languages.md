@@ -34,6 +34,13 @@ Here is a list with the info gathered:
 - Maldà (Cinema Maldà): per-session tag. No dubbed films.
   - `(VOE)` (original audio, no subtitles) → `:vo`
   - `(VOSE)` (original audio + Spanish subtitles) → `:vose`
+- Embajadores (Cines Embajadores Sta. Mª de la Cabeza + Río): label lives in `li.doblaje` on the cartelera listing.
+  - `V.O.S.E.` → `:vose`
+  - `V.O.` → `:vo`
+  - `V.E.` is ambiguous and resolved against the movie title:
+    - title contains `DOBLADA AL ESPAÑOL` → `:dubbed`
+    - otherwise → `:vo` (original audio, no subtitles)
+  - Missing/blank `li.doblaje` raises `UnknownLanguageError`; the offending movie title is logged so we can extend the map if a new label appears.
 - Mooby Cinemas:
   - `VOSE`, `VOSE ATMOS` → `:vose`
   - `DOBLADA ESP`, `DOBLADA ESP ATMOS`, `DOBLADA CAT` → `:dubbed`

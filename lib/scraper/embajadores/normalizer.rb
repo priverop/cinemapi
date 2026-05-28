@@ -8,13 +8,16 @@ module Scraper
     class Normalizer
       include Scraper::NormalizerHelpers
 
+      # V.E. is ambiguous: original audio with no subtitles (:vo) unless the
+      # title carries the "DOBLADA AL ESPAÑOL" suffix, which marks a dub.
       LANGUAGE_MAP = {
         /V\.O\.S\.E\./ => :vose,
-        /V\.O\./       => :vo,
-        /V\.E\./       => :dubbed
+        /V\.O\./       => :vo
       }.freeze
 
-      DURATION_REGEX = /\d+/
+      VE_REGEX           = /V\.E\./
+      DUBBED_TITLE_REGEX = /DOBLADA AL ESPA[NÑ]OL/i
+      DURATION_REGEX     = /\d+/
 
       attr_reader :date, :venue_slug
 
@@ -41,10 +44,13 @@ module Scraper
           title:     normalize_title(movie[:title]),
           directors: normalize_director(movie[:director]),
           duration:  normalize_duration(movie[:duration]),
-          language:  normalize_language(movie[:language]),
+          language:  normalize_language(movie[:language], movie[:title]),
           poster:    normalize_poster(movie[:poster]),
           showtimes: showtimes
         }
+      rescue Scraper::UnknownLanguageError => e
+        Scraper.logger.error("Language failure for '#{movie[:title]}': #{e.message}")
+        raise
       end
 
       def normalize_title(title)
@@ -65,8 +71,14 @@ module Scraper
         duration[DURATION_REGEX]&.to_i
       end
 
-      def normalize_language(language)
+      def normalize_language(language, title)
+        return ve_language(title) if language.to_s.match?(VE_REGEX)
+
         normalize_language_from_map(language, LANGUAGE_MAP)
+      end
+
+      def ve_language(title)
+        title.to_s.match?(DUBBED_TITLE_REGEX) ? :dubbed : :vo
       end
 
       def normalize_poster(poster)

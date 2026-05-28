@@ -45,9 +45,14 @@ RSpec.describe Scraper::Embajadores::Normalizer do
       expect(cabeza.normalize([ valid_movie ]).first[:language]).to eq(:vose)
     end
 
-    it "normalizes V.E. to :dubbed" do
-      result = cabeza.normalize([ valid_movie.merge(language: "V.E.") ])
+    it "normalizes V.E. with 'DOBLADA AL ESPAÑOL' title to :dubbed" do
+      result = cabeza.normalize([ valid_movie.merge(language: "V.E.", title: "El Drama (DOBLADA AL ESPAÑOL)") ])
       expect(result.first[:language]).to eq(:dubbed)
+    end
+
+    it "normalizes V.E. without 'DOBLADA' marker to :vo" do
+      result = cabeza.normalize([ valid_movie.merge(language: "V.E.", title: "El Drama") ])
+      expect(result.first[:language]).to eq(:vo)
     end
 
     it "raises UnknownLanguageError for unrecognized language string" do
@@ -57,6 +62,12 @@ RSpec.describe Scraper::Embajadores::Normalizer do
 
     it "raises UnknownLanguageError for blank language" do
       expect { cabeza.normalize([ valid_movie.merge(language: "") ]) }
+        .to raise_error(Scraper::UnknownLanguageError)
+    end
+
+    it "logs the movie title when language normalization fails" do
+      expect(Scraper.logger).to receive(:error).with(/El amigo inesperado/)
+      expect { cabeza.normalize([ valid_movie.merge(language: nil) ]) }
         .to raise_error(Scraper::UnknownLanguageError)
     end
 
