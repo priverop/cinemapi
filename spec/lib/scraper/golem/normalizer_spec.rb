@@ -18,12 +18,14 @@ RSpec.describe Scraper::Golem::Normalizer do
             poster: "/golem/carteles/2026/April/1776857306.jpg",
             title: "El Amigo Inesperado (V.O.S.E.)",
             language: "vose",
+            duration: "120 min.",
             showtimes: %w[16:00 20:20]
           },
           {
             poster: "/golem/carteles/2026/May/1777981733-13139.jpg",
             title: "Hangar Rojo",
             language: "vo",
+            duration: nil,
             showtimes: %w[18:15 22:15]
           }
         ]
@@ -35,6 +37,7 @@ RSpec.describe Scraper::Golem::Normalizer do
             poster: "https://www.golem.es/golem/carteles/2026/April/1776857306.jpg",
             title: "El Amigo Inesperado",
             language: :vose,
+            duration: 120,
             showtimes: [
               { date: Time.utc(2026, 5, 20, 16, 0) },
               { date: Time.utc(2026, 5, 20, 20, 20) }
@@ -44,6 +47,7 @@ RSpec.describe Scraper::Golem::Normalizer do
             poster: "https://www.golem.es/golem/carteles/2026/May/1777981733-13139.jpg",
             title: "Hangar Rojo",
             language: :vo,
+            duration: nil,
             showtimes: [
               { date: Time.utc(2026, 5, 20, 18, 15) },
               { date: Time.utc(2026, 5, 20, 22, 15) }

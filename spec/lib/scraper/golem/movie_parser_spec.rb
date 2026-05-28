@@ -28,6 +28,7 @@ RSpec.describe Scraper::Golem::MovieParser do
         movie = parser.parse.first
         expect(movie[:title]).to eq("El Amigo Inesperado (V.O.S.E.)")
         expect(movie[:poster]).to eq("/golem/carteles/2026/April/1776857306.jpg")
+        expect(movie[:detail_url]).to eq("/golem/pelicula/El-Amigo-Inesperado-(V.O.S.E.)")
         expect(movie[:language]).to eq("vose")
         expect(movie[:showtimes]).to eq(%w[16:00 20:20])
       end

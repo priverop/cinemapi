@@ -17,6 +17,7 @@ module Scraper
       }.freeze
 
       VOSE_SUFFIX = /\s*\(V\.O\.S\.E\.\)\s*\z/i
+      DURATION_REGEX = /\d+/
 
       def initialize(date:, base_url:)
         @date = date
@@ -51,6 +52,12 @@ module Scraper
 
       def normalize_language(language)
         normalize_language_from_map(language, LANGUAGE_MAP)
+      end
+
+      def normalize_duration(duration)
+        return nil if duration.nil? || duration.to_s.strip.empty?
+
+        duration.to_s[DURATION_REGEX]&.to_i
       end
 
       def normalize_showtimes(showtimes)

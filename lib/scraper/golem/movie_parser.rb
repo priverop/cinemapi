@@ -35,12 +35,14 @@ module Scraper
       private
 
       def parse_movie(movie)
-        title = movie.at_css(CSS_SELECTORS[:title])&.text.to_s.strip
+        title_link = movie.at_css(CSS_SELECTORS[:title])
+        title = title_link&.text.to_s.strip
         {
-          poster:    movie.at_css(CSS_SELECTORS[:poster])&.[]("src"),
-          title:     title,
-          language:  title.match?(VOSE_MARKER) ? "vose" : "vo",
-          showtimes: movie.css(CSS_SELECTORS[:showtime]).map { |a| a.text.strip }.uniq
+          poster:     movie.at_css(CSS_SELECTORS[:poster])&.[]("src"),
+          title:      title,
+          detail_url: title_link&.[]("href"),
+          language:   title.match?(VOSE_MARKER) ? "vose" : "vo",
+          showtimes:  movie.css(CSS_SELECTORS[:showtime]).map { |a| a.text.strip }.uniq
         }
       end
     end
