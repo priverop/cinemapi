@@ -17,6 +17,10 @@ module Scraper
         showtimes:   ".horas.horas-cine a.btn"
       }.freeze
 
+      # Surprise screenings with no metadata (no duration, no director). Theater
+      # advertises them as "películas que van a marcar este año" — skip entirely.
+      SKIP_TITLES = [ "Sesión Secreta" ].freeze
+
       def initialize(html, day_num)
         @document = Nokogiri::HTML(html)
         @day_num  = day_num
@@ -30,7 +34,7 @@ module Scraper
         raise Scraper::MoviesNotFoundError, "Movies not found." if blocks.empty?
 
         Scraper.logger.info("Parsed #{blocks.size} movies from day #{day_num}.")
-        blocks.map { |block| parse_movie(block) }
+        blocks.filter_map { |block| parse_movie(block) }
       end
 
       private
@@ -38,14 +42,24 @@ module Scraper
       def parse_movie(block)
         peli = block.at_css(CSS_SELECTORS[:peli])
         info = peli&.css(CSS_SELECTORS[:info]) || []
+        title = peli&.at_css(CSS_SELECTORS[:title])&.text
+        return nil if skip_title?(title)
+
         {
           poster:    peli&.at_css(CSS_SELECTORS[:poster])&.[]("src"),
-          title:     peli&.at_css(CSS_SELECTORS[:title])&.text,
+          title:     title,
           director:  info[0]&.text,
           duration:  info[1]&.text,
           language:  peli&.at_css(CSS_SELECTORS[:vose_label]) ? :vose : :dubbed,
           showtimes: parse_showtimes(block)
         }
+      end
+
+      def skip_title?(title)
+        return false if title.nil?
+
+        stripped = title.strip
+        SKIP_TITLES.any? { |skip| skip.casecmp(stripped).zero? }
       end
 
       def parse_showtimes(block)

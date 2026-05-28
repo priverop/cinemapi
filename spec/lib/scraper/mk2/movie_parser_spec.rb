@@ -68,5 +68,35 @@ RSpec.describe Scraper::Mk2::MovieParser do
         expect { described_class.new("<html></html>", 99).parse }.to raise_error(Scraper::MoviesNotFoundError, "Movies not found.")
       end
     end
+
+    context "with a Sesión Secreta entry" do
+      let(:html) do
+        <<~HTML
+          <div class="contenedor_cines cines-0">
+            <div class="horarios">
+              <div class="peli">
+                <p class="gibsonT"><a class="negro">Sesión Secreta</a></p>
+                <p class="gibsonL">Director X</p>
+                <p class="gibsonL">90 min.</p>
+              </div>
+              <div class="horas horas-cine"><a class="btn">20:00</a></div>
+            </div>
+            <div class="horarios">
+              <div class="peli">
+                <p class="gibsonT"><a class="negro">Película Real</a></p>
+                <p class="gibsonL">Director Y</p>
+                <p class="gibsonL">100 min.</p>
+              </div>
+              <div class="horas horas-cine"><a class="btn">22:00</a></div>
+            </div>
+          </div>
+        HTML
+      end
+
+      it "skips the surprise screening" do
+        result = described_class.new(html, 0).parse
+        expect(result.map { |m| m[:title] }).to eq([ "Película Real" ])
+      end
+    end
   end
 end
