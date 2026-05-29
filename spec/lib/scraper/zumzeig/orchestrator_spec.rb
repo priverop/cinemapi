@@ -48,6 +48,17 @@ RSpec.describe Scraper::Zumzeig::Orchestrator do
       end
     end
 
+    context "when a movie parse returns nil (no ficha técnica)" do
+      before do
+        allow(movie_parser).to receive(:parse).and_return(nil, {})
+      end
+
+      it "skips that movie and continues" do
+        described_class.run(theater)
+        expect(importer).to have_received(:import).exactly(1).times
+      end
+    end
+
     context "when one movie fails" do
       before do
         calls = 0

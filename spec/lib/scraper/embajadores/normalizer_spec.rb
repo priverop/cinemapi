@@ -60,14 +60,17 @@ RSpec.describe Scraper::Embajadores::Normalizer do
         .to raise_error(Scraper::UnknownLanguageError)
     end
 
-    it "raises UnknownLanguageError for blank language" do
-      expect { cabeza.normalize([ valid_movie.merge(language: "") ]) }
-        .to raise_error(Scraper::UnknownLanguageError)
+    it "skips movies with blank language (likely events or concerts)" do
+      expect(cabeza.normalize([ valid_movie.merge(language: "") ])).to eq([])
     end
 
-    it "logs the movie title when language normalization fails" do
+    it "skips movies with nil language (likely events or concerts)" do
+      expect(cabeza.normalize([ valid_movie.merge(language: nil) ])).to eq([])
+    end
+
+    it "logs the movie title when language normalization fails for an unknown label" do
       expect(Scraper.logger).to receive(:error).with(/El amigo inesperado/)
-      expect { cabeza.normalize([ valid_movie.merge(language: nil) ]) }
+      expect { cabeza.normalize([ valid_movie.merge(language: "DUBBING") ]) }
         .to raise_error(Scraper::UnknownLanguageError)
     end
 

@@ -40,6 +40,11 @@ module Scraper
         showtimes = normalize_showtimes(movie[:showtimes])
         return nil if showtimes.empty?
 
+        if movie[:language].to_s.strip.empty?
+          Scraper.logger.info("Skipping '#{movie[:title]}': no language tag (likely event or concert).")
+          return nil
+        end
+
         {
           title:     normalize_title(movie[:title]),
           directors: normalize_director(movie[:director]),

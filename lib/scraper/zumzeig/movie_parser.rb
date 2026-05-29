@@ -35,6 +35,7 @@ module Scraper
         raise Scraper::InvalidMovieError, "Movie title not found." if title_node.nil?
 
         fields = extract_fitxa_fields
+        return nil if fields.nil?
 
         {
           title: title_node.text.strip,
@@ -51,9 +52,11 @@ module Scraper
 
       def extract_fitxa_fields
         fields = {}
+        found_fitxa = false
         document.css("h4").each do |h4|
           next unless h4.text.strip.match?(/ficha t[eé]cnica|fitxa t[eè]cnica/i)
 
+          found_fitxa = true
           block = h4.parent&.parent&.at_css(".rowcontent")
           next if block.nil?
 
@@ -68,6 +71,8 @@ module Scraper
             end
           end
         end
+        return nil unless found_fitxa
+
         fields
       end
 

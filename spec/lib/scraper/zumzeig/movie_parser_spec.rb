@@ -44,5 +44,21 @@ RSpec.describe Scraper::Zumzeig::MovieParser do
         expect { described_class.new("").parse }.to raise_error(Scraper::InvalidMovieError, "Movie title not found.")
       end
     end
+
+    context "page without ficha técnica (event or theater)" do
+      let(:html) do
+        <<~HTML
+          <html><body>
+            <h1 class="filmtitle">Sobre la sesión solo</h1>
+            <h4>Sobre la sesión</h4>
+            <h4>El programa</h4>
+          </body></html>
+        HTML
+      end
+
+      it "returns nil so the orchestrator can skip it" do
+        expect(described_class.new(html).parse).to be_nil
+      end
+    end
   end
 end

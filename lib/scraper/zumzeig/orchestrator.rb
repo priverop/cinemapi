@@ -20,6 +20,10 @@ module Scraper
           url        = movie[:base_url].merge(movie[:url])
           html       = Scraper.logger.tagged("Client") { Scraper::Client.read(url) }
           parsed     = Scraper.logger.tagged("MovieParser") { Scraper::Zumzeig::MovieParser.new(html).parse }
+          if parsed.nil?
+            Scraper.logger.info("Skipping #{movie[:url]}: no ficha técnica (likely event or theater).")
+            return
+          end
           combined   = parsed.merge(showtimes: movie[:showtimes])
           normalized = Scraper.logger.tagged("Normalizer") do
             Scraper::Zumzeig::Normalizer.new(base_url: movie[:base_url]).normalize([ combined ])
