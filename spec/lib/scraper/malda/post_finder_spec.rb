@@ -28,5 +28,12 @@ RSpec.describe Scraper::Malda::PostFinder do
       allow(Scraper::Client).to receive(:read).and_return("[]")
       expect(finder.url("DOES NOT EXIST")).to be_nil
     end
+
+    it "strips parentheses from the title before searching" do
+      expected = URI("https://www.cinemamalda.com/wp-json/wp/v2/posts?search=UYARIY+ESCUCHAR&_fields=slug%2Ctitle&per_page=1")
+      allow(Scraper::Client).to receive(:read).with(expected).and_return(json)
+      finder.url("UYARIY (ESCUCHAR)")
+      expect(Scraper::Client).to have_received(:read).with(expected)
+    end
   end
 end

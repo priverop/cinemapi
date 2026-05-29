@@ -32,8 +32,14 @@ module Scraper
       attr_reader :base_url
 
       def search_url(title)
-        query = URI.encode_www_form(search: title, _fields: "slug,title", per_page: 1)
+        query = URI.encode_www_form(search: sanitize(title), _fields: "slug,title", per_page: 1)
         base_url.merge("#{SEARCH_PATH}?#{query}")
+      end
+
+      # WordPress search returns no results when the term contains parentheses,
+      # so strip them and collapse whitespace before querying.
+      def sanitize(title)
+        title.to_s.gsub(/[()]/, " ").squeeze(" ").strip
       end
     end
   end
