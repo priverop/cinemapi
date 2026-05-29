@@ -10,8 +10,9 @@ Here is a list with the info gathered:
 - Golem: only `:vose` or `:vo`, no dubbed (this theater doesn't have dubbed movies). VOSE is detected by the `(V.O.S.E.)` suffix in the movie title; no suffix means `:vo`.
 - Verdi Madrid and Cinemes Girona (admit_one): labels found in showtime row span.
   - `V.O. SUB. CASTELLANO`, `VOSE`, `VOSC` → `:vose`
-  - `CASTELLANO`, `CASTELLÀ`, `CATALÀ`, `DIG` → `:vo`
-  - `CONCIERTO` → skip whole movie (concerts/opera/ballet broadcasts, not films).
+  - `VOSI` → `:vosi`
+  - `CASTELLANO`, `CASTELLÀ`, `CATALÀ`, `DIG`, `VARIOS` → `:vo`
+  - `CONCIERTO`, `BALLET` → skip whole movie (concerts/opera/ballet broadcasts, not films).
   - TODO: schema cannot distinguish Spanish vs Catalan subtitles, nor flag Catalan-language films.
 - Zumzeig: always original audio.
   - `VOSE`, `VOSCAT`, `VOSC` → `:vose`
@@ -40,7 +41,7 @@ Here is a list with the info gathered:
   - `V.E.` is ambiguous and resolved against the movie title:
     - title contains `DOBLADA AL ESPAÑOL` → `:dubbed`
     - otherwise → `:vo` (original audio, no subtitles)
-  - Missing/blank `li.doblaje` raises `UnknownLanguageError`; the offending movie title is logged so we can extend the map if a new label appears.
+  - Missing/blank `li.doblaje` → skip movie (event/concert broadcasts, not films).
 - Mooby Cinemas:
   - `VOSE`, `VOSE ATMOS` → `:vose`
   - `DOBLADA ESP`, `DOBLADA ESP ATMOS`, `DOBLADA CAT` → `:dubbed`

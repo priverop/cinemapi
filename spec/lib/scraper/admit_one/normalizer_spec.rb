@@ -48,6 +48,7 @@ RSpec.describe Scraper::AdmitOne::Normalizer do
       it "maps known labels" do
         expect(normalize_lang("VOSE")).to eq(:vose)
         expect(normalize_lang("VOSC")).to eq(:vose)
+        expect(normalize_lang("VOSI")).to eq(:vosi)
         expect(normalize_lang("V.O. SUB. CASTELLANO")).to eq(:vose)
         expect(normalize_lang("CASTELLANO")).to eq(:vo)
         expect(normalize_lang("CASTELLÀ")).to eq(:vo)

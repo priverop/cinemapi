@@ -12,6 +12,7 @@ module Scraper
         /v\.?o\.?\s*sub/i        => :vose,
         /^vose$/i                => :vose,
         /^vosc$/i                => :vose,
+        /^vosi$/i                => :vosi,
         /^castellano$/i          => :vo,
         /^castell[aàÀÁ]$/iu      => :vo,
         /^catal[aàÀÁ]$/iu        => :vo,
