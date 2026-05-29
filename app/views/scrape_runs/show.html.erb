@@ -1,0 +1,55 @@
+<% content_for :title, "Cinemapi | Backoffice | Scrape Run ##{@scrape_run.id}" %>
+
+<div class="flex items-center justify-between mb-5">
+  <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">
+    Scrape Run #<%= @scrape_run.id %> — <%= @scrape_run.theater.name %>
+  </h1>
+  <%= link_to "Back", scrape_runs_path, class: "text-sm text-gray-500 hover:text-red-600" %>
+</div>
+
+<dl class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 text-sm">
+  <div>
+    <dt class="text-gray-400 uppercase text-xs">Status</dt>
+    <% color = { "success" => "text-green-600", "failed" => "text-red-600", "running" => "text-yellow-600" }[@scrape_run.status] %>
+    <dd class="font-medium <%= color %>"><%= @scrape_run.status %></dd>
+  </div>
+  <div>
+    <dt class="text-gray-400 uppercase text-xs">Started</dt>
+    <dd class="font-mono text-xs"><%= @scrape_run.created_at.strftime("%d-%m-%Y %H:%M:%S") %></dd>
+  </div>
+  <div>
+    <dt class="text-gray-400 uppercase text-xs">Items OK</dt>
+    <dd><%= @scrape_run.items_ok %></dd>
+  </div>
+  <div>
+    <dt class="text-gray-400 uppercase text-xs">Items Failed</dt>
+    <dd class="<%= "text-red-600 font-medium" if @scrape_run.items_failed.positive? %>"><%= @scrape_run.items_failed %></dd>
+  </div>
+</dl>
+
+<h2 class="text-lg font-semibold mb-3">Failures (<%= @scrape_run.scrape_failures.size %>)</h2>
+
+<% if @scrape_run.scrape_failures.any? %>
+  <div class="overflow-x-auto">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="text-xs uppercase tracking-wide text-gray-400 border-b border-gray-200 dark:border-gray-700">
+          <th class="text-left py-2 pr-4 font-medium">Date</th>
+          <th class="text-left py-2 pr-4 font-medium">Context</th>
+          <th class="text-left py-2 pr-4 font-medium">Error</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <% @scrape_run.scrape_failures.each do |f| %>
+          <tr>
+            <td class="py-2 pr-4 font-mono text-xs text-gray-500"><%= f.created_at.strftime("%d-%m-%Y %H:%M:%S") %></td>
+            <td class="py-2 pr-4 font-mono text-xs"><%= f.context.presence || "—" %></td>
+            <td class="py-2 pr-4 text-red-700 dark:text-red-400"><%= f.error_message %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <p class="text-sm text-gray-400 py-6">No failures.</p>
+<% end %>

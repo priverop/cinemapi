@@ -1,25 +1,31 @@
 # Project Management
 
-The project is in a very early state, so I don't want to waste any time creating issues, kanban boards, etc. I'd rather use this file to gather ideas and track the next features.
+## High Priority
 
-## MVP
+- Scraper: recap at the end with all the info.
+- Weekends more expensive - Theaters. https://www.cinesrenoir.com/precios/barcelona/ - embajadores
+- Duplicated movies with "(translation)".
+- Note on language and price - check with the original website.
+- View more showtimes in home.
 
-- Scraper: it can scrap a single website for now.
-- Backoffice: manage theater, movies, dashboard, and auth. Quick showtimes edit, change prices, names, etc.
-- User view: with Rails for a quick MVP. Filtering and getting results.
+## Medium Priority
+
+- Trailer URL.
+- Link to the movie.
+
+## Low Priority
 
 ## Ideas
 
+- Renoir/Golem (and ~Mk2) orchestrators are almost the same: differ only in parser/normalizer class refs and the `Normalizer.new`. Parameterize `BaseOrchestrator` with a config object (parser classes + normalizer factory lambda).
 - User preferences. Store parameters?
 - Movie theaters by location?
 - Enable/Disable showtimes.
-- Theaters link to scrap.
 - Proper API filtering.
 
 ### Model data TODO
 
   -  IMDB / Letterboxd / Filmaffinity links.
-  -  Trailer
   -  Country, cast?
   - Theater scraper_key has manual. It should be consistent with movies.
   - Showtimes data_source. 

@@ -1,5 +1,5 @@
 class Theater < ApplicationRecord
-  enum :scraper_key, manual: 0, renoir: 1, cinesa: 2
+  enum :scraper_key, manual: 0, renoir: 1, cinesa: 2, mk2: 3, embajadores_cabeza: 4, embajadores_rio: 5, golem: 6, admit_one: 7, zumzeig: 8, zoco: 9, cines_abc: 10, ocine: 11, verdi_barcelona: 12, malda: 13, mooby: 14
   scope :enabled, -> { where(is_enabled: true) }
   scope :by_price, ->(price) { where("price <= ?", price) }
   def self.search_by_name(query, limit: 5)
@@ -10,6 +10,7 @@ class Theater < ApplicationRecord
 
   has_many :showtimes, dependent: :destroy
   has_many :movies, through: :showtimes
+  has_many :scrape_runs, dependent: :destroy
 
   serialize :discounted_days, coder: JSON
 

@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     resources :movies
     resources :theaters
     resources :showtimes, only: %i[new create edit update destroy]
+    resources :scrape_runs, only: %i[index show] do
+      collection { get :export_failures_by_date }
+    end
     post "scraper", to: "scraper#run"
   end
 

@@ -10,100 +10,91 @@ module Scraper
       VOSE_ATTRIBUTE = "Vose"
       ES_NUESTRO_CINE_ATTRIBUTE = "Es Nuestro Cine"
 
-      class << self
-        #
-        # Cleans every value of the movies. Removes trailspaces, unknown characters, etc.
-        #
-        # @param [Array<Hash>] input not clean movies.
-        #
-        # @return [Array<Hash>] clean movies.
-        #
-        def normalize(input)
-          raise ArgumentError, "Input should be an array." unless input.is_a?(Array)
-          raise ArgumentError, "Input array is empty." if input.empty?
+      def normalize(input)
+        raise ArgumentError, "Input should be an array." unless input.is_a?(Array)
+        raise ArgumentError, "Input array is empty." if input.empty?
 
-          Scraper.logger.info("Normalizing #{input.size} movies.")
-          input.map { |movie| normalize_movie(movie) }
-        end
+        Scraper.logger.info("Normalizing #{input.size} movies.")
+        input.map { |movie| normalize_movie(movie) }
+      end
 
-        private
+      private
 
-        def normalize_movie(movie)
-          {
-            title: normalize_title(movie[:title]),
-            description: normalize_description(movie[:description]),
-            directors: normalize_directors(movie[:directors]),
-            duration: normalize_duration(movie[:duration]),
-            genres: normalize_genres(movie[:genres]),
-            poster: normalize_poster(movie[:poster_id]),
-            showtimes: normalize_showtimes(movie[:showtimes]),
-            trailer: normalize_trailer(movie[:trailer])
-          }
-        end
+      def normalize_movie(movie)
+        {
+          title:       normalize_title(movie[:title]),
+          description: normalize_description(movie[:description]),
+          directors:   normalize_directors(movie[:directors]),
+          duration:    normalize_duration(movie[:duration]),
+          genres:      normalize_genres(movie[:genres]),
+          poster:      normalize_poster(movie[:poster_id]),
+          showtimes:   normalize_showtimes(movie[:showtimes]),
+          trailer:     normalize_trailer(movie[:trailer])
+        }
+      end
 
-        def normalize_description(description)
-          return nil if description.nil? || description.strip.empty?
+      def normalize_description(description)
+        return nil if description.nil? || description.strip.empty?
 
-          description.strip
-        end
+        description.strip
+      end
 
-        def normalize_directors(directors)
-          return [] if directors.nil? || directors.empty?
+      def normalize_directors(directors)
+        return [] if directors.nil? || directors.empty?
 
-          directors.map { |director| "#{director["givenName"]} #{director["familyName"]}" }
-        end
+        directors.map { |director| "#{director["givenName"]} #{director["familyName"]}" }
+      end
 
-        def normalize_duration(duration)
-          return nil if duration.nil? || !duration.is_a?(Integer)
+      def normalize_duration(duration)
+        return nil if duration.nil? || !duration.is_a?(Integer)
 
-          duration
-        end
+        duration
+      end
 
-        def normalize_genres(genres)
-          return [] if genres.nil? || genres.empty?
+      def normalize_genres(genres)
+        return [] if genres.nil? || genres.empty?
 
-          genres.map { |genre| genre.strip }
-        end
+        genres.map { |genre| genre.strip }
+      end
 
-        def normalize_poster(poster_id)
-          return nil if poster_id.nil? || poster_id.empty?
+      def normalize_poster(poster_id)
+        return nil if poster_id.nil? || poster_id.empty?
 
-          POSTER_URL.sub("{poster_id}", poster_id)
-        end
+        POSTER_URL.sub("{poster_id}", poster_id)
+      end
 
-        def normalize_showtimes(showtimes)
-          return [] if showtimes.nil? || showtimes.empty? # || showtimes.all? { |s| s.empty? }
+      def normalize_showtimes(showtimes)
+        return [] if showtimes.nil? || showtimes.empty?
 
-          showtimes.map { |s| { date: normalize_date(s[:date]), language: normalize_language(s[:language]) } }
-        end
+        showtimes.map { |s| { date: normalize_date(s[:date]), language: normalize_language(s[:language]) } }
+      end
 
-        def normalize_date(date)
-          return nil if date.nil? || date.empty?
+      def normalize_date(date)
+        return nil if date.nil? || date.empty?
 
-          DateTime.parse(date)
-        end
+        DateTime.parse(date)
+      end
 
-        def normalize_language(languages)
-          return nil if languages.nil?
-          return :vose if languages.include?(VOSE_ATTRIBUTE)
-          return :vo if languages.include?(ES_NUESTRO_CINE_ATTRIBUTE)
+      def normalize_language(languages)
+        raise Scraper::UnknownLanguageError, "Unknown language #{languages.inspect}." if languages.nil?
+        return :vose if languages.include?(VOSE_ATTRIBUTE)
+        return :vo if languages.include?(ES_NUESTRO_CINE_ATTRIBUTE)
 
-          :dubbed
-        end
+        :dubbed
+      end
 
-        def normalize_title(title)
-          raise Scraper::InvalidMovieError, "Movie has an empty title." if title.nil? || title.strip.empty?
+      def normalize_title(title)
+        raise Scraper::InvalidMovieError, "Movie has an empty title." if title.nil? || title.strip.empty?
 
-          title.strip.titleize
-        end
+        title.strip.titleize
+      end
 
-        def normalize_trailer(trailer)
-          return nil if trailer.nil? || trailer.strip.empty?
-          return trailer if Scraper.valid_http_url?(trailer)
+      def normalize_trailer(trailer)
+        return nil if trailer.nil? || trailer.strip.empty?
+        return trailer if Scraper.valid_http_url?(trailer)
 
-          Scraper.logger.warn("Could not normalize trailer: #{trailer.inspect}.")
-          nil
-        end
+        Scraper.logger.warn("Could not normalize trailer: #{trailer.inspect}.")
+        nil
       end
     end
   end

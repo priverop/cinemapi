@@ -39,6 +39,10 @@ module Scraper
       end
     rescue ActiveRecord::RecordInvalid => e
       Scraper.logger.error("Import failed for '#{movie[:title]}': #{e.message}.")
+      Scraper.current_scrape_run&.record_failure(
+        context: movie[:title],
+        error_message: "#{e.class}: #{e.message}"
+      )
     end
 
     def update_movie_attributes(record, movie)

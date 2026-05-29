@@ -142,6 +142,34 @@ RSpec.describe Scraper::Importer do
       end
     end
 
+    context "when an import fails and a scrape_run is current" do
+      let!(:scrape_run) { create(:scrape_run, theater: theater) }
+      let(:invalid_input) do
+        [ {
+          poster: nil,
+          title: "Broken Movie",
+          directors: [],
+          language: :vo,
+          duration: nil,
+          showtimes: [ { date: Time.new(2026, 4, 23, 15, 50) } ]
+        } ]
+      end
+
+      around do |example|
+        Scraper.current_scrape_run = scrape_run
+        example.run
+      ensure
+        Scraper.current_scrape_run = nil
+      end
+
+      it "records a scrape_failure with the movie title as context" do
+        expect { importer.import(invalid_input) }.to change { scrape_run.scrape_failures.count }.by(1)
+        failure = scrape_run.scrape_failures.last
+        expect(failure.context).to eq("Broken Movie")
+        expect(failure.error_message).to include("Duration")
+      end
+    end
+
     context "when movie exists with attributes already populated" do
       let!(:existing) do
         create(:movie,

@@ -6,7 +6,7 @@ require_relative '../../../../lib/scraper'
 require 'spec_helper'
 
 RSpec.describe Scraper::Cinesa::Normalizer do
-  describe ".normalize" do
+  describe "#normalize" do
     context "when passing an array of non clean movies" do
       let(:input) do
         [ {
@@ -33,7 +33,7 @@ RSpec.describe Scraper::Cinesa::Normalizer do
       end
 
       it "returns the clean movies" do
-        expect(described_class.normalize(input)).to match([
+        expect(described_class.new.normalize(input)).to match([
         {
           description: "El profesor de ciencias Ryland Grace (Ryan Gosling) se despierta en una nave espacial a años luz de casa sin recordar quién es ni cómo ha llegado hasta allí. A medida que recupera la memoria, empieza a descubrir su misión: resolver el enigma de la misteriosa sustancia que provoca la extinción del sol. Deberá recurrir a sus conocimientos científicos y a sus ideas poco ortodoxas para salvar todo lo que hay en la Tierra de la extinción... pero una amistad inesperada significa que quizá no tenga que hacerlo solo.",
           directors: [ "Phil Lord", "Christopher Miller" ],
@@ -72,7 +72,7 @@ RSpec.describe Scraper::Cinesa::Normalizer do
         }
       end
 
-      subject(:languages) { described_class.normalize([ movie ]).first[:showtimes].map { |s| s[:language] } }
+      subject(:languages) { described_class.new.normalize([ movie ]).first[:showtimes].map { |s| s[:language] } }
 
       context "with Vose attribute" do
         let(:showtimes) { [ { date: "2026-04-27T17:45:00+02:00", language: [ "Vose" ] } ] }
@@ -100,10 +100,30 @@ RSpec.describe Scraper::Cinesa::Normalizer do
       end
     end
 
+    context "when language is nil" do
+      let(:movie_with_nil_language) do
+        {
+          description: "desc",
+          directors: [],
+          duration: 100,
+          genres: [],
+          poster_id: "p",
+          title: "Test",
+          trailer: nil,
+          showtimes: [ { date: "2026-04-27T17:45:00+02:00", language: nil } ]
+        }
+      end
+
+      it "raises UnknownLanguageError" do
+        expect { described_class.new.normalize([ movie_with_nil_language ]) }
+          .to raise_error(Scraper::UnknownLanguageError)
+      end
+    end
+
     context "when passing an empty array" do
       it 'raises ArgumentError' do
         expect do
-          described_class.normalize([])
+          described_class.new.normalize([])
         end.to raise_error ArgumentError, "Input array is empty."
       end
     end
@@ -111,7 +131,7 @@ RSpec.describe Scraper::Cinesa::Normalizer do
     context "when not passing an array" do
       it 'raises ArgumentError' do
         expect do
-          described_class.normalize("hello")
+          described_class.new.normalize("hello")
         end.to raise_error ArgumentError, "Input should be an array."
       end
     end

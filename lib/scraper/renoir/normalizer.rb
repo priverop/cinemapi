@@ -2,16 +2,19 @@
 
 require "uri"
 require "time"
+require_relative "../normalizer_helpers"
 
 module Scraper
   module Renoir
     class Normalizer
+      include Scraper::NormalizerHelpers
+
       attr_reader :date
 
       LANGUAGE_MAP = {
         /subtitulada/ => :vose,
         /versi[oó]n original/ => :vo
-      }
+      }.freeze
 
       DURATION_REGEX = /\d+/
 
@@ -45,11 +48,7 @@ module Scraper
       end
 
       def normalize_poster(poster)
-        return nil if poster.nil? || poster.strip.empty?
-        return poster if Scraper.valid_http_url?(poster)
-
-        Scraper.logger.warn("Could not normalize poster: #{poster.inspect}.")
-        nil
+        normalize_poster_url(poster)
       end
 
       def normalize_title(title)
@@ -65,17 +64,7 @@ module Scraper
       end
 
       def normalize_language(language)
-        if language.nil? || language.strip.empty?
-          Scraper.logger.warn("Could not normalize language: #{language.inspect}.")
-          return nil
-        end
-
-        normalized = language.downcase.strip
-        language_symbol = LANGUAGE_MAP.find { |regex, _| normalized.match?(regex) }&.last
-
-        raise Scraper::UnknownLanguageError, "Unknown language '#{language}'." if language_symbol.nil?
-
-        language_symbol
+        normalize_language_from_map(language&.downcase, LANGUAGE_MAP)
       end
 
       def normalize_duration(duration)
@@ -87,7 +76,7 @@ module Scraper
       def normalize_showtimes(showtimes)
         return [] if showtimes.nil? || showtimes.empty? # || showtimes.all? { |s| s.empty? }
 
-        showtimes.map { |s| { date: Time.strptime("#{date} #{s.strip}", "%Y-%m-%d %H:%M") } }
+        showtimes.map { |s| { date: Time.strptime("#{date} #{s.strip} +0000", "%Y-%m-%d %H:%M %z") } }
       end
     end
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_30_141034) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_28_120001) do
   create_table "movies", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "data_source", default: 0, null: false
@@ -22,6 +22,24 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_30_141034) do
     t.string "poster"
     t.string "title"
     t.datetime "updated_at", null: false
+  end
+
+  create_table "scrape_failures", force: :cascade do |t|
+    t.string "context"
+    t.datetime "created_at", null: false
+    t.text "error_message", null: false
+    t.integer "scrape_run_id", null: false
+    t.index ["scrape_run_id"], name: "index_scrape_failures_on_scrape_run_id"
+  end
+
+  create_table "scrape_runs", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "items_failed", default: 0, null: false
+    t.integer "items_ok", default: 0, null: false
+    t.integer "status", default: 0, null: false
+    t.integer "theater_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["theater_id"], name: "index_scrape_runs_on_theater_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -67,6 +85,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_30_141034) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "scrape_failures", "scrape_runs"
+  add_foreign_key "scrape_runs", "theaters"
   add_foreign_key "sessions", "users"
   add_foreign_key "showtimes", "movies"
   add_foreign_key "showtimes", "theaters"
