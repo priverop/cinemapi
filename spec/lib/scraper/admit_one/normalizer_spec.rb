@@ -54,6 +54,7 @@ RSpec.describe Scraper::AdmitOne::Normalizer do
         expect(normalize_lang("CASTELLÀ")).to eq(:vo)
         expect(normalize_lang("CATALÀ")).to eq(:vo)
         expect(normalize_lang("DIG")).to eq(:vo)
+        expect(normalize_lang("VARIOS")).to eq(:vo)
       end
 
       it "raises UnknownLanguageError for blank or unknown labels" do

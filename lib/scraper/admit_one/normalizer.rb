@@ -16,7 +16,8 @@ module Scraper
         /^castellano$/i          => :vo,
         /^castell[aàÀÁ]$/iu      => :vo,
         /^catal[aàÀÁ]$/iu        => :vo,
-        /^dig$/i                 => :vo
+        /^dig$/i                 => :vo,
+        /^varios$/i              => :vo
       }.freeze
 
       DURATION_REGEX = /\d+/
