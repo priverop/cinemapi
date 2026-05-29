@@ -4,8 +4,7 @@ module Scraper
   class BaseOrchestrator
     class << self
       def run(theater)
-        days_ok     = 0
-        days_failed = 0
+        scrape_run = Scraper.current_scrape_run
 
         Scraper.logger.info("Starting scrape for #{theater.website}.")
 
@@ -13,15 +12,16 @@ module Scraper
           Scraper.logger.tagged(day_label(day)) do
             begin
               process_day(theater, day)
-              days_ok += 1
+              scrape_run&.increment!(:items_ok)
             rescue => e
-              days_failed += 1
+              scrape_run&.increment!(:items_failed)
+              scrape_run&.record_failure(context: day_label(day).to_s, error_message: "#{e.class}: #{e.message}")
               Scraper.logger.error("Day #{day_label(day)} failed: #{e.class}: #{e.message}.")
             end
           end
         end
 
-        Scraper.logger.info("Done. days_ok=#{days_ok} days_failed=#{days_failed}.")
+        Scraper.logger.info("Done. items_ok=#{scrape_run&.items_ok} items_failed=#{scrape_run&.items_failed}.")
       end
 
       private

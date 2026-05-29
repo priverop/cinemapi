@@ -10,6 +10,7 @@ class Theater < ApplicationRecord
 
   has_many :showtimes, dependent: :destroy
   has_many :movies, through: :showtimes
+  has_many :scrape_runs, dependent: :destroy
 
   serialize :discounted_days, coder: JSON
 

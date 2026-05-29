@@ -29,6 +29,14 @@ module Scraper
     @logger = logger
   end
 
+  def self.current_scrape_run
+    @current_scrape_run
+  end
+
+  def self.current_scrape_run=(run)
+    @current_scrape_run = run
+  end
+
   def self.valid_http_url?(value)
     uri = value.is_a?(URI::Generic) ? value : URI.parse(value.to_s)
     uri.is_a?(URI::HTTP) && !uri.host.to_s.empty?
@@ -40,10 +48,16 @@ module Scraper
     theaters = Theater.enabled.where.not(scraper_key: 0).where.not(website: nil)
     theaters.each do |theater|
       orchestrator = SOURCES.fetch(theater.scraper_key).constantize
+      scrape_run = theater.scrape_runs.create!(status: :running)
+      self.current_scrape_run = scrape_run
       logger.tagged("Scraper", theater.scraper_key, theater.name) do
         orchestrator.run(theater)
       rescue => e
         logger.error("Scraping #{theater.name} failed: #{e.class}: #{e.message}.")
+        scrape_run.record_failure(context: nil, error_message: "#{e.class}: #{e.message}")
+      ensure
+        scrape_run.finalize!
+        self.current_scrape_run = nil
       end
     end
   end
