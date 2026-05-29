@@ -36,6 +36,45 @@ RSpec.describe Scraper::VerdiBarcelona::MovieParser do
       end
     end
 
+    context "movie with non-cinema event versions" do
+      let(:json) do
+        {
+          result: {
+            locale_name: "Woolf Works",
+            runtime: "180",
+            events: [
+              { version: "BALLET", performances: [ { time: "20260601200000" } ] },
+              { version: "CASTELLANO", performances: [ { time: "20260602200000" } ] }
+            ]
+          }
+        }.to_json
+      end
+
+      it "drops showtimes from skipped versions" do
+        movie = described_class.new(json).parse
+        expect(movie[:showtimes]).to contain_exactly(
+          { date: "20260602200000", language: "CASTELLANO" }
+        )
+      end
+    end
+
+    context "movie with only non-cinema events" do
+      let(:json) do
+        {
+          result: {
+            locale_name: "Woolf Works",
+            runtime: "180",
+            events: [ { version: "BALLET", performances: [ { time: "20260601200000" } ] } ]
+          }
+        }.to_json
+      end
+
+      it "returns an empty showtimes array" do
+        movie = described_class.new(json).parse
+        expect(movie[:showtimes]).to be_empty
+      end
+    end
+
     context "json without a result" do
       it "raises InvalidMovieError" do
         expect { described_class.new('{"error":"not found"}').parse }.to raise_error(Scraper::InvalidMovieError)

@@ -25,6 +25,10 @@ module Scraper
           url        = movie_api_url(theater.website, entry[:imdbid])
           json       = Scraper.logger.tagged("Client") { Scraper::Client.read(url) }
           parsed     = Scraper.logger.tagged("MovieParser") { Scraper::VerdiBarcelona::MovieParser.new(json).parse }
+          if parsed[:showtimes].empty?
+            Scraper.logger.info("Skipping movie with no cinema events.")
+            return
+          end
           parsed[:poster] = entry[:poster]
           normalized = Scraper.logger.tagged("Normalizer") { Scraper::VerdiBarcelona::Normalizer.new.normalize([ parsed ]) }
           Scraper.logger.tagged("Importer") { Scraper::Importer.new(theater: theater).import(normalized) }

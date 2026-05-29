@@ -21,6 +21,19 @@ RSpec.describe Scraper::AdmitOne::MovieParser do
         expect(movies.none? { |m| m[:title].to_s.include?("Ópera y Ballet") }).to be(true)
       end
 
+      it "drops movies whose showtimes are BALLET" do
+        html = <<~HTML
+          <article class="article-cartelera">
+            <div class="col-md-8"><h2><a>Royal Ballet Broadcast</a></h2></div>
+            <div class="tabs-performances"><div class="tab-content"><div class="tab-pane">
+              <div class="row pelicula"><span>BALLET</span><a href="?perfCode=1" title="20260531 20:00"></a></div>
+            </div></div></div>
+          </article>
+        HTML
+        movies = described_class.new(html).parse
+        expect(movies).to be_empty
+      end
+
       it "extracts a movie with title, directors, duration, genres and per-showtime language" do
         movies = described_class.new(html).parse
         iron = movies.find { |m| m[:title].to_s.include?("Iron Maiden") }

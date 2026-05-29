@@ -29,7 +29,7 @@ RSpec.describe Scraper::VerdiBarcelona::Orchestrator do
     allow(Scraper::VerdiBarcelona::ListParser).to receive(:new).and_return(list_parser)
     allow(list_parser).to receive(:movies).and_return(movies)
     allow(Scraper::VerdiBarcelona::MovieParser).to receive(:new).and_return(movie_parser)
-    allow(movie_parser).to receive(:parse).and_return({})
+    allow(movie_parser).to receive(:parse).and_return({ showtimes: [ {} ] })
     allow(Scraper::VerdiBarcelona::Normalizer).to receive(:new).and_return(normalizer)
     allow(normalizer).to receive(:normalize).and_return([])
     allow(Scraper::Importer).to receive(:new).and_return(importer)
@@ -55,7 +55,7 @@ RSpec.describe Scraper::VerdiBarcelona::Orchestrator do
       end
 
       it "injects the listing poster into the parsed movie before normalizing" do
-        allow(movie_parser).to receive(:parse) { { title: "X" } }
+        allow(movie_parser).to receive(:parse) { { title: "X", showtimes: [ {} ] } }
         described_class.run(theater)
         expect(normalizer).to have_received(:normalize).with([ a_hash_including(poster: "https://img/tt21825416.webp") ])
       end
@@ -65,6 +65,17 @@ RSpec.describe Scraper::VerdiBarcelona::Orchestrator do
         described_class.run(theater)
         expect(Scraper.logger).to have_received(:tagged).with("el-caso-hubener")
         expect(Scraper.logger).to have_received(:tagged).with("dragon-ball")
+      end
+    end
+
+    context "when a movie has no showtimes after filtering" do
+      before do
+        allow(movie_parser).to receive(:parse).and_return({ showtimes: [] }, { title: "ok", showtimes: [ {} ] })
+      end
+
+      it "skips it without calling the importer" do
+        described_class.run(theater)
+        expect(importer).to have_received(:import).exactly(1).times
       end
     end
 

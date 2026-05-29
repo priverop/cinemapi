@@ -20,7 +20,7 @@ module Scraper
         showtime_link:    "a[href*='perfCode']"
       }.freeze
 
-      SKIP_LABEL = "CONCIERTO"
+      SKIP_LABELS = %w[CONCIERTO BALLET].freeze
 
       attr_reader :document
 
@@ -42,7 +42,7 @@ module Scraper
       def parse_movie(node)
         showtimes = parse_showtimes(node)
         return nil if showtimes.empty?
-        return nil if showtimes.any? { |s| s[:language].to_s.strip.casecmp(SKIP_LABEL).zero? }
+        return nil if showtimes.any? { |s| SKIP_LABELS.include?(s[:language].to_s.strip.upcase) }
 
         {
           title: node.at_css(CSS_SELECTORS[:movie_title])&.text,

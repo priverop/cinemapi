@@ -10,6 +10,8 @@ module Scraper
     # poster is not part of this JSON; it comes from the listing (see ListParser)
     # and is injected by the Orchestrator after parsing.
     class MovieParser
+      SKIPPED_VERSIONS = %w[BALLET].freeze
+
       attr_reader :result
 
       def initialize(input)
@@ -52,7 +54,7 @@ module Scraper
       end
 
       def showtimes
-        Array(result["events"]).flat_map do |event|
+        Array(result["events"]).reject { |event| SKIPPED_VERSIONS.include?(event["version"].to_s.upcase) }.flat_map do |event|
           Array(event["performances"]).map do |performance|
             { date: performance["time"], language: event["version"] }
           end
