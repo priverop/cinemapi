@@ -16,7 +16,6 @@ module Scraper
         "vo"   => :vo
       }.freeze
 
-      VOSE_SUFFIX = /\s*\(V\.O\.S\.E\.\)\s*\z/i
       DURATION_REGEX = /\d+/
 
       def initialize(date:, base_url:)
@@ -45,9 +44,7 @@ module Scraper
       end
 
       def normalize_title(title)
-        raise Scraper::InvalidMovieError, "Movie has an empty title." if title.nil? || title.strip.empty?
-
-        title.sub(VOSE_SUFFIX, "").strip
+        canonicalize_title(title)
       end
 
       def normalize_language(language)

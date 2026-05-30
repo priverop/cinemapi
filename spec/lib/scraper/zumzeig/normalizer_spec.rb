@@ -25,7 +25,7 @@ RSpec.describe Scraper::Zumzeig::Normalizer do
 
     it "returns normalized movies" do
       expect(normalizer.normalize(input)).to match([ {
-        title: "La chica del coro",
+        title: "La Chica Del Coro",
         directors: [ "Urška Djukić" ],
         duration: 89,
         language: :vose,

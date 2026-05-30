@@ -64,7 +64,7 @@ RSpec.describe Scraper::Zoco::Normalizer do
     context "title suffix" do
       it "strips trailing VOSE" do
         movie = base_movie.merge(title: "El amigo inesperado VOSE")
-        expect(normalizer.normalize([ movie ]).first[:title]).to eq("El amigo inesperado")
+        expect(normalizer.normalize([ movie ]).first[:title]).to eq("El Amigo Inesperado")
       end
 
       it "strips trailing V.O.S." do

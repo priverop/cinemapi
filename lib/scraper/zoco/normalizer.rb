@@ -15,7 +15,6 @@ module Scraper
       }.freeze
 
       DURATION_REGEX    = /\d+/
-      TITLE_SUFFIX      = /\s*(VOSE|V\.O\.S\.?E?\.?)\s*\z/i
 
       def normalize(input)
         raise ArgumentError, "Input should be an array." unless input.is_a?(Array)
@@ -40,9 +39,7 @@ module Scraper
       end
 
       def normalize_title(title)
-        raise Scraper::InvalidMovieError, "Movie has an empty title." if title.nil? || title.strip.empty?
-
-        title.sub(TITLE_SUFFIX, "").strip
+        canonicalize_title(title)
       end
 
       def normalize_directors(directors)

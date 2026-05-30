@@ -15,7 +15,6 @@ module Scraper
         "vo"     => :vo
       }.freeze
 
-      VOSE_SUFFIX        = /\s*\(VOSE\)\s*/i
       POSTER_PATH_FORMAT = "/images/pelicules/%<id>s.jpg"
 
       attr_reader :base_url
@@ -48,9 +47,7 @@ module Scraper
       end
 
       def normalize_title(title)
-        raise Scraper::InvalidMovieError, "Movie has an empty title." if title.nil? || title.strip.empty?
-
-        title.gsub(VOSE_SUFFIX, " ").strip.squeeze(" ")
+        canonicalize_title(title)
       end
 
       def normalize_duration(duration)
