@@ -8,9 +8,9 @@ module Scraper
   module NormalizerHelpers
     PARENTHETICAL_GROUPS = /\(.*?\)|\[.*?\]/
     TRAILING_LANG_TAG = /
-      \s+
+      \s+(?:[-|:]\s+)?
       (?:
-        V\.O\.S\.E\.|V\.O\.S\.C\.|V\.O\.S\.|V\.O\.|
+        V\.O\.S\.E\.?|V\.O\.S\.C\.?|V\.O\.S\.?|V\.O\.?|
         VOSE|VOSC|VOS|VO|VE|CAT|ESP|
         DOBLADA(?:\s+AL\s+ESPA[NÑ]OL)?
       )

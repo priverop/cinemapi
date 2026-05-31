@@ -44,6 +44,10 @@ RSpec.describe Scraper::NormalizerHelpers do
       "Asesinato En La 3ª Planta [VOSE]"           => "Asesinato En La 3ª Planta",
       "Asesinato En La 3ª Planta (V.O.S.E.)"       => "Asesinato En La 3ª Planta",
       "Asesinato En La 3ª Planta V.O.S.E."         => "Asesinato En La 3ª Planta",
+      "Asesinato En La 3ª Planta V.O.S.E"          => "Asesinato En La 3ª Planta",
+      "Dos días - VOSE"                            => "Dos Días",
+      "Pelicula - V.O.S."                          => "Pelicula",
+      "La Familia Beneton +2"                      => "La Familia Beneton +2",
       "Pelicula DOBLADA AL ESPAÑOL"                => "Pelicula",
       "Pelicula  con   espacios"                   => "Pelicula Con Espacios"
     }.each do |input, expected|
