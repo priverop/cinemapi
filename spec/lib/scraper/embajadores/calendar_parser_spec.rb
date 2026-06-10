@@ -43,8 +43,8 @@ RSpec.describe Scraper::Embajadores::CalendarParser do
       end
 
       it "parses DD/MM label into correct Date" do
-        day = described_class.new(html).days[1]
-        expect(day[:date]).to eq(Date.new(Date.today.year, 5, 14))
+        day = described_class.new(html, today: Date.new(2026, 5, 13)).days[1]
+        expect(day[:date]).to eq(Date.new(2026, 5, 14))
       end
 
       it "includes the full URL" do
