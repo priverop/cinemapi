@@ -1,5 +1,6 @@
 class Movie < ApplicationRecord
   scope :by_max_duration, ->(duration) { where("duration <= ?", duration) }
+  scope :alphabetical, -> { order(Arel.sql("LOWER(title)")) }
   enum :data_source, scraper: 0, manual: 1
 
   has_many :showtimes, dependent: :destroy

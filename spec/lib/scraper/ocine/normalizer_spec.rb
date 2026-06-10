@@ -26,7 +26,7 @@ RSpec.describe Scraper::Ocine::Normalizer do
     context "valid input" do
       it "returns cleaned movie hash" do
         result = normalizer.normalize([ base_movie ]).first
-        expect(result[:title]).to eq("El Diablo viste de Prada 2")
+        expect(result[:title]).to eq("El Diablo Viste De Prada 2")
         expect(result[:duration]).to eq(118)
         expect(result[:genres]).to eq([ "Comedia" ])
         expect(result[:description]).to eq("Veinte años después...")
@@ -54,7 +54,7 @@ RSpec.describe Scraper::Ocine::Normalizer do
       it "strips (VOSE) suffix from title" do
         movie = base_movie.merge(title: "El Castillo en el Cielo (VOSE)  (40º Aniversario)", language: :vose)
         result = normalizer.normalize([ movie ]).first
-        expect(result[:title]).to eq("El Castillo en el Cielo (40º Aniversario)")
+        expect(result[:title]).to eq("El Castillo En El Cielo")
       end
     end
 

@@ -25,7 +25,7 @@ RSpec.describe Scraper::CinesAbc::Normalizer do
     context "valid input" do
       it "returns cleaned movie" do
         result = normalizer.normalize([ base_movie ]).first
-        expect(result[:title]).to eq("EL AMIGO INESPERADO")
+        expect(result[:title]).to eq("El Amigo Inesperado")
         expect(result[:duration]).to eq(102)
         expect(result[:genres]).to eq([ "COMEDIA" ])
         expect(result[:description]).to eq("Baptiste es un imitador.")

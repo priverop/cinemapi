@@ -2,10 +2,13 @@
 
 require "uri"
 require "time"
+require_relative "../normalizer_helpers"
 
 module Scraper
   module Cinesa
     class Normalizer
+      include Scraper::NormalizerHelpers
+
       POSTER_URL = "https://film-cdn.moviexchange.com/api/cdn/release/{poster_id}/media/Poster?width=400"
       VOSE_ATTRIBUTE = "Vose"
       ES_NUESTRO_CINE_ATTRIBUTE = "Es Nuestro Cine"
@@ -84,9 +87,7 @@ module Scraper
       end
 
       def normalize_title(title)
-        raise Scraper::InvalidMovieError, "Movie has an empty title." if title.nil? || title.strip.empty?
-
-        title.strip.titleize
+        canonicalize_title(title)
       end
 
       def normalize_trailer(trailer)

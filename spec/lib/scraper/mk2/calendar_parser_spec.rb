@@ -40,8 +40,8 @@ RSpec.describe Scraper::Mk2::CalendarParser do
       end
 
       it "parses DD/MM label into correct Date" do
-        day = described_class.new(html).days.find { |d| d[:num] == 2 }
-        expect(day[:date]).to eq(Date.new(Date.today.year, 5, 15))
+        day = described_class.new(html, today: Date.new(2026, 5, 13)).days.find { |d| d[:num] == 2 }
+        expect(day[:date]).to eq(Date.new(2026, 5, 15))
       end
     end
 
